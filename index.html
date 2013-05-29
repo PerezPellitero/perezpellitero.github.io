@@ -1,31 +1,368 @@
----
-layout: layout
-title: "Eric Jones"
----
-{% for post in site.posts offset: 0 limit: 50 %}
-<div class="row">
-  <div class="span7">    
-    <div class="row">
-      <div class="span2">
-        <a href="{{ post.url }}" >
-            <img border="0" width="250" height="150" src="/img/posts/{{ post.image }}" alt="">
-        </a>
-      </div>
-      <div class="span5">
-		<h4><strong><a href="{{ post.url }}">{{ post.title }}</a></strong></h4>      
-        <p>
-          {{ post.summary }}
-        </p>
-		<p>
-          <i class="icon-calendar"></i> {{ post.date | date: "%B %e, %Y" }}
-          | <i class="icon-comment"></i> <a href="http://erjjones.github.com{{ post.url }}#disqus_thread" data-disqus-identifier="{{ post.url }}"></a>     
-		  | <i class="icon-tags"></i> Tags :{% for tag in post.tags %} <a href="/tags/{{ tag }}" rel="tooltip" title="View posts tagged with &quot;{{ tag }}&quot;"><span class="label label-info">{{ tag }}</span></a>  {% if forloop.last != true %} {% endif %} {% endfor %}		            
-        </p>
-        <p><a href="{{ post.url }}">Read more</a></p>
-      </div>
-    </div>    
-	<hr>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" >
+	<title>Eduardo Pérez Pellitero website</title>
+
+  <link rel="stylesheet" href="http://twitter.github.io/bootstrap/1.4.0/bootstrap.min.css">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        background-color: #FAFAFA;
+      }
+      
+      .topbar {
+		  font-size: 1.5em;
+	  }
+	  
+	  .container-fluid > .sidebar {
+		  top: 10px;
+		  font-size: 1.5em;
+		  color: #BFBFBF;
+	  }
+	  
+	  .container-fluid > .sidebar li {
+		  padding: 0.5em;
+	  }
+	  
+	  section {
+		  margin-top: 48px;
+	  }
+	  
+	  .master-head h1 {
+		  margin-bottom: 0px;
+		  /*color: #C33;*/
+	  }
+	  
+	  .master-head p.lead {
+		 margin-top: 18px;
+		 font-size: 18px;
+	  }
+	  
+	  
+	  .shadow-title {
+		  text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+	  }
+	  
+	  img.thumbnail {
+		  width: 210px;
+		  /*height: 150px;*/
+	  }
+	  
+	  
+	div.container-fluid a:link, div.container-fluid a:visited {
+		color: #09c;
+		text-decoration: none;
+	}
+		
+	div.container-fluid a:hover {
+		color: #c33;
+	}
+	
+	a.paper_link {
+		display:inline-block;
+		background: url("figures/pdf.png") center right no-repeat;
+		padding-right: 22px;
+	}		
+	
+	img.bibtex_link {
+		cursor:pointer;
+	}
+	
+	pre.invisible_bibtex {
+		display: none;
+	}
+
+        a.source_code_link {
+                font-family: Courier New, Courrier;
+        }
+    </style>
+
+	<script language="javascript" type="text/javascript">
+	function toggle(element) {
+		if(element.style.display=="block") {
+			element.style.display="none";
+		} else {
+			element.style.display="block";
+		}
+	}
+	</script>
+
+</head>
+<body>
+<!--
+
+--- layout: default 
+--- title: Eduardo Pérez Pellitero website.
+
+
+!--
+<div id="posts_links">
+{% for post in site.posts limit:5 %}
+  <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+  {{ post.content }}
+  <em>Posted on {{ post.date | date_to_long_string }}.</em>
+{% endfor %}
 </div>
-{% endfor %}	
-			
+--
+
+-->
+
+<div class="topbar" data-scrollspy="scrollspy">
+<div class="topbar-inner">
+	<div class="container">
+		<a class="brand" href="#">Eduardo Pérez Pellitero website</a>
+		<ul>
+		<!-- <li class="active"><a href="#">Home</a></li> -->
+		<li><a href="#publications">Publications</a></li>
+		<li><a href="#code">About me</a></li>
+		<li><a href="#data">Data</a></li>
+		<li><a href="#contact">Affiliation</a></li>
+		</ul>
+	</div><!-- /container -->
+  </div> 
+</div><!-- /topbar -->
+
+
+  <div class="container-fluid">
+    <div class="sidebar">
+	<div class="well">
+		<!-- <h5>Sidebar</h5> -->
+		Hola
+	</div>
+    </div> <!-- /sidebar -->
+    <div class="content">
+
+<header class="master-head masthead" id="overview">
+      <div class="inner">
+        <div class="container">
+			<div class="row">
+			  <div class="span16"><h2>He who knows most,</h2></div>
+			</div> <!-- /row -->
+			<div class="row">
+			  <div class="offset1 shadow-title"><h1>doubts most.</h1></div>
+	</div> <!-- /row -->
+
+			<div class="row">
+			  <div class="offset4"><h3><a class="" href="http://www.destreza.us/masters/index.html">Don Jerónimo Sánchez de Carranza</a></h3></div>
+	</div> <!-- /row -->
+          <p class="lead">
+			  
+			 </p>
+        </div><!-- /container -->
+      </div>
+    </header>
+
+
+<section id="publications">
+
+        <div class="container span16">
+
+<div class="page-header">
+    <h1>Publications <small>free the ideas!</small></h1>
+  </div>
+
+<div class="row">
+	<div class="span4">
+	<p></p>
+	</div>
+	<div class="span12">
+		<!-- <p><h4><a href="http://scholar.google.com/citations?user=SVNNgu4AAAAJ&hl=en">Google citations</a></h4></p> -->
+		<!-- <p><h4><a href="http://hal.inria.fr/aut/Rodrigo+Benenson/">INRIA publications</a> <small>(2006-2008)</small></h4></p> -->
+	</div>
+</div> <!-- /row -->
+<!--<hr>-->
+
+<h4 id="year2013">2013 <small> First year of PhD</small></h4>
+
+<div class="row">
+	<div class="span4">
+		<ul class="media-grid">
+		<li><a href="http://rodrigob.github.io/documents/2013_cvpr_roerei_with_supplementary_material.pdf">
+			<img class="thumbnail" src="images/icip_2013.jpg" alt="" /></a></li>
+		</ul>
+	</div>
+	<div class="span12">
+		<h3><a class="paper_link" href="http://rodrigob.github.io/documents/2013_cvpr_roerei_with_supplementary_material.pdf">Fast single-image super-resolution with filter selection</a></h3>
+		<p>J. Salvador, E. Pérez-Pellitero, A. Kochale.
+		<br>ICIP 2013
+		<img class="bibtex_link" src="figures/bibtex.png" onclick="javascript:toggle(Salvador2013c);" />
+		<pre id="Salvador2013c" class="invisible_bibtex">
+@INPROCEEDINGS{Salvador2013c,
+  author = {Salvador, J. and Pérez-Pellitero, E. and Kochale, A.},
+  title = {Fast single-image super-resolution with filter selection},
+  booktitle = {Proc. IEEE Int. Conf. on Image Processing},
+  year = {2013},
+}</pre>
+		</p> 
+		<blockquote>
+			<p>We extend prior work on single-image super-resolution by introducing an adaptive selection of the best fitting upscaling and analysis filters for example learning. This selection is based on local error measurements obtained by using each filter with every image patch, and contrasts with the common approach of a constant metric in both dictionary-based and internal learning super-resolution
+			</p>
+		</blockquote>
+		<a href="https://dl.dropboxusercontent.com/u/2323300/icip2013filterselection/webdropbox.html" target="_blank"><span class="label important">Project website</span></a>
+	</div>
+</div> <!-- /row -->
+<hr>
+
+<h4 id="year2012">2012 <small>Arriving at Visics in KU Leuven</small></h4>
+
+<div class="row">
+	<div class="span4">
+		<ul class="media-grid">
+		<li><a href="http://rodrigob.github.io/documents/2012_eccv_cvvt_workshop_fast_stixels_estimation.pdf">
+			<img class="thumbnail" src="images/DCS_merged_star.png" alt="" /></a></li>
+		</ul>
+	</div>
+	<div class="span12">
+		<h3><a class="paper_link" href="documents/MS_Thesis_Object_detection_using_the_chains_model.pdf">
+                        Object detection using the chains model</a></h3>
+		<p>E. Pérez-Pellitero
+		<br>Master Thesis, <a href="http://www.kuleuven.be/english"> KU Leuven</a> 2012.
+		<img class="bibtex_link" src="figures/bibtex.png" onclick="javascript:toggle(PerezPellitero_MsT_2012);" />
+		<pre id="PerezPellitero_MsT_2012" class="invisible_bibtex">
+@MASTERSTHESIS{PerezPellitero_MsT_2012,
+  author = {E. Pérez-Pellitero and R. Benenson and L. Van Gool},
+  title = {Object detection using the chains model},
+  school = {KU Leuven},
+  year = {2012}
+}</pre>
+		</p> 
+		<blockquote>
+			<p>This thesis focuses on part-based object detection using as a source of information
+not only the appearance of the parts themselves, but also the context supplied by
+other surrounding parts (either inside or outside the object to detect), in opposition
+to the most used approach of recognizing the object using as a source of information
+only the appearance of the object itself.
+			</p>
+		</blockquote>
+	</div>
+</div> <!-- /row -->
+<hr>
+
+
+<div class="row">
+
+	<div class="span12 offset2 well">
+		<h4>Copyright Notice</h4>
+		<p>
+		The downloadable documents on this web site are presented to ensure timely dissemination of scholarly and technical work. Copyright and all rights therein are retained by authors or by other copyright holders. All persons copying this information are expected to adhere to the terms and constraints invoked by each author's copyright. These works may not be reposted without the explicit permission of the copyright holder.
+		</p>
+	</div>
+
+</div> <!-- /row -->
+
+</div> <!-- /container -->
+</section>   
+      
+      
+<section id="code">
+
+<div class="container span16">
+
+<div class="page-header">
+<h1>Code <small>free the sources!</small></h1>
+</div>
+
+<p>Due to industrial partnerships, most of the code I write is closed source.<br>
+Happily, I have been recently authorized to <a href="https://bitbucket.org/rodrigob/doppia" class="source_code_link">release the source code</a> of <a href="#year2012">my work on fast pestrians detection</a>.
+</p>
+<p>Otherwise, here is a list of interesting open-source code I have used:</p>
+<ul>
+<li>Linux port of <a href="https://github.com/rodrigob/barinova_pedestrians_detection">Pedestrian detection using Hough forest</a>, by Olga Barinova.</li>
+<li><a href="https://github.com/rodrigob/cudatemplates">cudatemplates</a>, makes my life with CUDA (GPU) code much easier.</li>
+<li><a href="http://www.ros.org">ROS</a>, is a good enough tool to create modular robotic software.</li>
+<li>I believe research must use open source tools. My current combo is 
+C++ 
++ <a href="http://qt.nokia.com/products/developer-tools">QtCreator</a>
++ <a href="http://numpy.scipy.org">numpy</a> 
++ <a href="http://docs.scipy.org/doc/scipy/reference">scipy</a> 
++ <a href="http://matplotlib.sourceforge.net">matplotlib</a>
++ <a href="http://code.google.com/p/spyderlib">spyder</a>.</li>
+</ul>
+
+
+</div> <!-- /container -->
+</section>   
+
+
+<section id="data">
+
+<div class="container span16">
+
+<div class="page-header">
+<h1>Data <small>free the bits!</small></h1>
+</div>
+
+<p>I have created a <a href="http://rodrigob.github.io/are_we_there_yet/build/">mini-site</a> to aggregate in one place results on key computer vision datasets.<br/>
+The results set is crowd sourced. You are welcome to provide inputs and comments.</p>
+<ul>
+	<li><a href="http://rodrigob.github.io/are_we_there_yet/build/">Are we there yet ?</a>, did you ever want to quickly learn
+which paper provides the best results on standard dataset X ?</li>
+</ul>
+
+<p>These are some of the datasets I have used during my research:</p>
+<ul>
+<li><a href="http://pascal.inrialpes.fr/data/human">INRIA persons</a>, the standard dataset for pedestrians.</li>
+<li><a href="http://www.vision.caltech.edu/Image_Datasets/CaltechPedestrians">Caltech pedestrians</a>, a (much) larger dataset of pedestrians.</li>
+<li><a href="http://www.vision.ee.ethz.ch/~aess/dataset">ETHZ pedestrians</a>, one of the rare color stereo sequences with annotated pedestrians.</li>
+
+</ul>
+
+</div> <!-- /container -->
+</section>   
+
+
+<section id="contact">
+
+<div class="container span16">
+
+<div class="page-header">
+<h1>Contact <small>who is rodrigob?</small></h1>
+</div>
+
+<div class="row" itemscope itemtype="http://data-vocabulary.org/Person">
+	<div class="span3">
+		<ul class="media-grid">
+		<li><a href="https://plus.google.com/114975295342705145033?rel=author">
+			<img style="width: 150px;" class="thumbnail" itemprop="photo" src="figures/2010_09 postdoc day.jpg" alt="Rodrigo Benenson" /></a></li>
+		</ul>
+	</div>
+	<div class="span12">
+		<p>My name is <a href="https://plus.google.com/114975295342705145033/about"><span itemprop="name" >Rodrigo Benenson</span></a>.</p>
+		<meta itemprop="nickname" content="rodrigob" />
+		<p>I studied electronics engineering at <a href="http://www.utfsm.cl"><abbr>UTFSM</abbr></a>.</p>
+		<p>I did my PhD in robotics inside the <a href="http://www.lara.prd.fr/"><abbr>Lara team</abbr></a>, 
+		part of <a href="http://www.mines-paristech.fr">Mines Paristech</a> and <a href="http://www.inria.fr/centre/paris-rocquencourt"><abbr>INRIA</abbr></a>.</p>
+		<p>I then moved for a <span itemprop="role">post-doc in computer vision</span> at <a href="http://www.esat.kuleuven.be/psi_n/visics">Visics, KU Leuven</a>.</p>
+		<p>I currently continue my research at the <a href="http://www.d2.mpi-inf.mpg.de"><span itemprop="affiliation">Max-Planck-Institut für Informatik</span></a>, in Saarbrücken, Germany.</p>
+		<p>You can contact <a href="https://plus.google.com/114975295342705145033/about" title="social profile">me</a> by sending an email at &#114;&#111;&#100;&#114;&#105;&#103;&#111;DOT&#98;&#101;&#110;&#101;&#110;&#115;&#111;&#110;AT&#103;&#109;&#97;&#105;&#108;DOT&#99;&#111;&#109;.</p>
+		<p><br><br><a href="https://plus.google.com/114975295342705145033/about" title="social profile">我</a>想建设一个更美好的世界。</p>
+	</div>
+</div> <!-- /row -->
+
+<hr>
+
+</div> <!-- /container -->
+
+<div class="container span6">
+			<ul class="media-grid">
+		<li><a href="http://www.flickr.com/photos/rodrigob">
+	<img style="width: 300px;" src="http://farm5.staticflickr.com/4150/4972864677_3833187210.jpg" title="I like photography"/></a></li>
+	</ul>
+</div> <!-- /container -->
+
+<div class="container">
+<center><p><small>Page created using <a href="http://twitter.github.io/bootstrap">bootstrap</a>, simplest template. Publication list by <a href="http://rodrigob.github.io">R. Benenson</a>.</small></p></center>
+</div> <!-- /container -->
+</section>   
+      
+</div> <!-- /content -->
+</div> <!-- /container fluid -->
+
+
+<!-- Javascript -->
+<script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+<script src="http://twitter.github.io/bootstrap/1.4.0/bootstrap-scrollspy.js"></script>
+
+</body></html>
