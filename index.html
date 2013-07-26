@@ -49,6 +49,11 @@
 		  width: 210px;
 		  /*height: 150px;*/
 	  }
+
+	  img.logo {
+		  /*width: 210px;*/
+		  height: 60px;
+	  }
 	  
 	  
 	div.container-fluid a:link, div.container-fluid a:visited {
@@ -167,7 +172,8 @@
 		<p>My name is Eduardo Pérez Pellitero. Originally from Barcelona, I studied audiovisual engineering and a Master in Telecom and Management at <a href="http://www.upc.edu/?set_language=en"><abbr>UPC</abbr></a>, including a stay at <a href="http://www.esat.kuleuven.be/psi/visics/"><abbr>Visics</abbr></a> research group in KU Leuven. <p>
 		I started my PhD in October 2012 in <a href="http://www.technicolor.com">Technicolor</a>'s Image Processing Lab in close collaboration with <a href="http://www.uni-hannover.de/en/index.php">Leibnitz Universität Hannover</a>, under the supervision of <a href="http://www.tnt.uni-hannover.de/~rosenhahn/"> Prof. Dr.-Ing. Bodo Rosehnhan</a> and <a href="https://imatge.upc.edu/web/jrh"> Prof. Dr.-Ing. Javier Ruiz</a> as co-supervisor.
 		<p>My research interests include super-resolution, machine learning, sparse coding techniques, 3D reconstruction and super-resolved texture mapping.</p>
-		<p>Some of the things I enjoy most in my life are: <a href="http://researchinprogress.tumblr.com/post/51393471487/from-complex-looking-math-it-straightforwardly">skipping complex math</a> when first-reading papers, playing the electric bass and practising <a href="http://www.verdaderadestreza.com">classical fencing</a>.		
+		<p>Some of the things I enjoy most in my life are: <a href="http://researchinprogress.tumblr.com/post/51393471487/from-complex-looking-math-it-straightforwardly">skipping complex math</a> when first-reading papers, playing the electric bass and practising <a href="http://www.verdaderadestreza.com">classical fencing</a>.<br>
+				
 	</div>
 </div> <!-- /row -->
 
@@ -190,13 +196,55 @@
 	<p></p>
 	</div>
 	<div class="span12">
-		<!-- <p><h4><a href="http://scholar.google.com/citations?user=SVNNgu4AAAAJ&hl=en">Google citations</a></h4></p> -->
-		<!-- <p><h4><a href="http://hal.inria.fr/aut/Rodrigo+Benenson/">INRIA publications</a> <small>(2006-2008)</small></h4></p> -->
-	</div>
+			</div>
 </div> <!-- /row -->
 <!--<hr>-->
 
 <h4 id="year2013">2013 <small> First year of PhD</small></h4>
+
+<div class="row">
+	<div class="span4">
+		<ul class="media-grid">
+		<li><a href="documents/PerezPellitero2013Bmvc.pdf">
+			<img class="thumbnail" src="images/bmvc_2013.png" alt="" /></a></li>
+		</ul>
+	</div>
+	<div class="span12">
+		<h3><a class="paper_link" href="documents/PerezPellitero2013Bmvc.pdf">Bayesian region selection for adaptive dictionary-based Super-Resolution</a></h3>
+		<p>E. Pérez-Pellitero, J. Salvador, Javier Ruiz-Hidalgo, Bodo Rosenhahn.
+		<br> <button onclick="javascript:toggle(Bmvc2013)">BMVC 2013</button>
+<img class="bibtex_link" src="figures/bibtex.png" onclick="javascript:toggle(PerezPellitero2013Bmvc);" />
+		<pre id="Bmvc2013" class="invisible_bibtex">
+British Machine Vision Conference (BMVC) 2013, Bristol.
+439 submissions
+30% accept rate
+7% oral accept rate.</pre>
+		
+		<pre id="PerezPellitero2013Bmvc" class="invisible_bibtex">
+@INPROCEEDINGS{PerezPellitero2013Bmvc,
+  author = {E. Pérez-Pellitero and J. Salvador and Javier Ruiz-Hidalgo and Bodo Rosenhahn},
+  title = {Bayesian region selection for adaptive dictionary-based Super-Resolution},
+  booktitle = {BMVC},
+  year = {2013},
+}</pre>
+		</p> 
+		<blockquote>
+			<p>
+
+			This paper presents a novel sparse SR method, which focuses in adaptively selecting the
+optimal patches for the dictionary training. The method divides the training images into sub-image regions of sizes that preserve texture consistency. The best-representing region for each input LR patch is
+found through a Bayesian selection stage. In this selection process, SIFT descriptors are extracted densely from both input LR patches and regions and a local NBNN approach is used in order to efficiently handle the high number of different regions in the training dataset.
+			</p>
+		</blockquote>
+		<a href="project_websites/bmvc_2013.html" target="_blank"><span class="label important">Project website</span></a> - <i>Coming soon!</i>
+	</div>
+</div> <!-- /row -->
+<hr>
+
+
+
+
+
 
 <div class="row">
 	<div class="span4">
@@ -208,10 +256,10 @@
 	<div class="span12">
 		<h3><a class="paper_link" href="documents/ICIP_2013.pdf">Fast single-image super-resolution with filter selection</a></h3>
 		<p>J. Salvador, E. Pérez-Pellitero, A. Kochale.
-		<br>ICIP 2013
-		<img class="bibtex_link" src="figures/bibtex.png" onclick="javascript:toggle(Salvador2013c);" />
-		<pre id="Salvador2013c" class="invisible_bibtex">
-@INPROCEEDINGS{Salvador2013c,
+		<br>ICIP 2013.  
+		<img class="bibtex_link" src="figures/bibtex.png" onclick="javascript:toggle(Salvador2013Icip);" />
+		<pre id="Salvador2013Icip" class="invisible_bibtex">
+@INPROCEEDINGS{Salvador2013Icip,
   author = {Salvador, J. and Pérez-Pellitero, E. and Kochale, A.},
   title = {Fast single-image super-resolution with filter selection},
   booktitle = {Proc. IEEE Int. Conf. on Image Processing},
@@ -285,7 +333,7 @@ only the appearance of the object itself.
 <h1>Data </h1>
 </div>
 
-<p> Choosing a super-resolution testing dataset can be somehow challenging. In the literature there is not standard or de facto datasets, and sometimes is difficult to find the original version of some commonly used images. In this section I will provide the datasets I have came across and used during my research, and I hope to be able to spend more time on this in the near future.
+<p> Choosing a super-resolution testing dataset can be somehow challenging. In the literature there are not standard or de facto datasets, and sometimes is difficult to find the original version of some commonly used images. In this section I will provide the datasets I have came across and used during my research, and I hope to be able to spend more time on this in the near future.
 </p>
 
 <ul>
