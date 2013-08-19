@@ -1,1 +1,1925 @@
-Coming soon!
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Super Resolution From a Single Image</title>
+    <link rel="stylesheet" type="text/css" href="bmvc_2013_data/css/main.css" />
+    <link rel="shortcut icon" href="./single_image_SR/wis_fav_ico.ico" type="image/ico" />
+
+    <script type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+ var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+  var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+  if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+ var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+ var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+  d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+ if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+ for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+ if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+ var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+ if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+    </script>
+
+</head>
+
+
+<body id="top-of-page" onload="MM_preloadImages(
+
+'./bmvc_2013_data/ground_truth/2x/1.png',
+'./bmvc_2013_data/input_images/2x/1.png',
+'./bmvc_2013_data/bicubic/2x/1.png',
+'./bmvc_2013_data/Chang_et_al/2x/1.png',
+'./bmvc_2013_data/Yang_et_al/2x/1.png',
+'./bmvc_2013_data/Proposed/2x/1.png',
+
+'./bmvc_2013_data/ground_truth/2x/2.png',
+'./bmvc_2013_data/input_images/2x/2.png',
+'./bmvc_2013_data/bicubic/2x/2.png',
+'./bmvc_2013_data/Chang_et_al/2x/2.png',
+'./bmvc_2013_data/Yang_et_al/2x/2.png',
+'./bmvc_2013_data/Proposed/2x/2.png',
+
+'./bmvc_2013_data/ground_truth/2x/3.png',
+'./bmvc_2013_data/input_images/2x/3.png',
+'./bmvc_2013_data/bicubic/2x/3.png',
+'./bmvc_2013_data/Chang_et_al/2x/3.png',
+'./bmvc_2013_data/Yang_et_al/2x/3.png',
+'./bmvc_2013_data/Proposed/2x/3.png',
+
+'./bmvc_2013_data/ground_truth/2x/4.png',
+'./bmvc_2013_data/input_images/2x/4.png',
+'./bmvc_2013_data/bicubic/2x/4.png',
+'./bmvc_2013_data/Chang_et_al/2x/4.png',
+'./bmvc_2013_data/Yang_et_al/2x/4.png',
+'./bmvc_2013_data/Proposed/2x/4.png',
+
+'./bmvc_2013_data/ground_truth/2x/5.png',
+'./bmvc_2013_data/input_images/2x/5.png',
+'./bmvc_2013_data/bicubic/2x/5.png',
+'./bmvc_2013_data/Chang_et_al/2x/5.png',
+'./bmvc_2013_data/Yang_et_al/2x/5.png',
+'./bmvc_2013_data/Proposed/2x/5.png',
+
+'./bmvc_2013_data/ground_truth/2x/6.png',
+'./bmvc_2013_data/input_images/2x/6.png',
+'./bmvc_2013_data/bicubic/2x/6.png',
+'./bmvc_2013_data/Chang_et_al/2x/6.png',
+'./bmvc_2013_data/Yang_et_al/2x/6.png',
+'./bmvc_2013_data/Proposed/2x/6.png',
+
+'./bmvc_2013_data/ground_truth/2x/cam12_frame000270.png',
+'./bmvc_2013_data/input_images/2x/cam12_frame000270.png',
+'./bmvc_2013_data/bicubic/2x/cam12_frame000270.png',
+'./bmvc_2013_data/Chang_et_al/2x/cam12_frame000270.png',
+'./bmvc_2013_data/Yang_et_al/2x/cam12_frame000270.png',
+'./bmvc_2013_data/Proposed/2x/cam12_frame000270.png',
+
+'./bmvc_2013_data/ground_truth/2x/cam16_frame00020.png',
+'./bmvc_2013_data/input_images/2x/cam16_frame00020.png',
+'./bmvc_2013_data/bicubic/2x/cam16_frame00020.png',
+'./bmvc_2013_data/Chang_et_al/2x/cam16_frame00020.png',
+'./bmvc_2013_data/Yang_et_al/2x/cam16_frame00020.png',
+'./bmvc_2013_data/Proposed/2x/cam16_frame00020.png',
+
+'./bmvc_2013_data/ground_truth/2x/cam16_frame000135.png',
+'./bmvc_2013_data/input_images/2x/cam16_frame000135.png',
+'./bmvc_2013_data/bicubic/2x/cam16_frame000135.png',
+'./bmvc_2013_data/Chang_et_al/2x/cam16_frame000135.png',
+'./bmvc_2013_data/Yang_et_al/2x/cam16_frame000135.png',
+'./bmvc_2013_data/Proposed/2x/cam16_frame000135.png',
+
+'./bmvc_2013_data/ground_truth/2x/cam16_frame000260.png',
+'./bmvc_2013_data/input_images/2x/cam16_frame000260.png',
+'./bmvc_2013_data/bicubic/2x/cam16_frame000260.png',
+'./bmvc_2013_data/Chang_et_al/2x/cam16_frame000260.png',
+'./bmvc_2013_data/Yang_et_al/2x/cam16_frame000260.png',
+'./bmvc_2013_data/Proposed/2x/cam16_frame000260.png',
+
+'./bmvc_2013_data/ground_truth/2x/cam16_frame000264.png',
+'./bmvc_2013_data/input_images/2x/cam16_frame000264.png',
+'./bmvc_2013_data/bicubic/2x/cam16_frame000264.png',
+'./bmvc_2013_data/Chang_et_al/2x/cam16_frame000264.png',
+'./bmvc_2013_data/Yang_et_al/2x/cam16_frame000264.png',
+'./bmvc_2013_data/Proposed/2x/cam16_frame000264.png',
+
+'./bmvc_2013_data/ground_truth/2x/cam16_frame000275.png',
+'./bmvc_2013_data/input_images/2x/cam16_frame000275.png',
+'./bmvc_2013_data/bicubic/2x/cam16_frame000275.png',
+'./bmvc_2013_data/Chang_et_al/2x/cam16_frame000275.png',
+'./bmvc_2013_data/Yang_et_al/2x/cam16_frame000275.png',
+'./bmvc_2013_data/Proposed/2x/cam16_frame000275.png',
+
+
+
+'./bmvc_2013_data/ground_truth/3x/1.png',
+'./bmvc_2013_data/input_images/3x/1.png',
+'./bmvc_2013_data/bicubic/3x/1.png',
+'./bmvc_2013_data/Chang_et_al/3x/1.png',
+'./bmvc_2013_data/Yang_et_al/3x/1.png',
+'./bmvc_2013_data/Proposed/3x/1.png',
+
+'./bmvc_2013_data/ground_truth/3x/2.png',
+'./bmvc_2013_data/input_images/3x/2.png',
+'./bmvc_2013_data/bicubic/3x/2.png',
+'./bmvc_2013_data/Chang_et_al/3x/2.png',
+'./bmvc_2013_data/Yang_et_al/3x/2.png',
+'./bmvc_2013_data/Proposed/3x/2.png',
+
+'./bmvc_2013_data/ground_truth/3x/3.png',
+'./bmvc_2013_data/input_images/3x/3.png',
+'./bmvc_2013_data/bicubic/3x/3.png',
+'./bmvc_2013_data/Chang_et_al/3x/3.png',
+'./bmvc_2013_data/Yang_et_al/3x/3.png',
+'./bmvc_2013_data/Proposed/3x/3.png',
+
+'./bmvc_2013_data/ground_truth/3x/4.png',
+'./bmvc_2013_data/input_images/3x/4.png',
+'./bmvc_2013_data/bicubic/3x/4.png',
+'./bmvc_2013_data/Chang_et_al/3x/4.png',
+'./bmvc_2013_data/Yang_et_al/3x/4.png',
+'./bmvc_2013_data/Proposed/3x/4.png',
+
+'./bmvc_2013_data/ground_truth/3x/5.png',
+'./bmvc_2013_data/input_images/3x/5.png',
+'./bmvc_2013_data/bicubic/3x/5.png',
+'./bmvc_2013_data/Chang_et_al/3x/5.png',
+'./bmvc_2013_data/Yang_et_al/3x/5.png',
+'./bmvc_2013_data/Proposed/3x/5.png',
+
+'./bmvc_2013_data/ground_truth/3x/6.png',
+'./bmvc_2013_data/input_images/3x/6.png',
+'./bmvc_2013_data/bicubic/3x/6.png',
+'./bmvc_2013_data/Chang_et_al/3x/6.png',
+'./bmvc_2013_data/Yang_et_al/3x/6.png',
+'./bmvc_2013_data/Proposed/3x/6.png',
+
+'./bmvc_2013_data/ground_truth/3x/cam12_frame000270.png',
+'./bmvc_2013_data/input_images/3x/cam12_frame000270.png',
+'./bmvc_2013_data/bicubic/3x/cam12_frame000270.png',
+'./bmvc_2013_data/Chang_et_al/3x/cam12_frame000270.png',
+'./bmvc_2013_data/Yang_et_al/3x/cam12_frame000270.png',
+'./bmvc_2013_data/Proposed/3x/cam12_frame000270.png',
+
+'./bmvc_2013_data/ground_truth/3x/cam16_frame00020.png',
+'./bmvc_2013_data/input_images/3x/cam16_frame00020.png',
+'./bmvc_2013_data/bicubic/3x/cam16_frame00020.png',
+'./bmvc_2013_data/Chang_et_al/3x/cam16_frame00020.png',
+'./bmvc_2013_data/Yang_et_al/3x/cam16_frame00020.png',
+'./bmvc_2013_data/Proposed/3x/cam16_frame00020.png',
+
+'./bmvc_2013_data/ground_truth/3x/cam16_frame000135.png',
+'./bmvc_2013_data/input_images/3x/cam16_frame000135.png',
+'./bmvc_2013_data/bicubic/3x/cam16_frame000135.png',
+'./bmvc_2013_data/Chang_et_al/3x/cam16_frame000135.png',
+'./bmvc_2013_data/Yang_et_al/3x/cam16_frame000135.png',
+'./bmvc_2013_data/Proposed/3x/cam16_frame000135.png',
+
+'./bmvc_2013_data/ground_truth/3x/cam16_frame000260.png',
+'./bmvc_2013_data/input_images/3x/cam16_frame000260.png',
+'./bmvc_2013_data/bicubic/3x/cam16_frame000260.png',
+'./bmvc_2013_data/Chang_et_al/3x/cam16_frame000260.png',
+'./bmvc_2013_data/Yang_et_al/3x/cam16_frame000260.png',
+'./bmvc_2013_data/Proposed/3x/cam16_frame000260.png',
+
+'./bmvc_2013_data/ground_truth/3x/cam16_frame000264.png',
+'./bmvc_2013_data/input_images/3x/cam16_frame000264.png',
+'./bmvc_2013_data/bicubic/3x/cam16_frame000264.png',
+'./bmvc_2013_data/Chang_et_al/3x/cam16_frame000264.png',
+'./bmvc_2013_data/Yang_et_al/3x/cam16_frame000264.png',
+'./bmvc_2013_data/Proposed/3x/cam16_frame000264.png',
+
+'./bmvc_2013_data/ground_truth/3x/cam16_frame000275.png',
+'./bmvc_2013_data/input_images/3x/cam16_frame000275.png',
+'./bmvc_2013_data/bicubic/3x/cam16_frame000275.png',
+'./bmvc_2013_data/Chang_et_al/3x/cam16_frame000275.png',
+'./bmvc_2013_data/Yang_et_al/3x/cam16_frame000275.png',
+'./bmvc_2013_data/Proposed/3x/cam16_frame000275.png')">
+
+
+    <h1>
+        Bayesian Region Selection For Dictionary-based Super-Resolution Super-Resolution
+    </h1>
+    
+    <center>
+    <a href="http://perezpellitero.github.io/">Eduardo Perez-Pellitero</a>,
+    <a href="http://jordisalvador-technicolor.blogspot.de/">Jordi Salvador</a>,
+    <a href="https://imatge.upc.edu/~jrh/">Javier Ruiz-Hidalgo</a>, 
+    <a href="http://www.tnt.uni-hannover.de/~rosenhahn/">Bodo Rosenhahn</a>
+    </center>
+<br />
+
+    <center>
+    This is the project website of the paper "Bayesian Region Selection For Dictionary-based Super-Resolution Super-Resolution" (BMVC 2013).<br />
+    [<a href="http://perezpellitero.github.io/documents/PerezPellitero2013Bmvc.pdf">pdf</a>] [<a href="./single_image_SR/files/single_image_SR.bib">bibtex</a>][<a href="./single_image_SR/files/single_image_SR.bib">poster</a>]<br />
+    <!--Conference presentation [<a href="./single_image_SR/files/single_image_SR.ppt">PPT</a>] -->
+    </center>
+
+    <br />
+    <br />
+
+    <blockquote>
+    <h2>Abstract</h2>
+	The performance of dictionary-based super-resolution (SR) strongly depends on the contents of the training dataset. Nevertheless, many dictionary-based SR methods randomly select patches from of a larger set of training images to build their dictionaries, thus relying on patches being diverse enough. This paper describes a dictionary building method for SR based on adaptively selecting an optimal subset of patches out of the training images. Each training image is divided into sub-image entities, named regions, of such a size that texture consistency is preserved and high-frequency (HF) energy is present. For each input patch to super-resolve, the best-fitting region is found through a Bayesian selection. In order to handle the high number of regions in the training dataset, a local Naive Bayes Nearest Neighbor (NBNN) approach is used. Trained with this adapted subset of patches, sparse coding SR is applied to recover the high-resolution image. Experimental results demonstrate that using our adaptive algorithm produces an improvement in SR performance with respect to non-adaptive training.
+   </blockquote>
+    
+    
+    <br />
+        <h4>
+            The website is programmed to load all the images first so that there is no delay when clicking the buttons. The whole image set weights ~40 MB so it might take some time until it is fully loaded.
+            <br />
+            Please note that the images are initialized with the <span class="nn">Ground truth</span>.<br />
+            
+        </h4>
+    
+    <hr class="sub_sep" />
+    <blockquote>
+        <h2 class="intext">
+            <a id="comp">1. Comparison of our SR method to other SR methods</a></h2>
+        <p>
+            We compare our super-resolution (SR) method with: <br />
+		</p>
+		<p>
+			<span class="ref">[Chang et al.]</span> Super-resolution through neighbor embedding. CVPR 2004. <br>
+			<span class="ref">[Yang et al.]</span>  Image super-resolution via sparse representation. TIP 2010. <br>
+        </p>
+    </blockquote>
+
+	<!-- 2x MAGNIFICATED RESULTS -->
+    <blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/2x/1.png" height="320" width="480" alt="High Resolution Image"
+                            id="2auto_1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/2x/1.png" border="none" height="160" width="240"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x2
+                        <br />
+                        <button type="button" class="gt" id="2gt_1" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_1').style.fontWeight='normal';
+                          document.getElementById('2chang_1').style.fontWeight='normal';                          
+                          document.getElementById('2yang_1').style.fontWeight='normal';
+                          document.getElementById('2ours_1').style.fontWeight='normal';
+                          MM_swapImage('2auto_1','','./bmvc_2013_data/Ground_truth/2x/1.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_1" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_1').style.fontWeight='normal';
+                          document.getElementById('2chang_1').style.fontWeight='normal';
+                          document.getElementById('2yang_1').style.fontWeight='normal';
+                          document.getElementById('2ours_1').style.fontWeight='normal';
+                          MM_swapImage('2auto_1','','./bmvc_2013_data/bicubic/2x/1.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="2chang_1" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_1').style.fontWeight='normal';
+                          document.getElementById('2gt_1').style.fontWeight='normal';                          
+                          document.getElementById('2yang_1').style.fontWeight='normal';
+                          document.getElementById('2ours_1').style.fontWeight='normal';
+                          MM_swapImage('2auto_1','','./bmvc_2013_data/Chang_et_al/2x/1.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="2yang_1" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_1').style.fontWeight='normal';
+                          document.getElementById('2chang_1').style.fontWeight='normal';                          
+                          document.getElementById('2gt_1').style.fontWeight='normal';
+                          document.getElementById('2ours_1').style.fontWeight='normal';
+                          MM_swapImage('2auto_1','','./bmvc_2013_data/Yang_et_al/2x/1.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_1" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_1').style.fontWeight='normal';
+                          document.getElementById('2chang_1').style.fontWeight='normal';                          
+                          document.getElementById('2yang_1').style.fontWeight='normal';
+                          document.getElementById('2gt_1').style.fontWeight='normal';
+                          MM_swapImage('2auto_1','','./bmvc_2013_data/Proposed/2x/1.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>	
+	<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/2x/2.png" height="320" width="480" alt="High Resolution Image"
+                            id="2auto_2" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/2x/2.png" border="none" height="160" width="240"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x2
+                        <br />
+                        <button type="button" class="gt" id="2gt_2" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_2').style.fontWeight='normal';
+                          document.getElementById('2chang_2').style.fontWeight='normal';                          
+                          document.getElementById('2yang_2').style.fontWeight='normal';
+                          document.getElementById('2ours_2').style.fontWeight='normal';
+                          MM_swapImage('2auto_2','','./bmvc_2013_data/Ground_truth/2x/2.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_2" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_2').style.fontWeight='normal';
+                          document.getElementById('2chang_2').style.fontWeight='normal';
+                          document.getElementById('2yang_2').style.fontWeight='normal';
+                          document.getElementById('2ours_2').style.fontWeight='normal';
+                          MM_swapImage('2auto_2','','./bmvc_2013_data/bicubic/2x/2.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="2chang_2" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_2').style.fontWeight='normal';
+                          document.getElementById('2gt_2').style.fontWeight='normal';                          
+                          document.getElementById('2yang_2').style.fontWeight='normal';
+                          document.getElementById('2ours_2').style.fontWeight='normal';
+                          MM_swapImage('2auto_2','','./bmvc_2013_data/Chang_et_al/2x/2.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="2yang_2" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_2').style.fontWeight='normal';
+                          document.getElementById('2chang_2').style.fontWeight='normal';                          
+                          document.getElementById('2gt_2').style.fontWeight='normal';
+                          document.getElementById('2ours_2').style.fontWeight='normal';
+                          MM_swapImage('2auto_2','','./bmvc_2013_data/Yang_et_al/2x/2.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_2" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_2').style.fontWeight='normal';
+                          document.getElementById('2chang_2').style.fontWeight='normal';                          
+                          document.getElementById('2yang_2').style.fontWeight='normal';
+                          document.getElementById('2gt_2').style.fontWeight='normal';
+                          MM_swapImage('2auto_2','','./bmvc_2013_data/Proposed/2x/2.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+    <blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/2x/3.png" height="320" width="480" alt="High Resolution Image"
+                            id="2auto_3" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/2x/3.png" border="none" height="160" width="240"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x2
+                        <br />
+                        <button type="button" class="gt" id="2gt_3" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_3').style.fontWeight='normal';
+                          document.getElementById('2chang_3').style.fontWeight='normal';                          
+                          document.getElementById('2yang_3').style.fontWeight='normal';
+                          document.getElementById('2ours_3').style.fontWeight='normal';
+                          MM_swapImage('2auto_3','','./bmvc_2013_data/Ground_truth/2x/3.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_3" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_3').style.fontWeight='normal';
+                          document.getElementById('2chang_3').style.fontWeight='normal';
+                          document.getElementById('2yang_3').style.fontWeight='normal';
+                          document.getElementById('2ours_3').style.fontWeight='normal';
+                          MM_swapImage('2auto_3','','./bmvc_2013_data/bicubic/2x/3.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="2chang_3" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_3').style.fontWeight='normal';
+                          document.getElementById('2gt_3').style.fontWeight='normal';                          
+                          document.getElementById('2yang_3').style.fontWeight='normal';
+                          document.getElementById('2ours_3').style.fontWeight='normal';
+                          MM_swapImage('2auto_3','','./bmvc_2013_data/Chang_et_al/2x/3.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="2yang_3" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_3').style.fontWeight='normal';
+                          document.getElementById('2chang_3').style.fontWeight='normal';                          
+                          document.getElementById('2gt_3').style.fontWeight='normal';
+                          document.getElementById('2ours_3').style.fontWeight='normal';
+                          MM_swapImage('2auto_3','','./bmvc_2013_data/Yang_et_al/2x/3.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_3" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_3').style.fontWeight='normal';
+                          document.getElementById('2chang_3').style.fontWeight='normal';                          
+                          document.getElementById('2yang_3').style.fontWeight='normal';
+                          document.getElementById('2gt_3').style.fontWeight='normal';
+                          MM_swapImage('2auto_3','','./bmvc_2013_data/Proposed/2x/3.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>	
+    <blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/2x/4.png" height="320" width="480" alt="High Resolution Image"
+                            id="2auto_4" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/2x/4.png" border="none" height="160" width="240"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x2
+                        <br />
+                        <button type="button" class="gt" id="2gt_4" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_4').style.fontWeight='normal';
+                          document.getElementById('2chang_4').style.fontWeight='normal';                          
+                          document.getElementById('2yang_4').style.fontWeight='normal';
+                          document.getElementById('2ours_4').style.fontWeight='normal';
+                          MM_swapImage('2auto_4','','./bmvc_2013_data/Ground_truth/2x/4.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_4" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_4').style.fontWeight='normal';
+                          document.getElementById('2chang_4').style.fontWeight='normal';
+                          document.getElementById('2yang_4').style.fontWeight='normal';
+                          document.getElementById('2ours_4').style.fontWeight='normal';
+                          MM_swapImage('2auto_4','','./bmvc_2013_data/bicubic/2x/4.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="2chang_4" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_4').style.fontWeight='normal';
+                          document.getElementById('2gt_4').style.fontWeight='normal';                          
+                          document.getElementById('2yang_4').style.fontWeight='normal';
+                          document.getElementById('2ours_4').style.fontWeight='normal';
+                          MM_swapImage('2auto_4','','./bmvc_2013_data/Chang_et_al/2x/4.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="2yang_4" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_4').style.fontWeight='normal';
+                          document.getElementById('2chang_4').style.fontWeight='normal';                          
+                          document.getElementById('2gt_4').style.fontWeight='normal';
+                          document.getElementById('2ours_4').style.fontWeight='normal';
+                          MM_swapImage('2auto_4','','./bmvc_2013_data/Yang_et_al/2x/4.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_4" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_4').style.fontWeight='normal';
+                          document.getElementById('2chang_4').style.fontWeight='normal';                          
+                          document.getElementById('2yang_4').style.fontWeight='normal';
+                          document.getElementById('2gt_4').style.fontWeight='normal';
+                          MM_swapImage('2auto_4','','./bmvc_2013_data/Proposed/2x/4.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+    <blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/2x/5.png" height="320" width="480" alt="High Resolution Image"
+                            id="2auto_5" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/2x/5.png" border="none" height="160" width="240"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x2
+                        <br />
+                        <button type="button" class="gt" id="2gt_5" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_5').style.fontWeight='normal';
+                          document.getElementById('2chang_5').style.fontWeight='normal';                          
+                          document.getElementById('2yang_5').style.fontWeight='normal';
+                          document.getElementById('2ours_5').style.fontWeight='normal';
+                          MM_swapImage('2auto_5','','./bmvc_2013_data/Ground_truth/2x/5.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_5" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_5').style.fontWeight='normal';
+                          document.getElementById('2chang_5').style.fontWeight='normal';
+                          document.getElementById('2yang_5').style.fontWeight='normal';
+                          document.getElementById('2ours_5').style.fontWeight='normal';
+                          MM_swapImage('2auto_5','','./bmvc_2013_data/bicubic/2x/5.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="2chang_5" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_5').style.fontWeight='normal';
+                          document.getElementById('2gt_5').style.fontWeight='normal';                          
+                          document.getElementById('2yang_5').style.fontWeight='normal';
+                          document.getElementById('2ours_5').style.fontWeight='normal';
+                          MM_swapImage('2auto_5','','./bmvc_2013_data/Chang_et_al/2x/5.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="2yang_5" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_5').style.fontWeight='normal';
+                          document.getElementById('2chang_5').style.fontWeight='normal';                          
+                          document.getElementById('2gt_5').style.fontWeight='normal';
+                          document.getElementById('2ours_5').style.fontWeight='normal';
+                          MM_swapImage('2auto_5','','./bmvc_2013_data/Yang_et_al/2x/5.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_5" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_5').style.fontWeight='normal';
+                          document.getElementById('2chang_5').style.fontWeight='normal';                          
+                          document.getElementById('2yang_5').style.fontWeight='normal';
+                          document.getElementById('2gt_5').style.fontWeight='normal';
+                          MM_swapImage('2auto_5','','./bmvc_2013_data/Proposed/2x/5.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+    <blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/2x/6.png" height="480" width="320" alt="High Resolution Image"
+                            id="2auto_6" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/2x/6.png" border="none" height="240" width="160"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x2
+                        <br />
+                        <button type="button" class="gt" id="2gt_6" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_6').style.fontWeight='normal';
+                          document.getElementById('2chang_6').style.fontWeight='normal';                          
+                          document.getElementById('2yang_6').style.fontWeight='normal';
+                          document.getElementById('2ours_6').style.fontWeight='normal';
+                          MM_swapImage('2auto_6','','./bmvc_2013_data/Ground_truth/2x/6.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_6" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_6').style.fontWeight='normal';
+                          document.getElementById('2chang_6').style.fontWeight='normal';
+                          document.getElementById('2yang_6').style.fontWeight='normal';
+                          document.getElementById('2ours_6').style.fontWeight='normal';
+                          MM_swapImage('2auto_6','','./bmvc_2013_data/bicubic/2x/6.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="2chang_6" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_6').style.fontWeight='normal';
+                          document.getElementById('2gt_6').style.fontWeight='normal';                          
+                          document.getElementById('2yang_6').style.fontWeight='normal';
+                          document.getElementById('2ours_6').style.fontWeight='normal';
+                          MM_swapImage('2auto_6','','./bmvc_2013_data/Chang_et_al/2x/6.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="2yang_6" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_6').style.fontWeight='normal';
+                          document.getElementById('2chang_6').style.fontWeight='normal';                          
+                          document.getElementById('2gt_6').style.fontWeight='normal';
+                          document.getElementById('2ours_6').style.fontWeight='normal';
+                          MM_swapImage('2auto_6','','./bmvc_2013_data/Yang_et_al/2x/6.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_6" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_6').style.fontWeight='normal';
+                          document.getElementById('2chang_6').style.fontWeight='normal';                          
+                          document.getElementById('2yang_6').style.fontWeight='normal';
+                          document.getElementById('2gt_6').style.fontWeight='normal';
+                          MM_swapImage('2auto_6','','./bmvc_2013_data/Proposed/2x/6.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+	
+	<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/2x/cam12_frame000270.png" height="600" width="800" alt="High Resolution Image"
+                            id="2auto_7" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/2x/cam12_frame000270.png" border="none" height="300" width="400"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x2
+                        <br />
+                        <button type="button" class="gt" id="2gt_7" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_7').style.fontWeight='normal';
+                          document.getElementById('2chang_7').style.fontWeight='normal';                          
+                          document.getElementById('2yang_7').style.fontWeight='normal';
+                          document.getElementById('2ours_7').style.fontWeight='normal';
+                          MM_swapImage('2auto_7','','./bmvc_2013_data/Ground_truth/2x/cam12_frame000270.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_7" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_7').style.fontWeight='normal';
+                          document.getElementById('2chang_7').style.fontWeight='normal';
+                          document.getElementById('2yang_7').style.fontWeight='normal';
+                          document.getElementById('2ours_7').style.fontWeight='normal';
+                          MM_swapImage('2auto_7','','./bmvc_2013_data/bicubic/2x/cam12_frame000270.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="2chang_7" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_7').style.fontWeight='normal';
+                          document.getElementById('2gt_7').style.fontWeight='normal';                          
+                          document.getElementById('2yang_7').style.fontWeight='normal';
+                          document.getElementById('2ours_7').style.fontWeight='normal';
+                          MM_swapImage('2auto_7','','./bmvc_2013_data/Chang_et_al/2x/cam12_frame000270.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="2yang_7" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_7').style.fontWeight='normal';
+                          document.getElementById('2chang_7').style.fontWeight='normal';                          
+                          document.getElementById('2gt_7').style.fontWeight='normal';
+                          document.getElementById('2ours_7').style.fontWeight='normal';
+                          MM_swapImage('2auto_7','','./bmvc_2013_data/Yang_et_al/2x/cam12_frame000270.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_7" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_7').style.fontWeight='normal';
+                          document.getElementById('2chang_7').style.fontWeight='normal';                          
+                          document.getElementById('2yang_7').style.fontWeight='normal';
+                          document.getElementById('2gt_7').style.fontWeight='normal';
+                          MM_swapImage('2auto_7','','./bmvc_2013_data/Proposed/2x/cam12_frame000270.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>	
+	<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/2x/cam16_frame00020.png" height="600" width="800" alt="High Resolution Image"
+                            id="2auto_8" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/2x/cam16_frame00020.png" border="none" height="300" width="400"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x2
+                        <br />
+                        <button type="button" class="gt" id="2gt_8" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_8').style.fontWeight='normal';
+                          document.getElementById('2chang_8').style.fontWeight='normal';                          
+                          document.getElementById('2yang_8').style.fontWeight='normal';
+                          document.getElementById('2ours_8').style.fontWeight='normal';
+                          MM_swapImage('2auto_8','','./bmvc_2013_data/Ground_truth/2x/cam16_frame00020.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_8" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_8').style.fontWeight='normal';
+                          document.getElementById('2chang_8').style.fontWeight='normal';
+                          document.getElementById('2yang_8').style.fontWeight='normal';
+                          document.getElementById('2ours_8').style.fontWeight='normal';
+                          MM_swapImage('2auto_8','','./bmvc_2013_data/bicubic/2x/cam16_frame00020.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="2chang_8" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_8').style.fontWeight='normal';
+                          document.getElementById('2gt_8').style.fontWeight='normal';                          
+                          document.getElementById('2yang_8').style.fontWeight='normal';
+                          document.getElementById('2ours_8').style.fontWeight='normal';
+                          MM_swapImage('2auto_8','','./bmvc_2013_data/Chang_et_al/2x/cam16_frame00020.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="2yang_8" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_8').style.fontWeight='normal';
+                          document.getElementById('2chang_8').style.fontWeight='normal';                          
+                          document.getElementById('2gt_8').style.fontWeight='normal';
+                          document.getElementById('2ours_8').style.fontWeight='normal';
+                          MM_swapImage('2auto_8','','./bmvc_2013_data/Yang_et_al/2x/cam16_frame00020.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_8" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_8').style.fontWeight='normal';
+                          document.getElementById('2chang_8').style.fontWeight='normal';                          
+                          document.getElementById('2yang_8').style.fontWeight='normal';
+                          document.getElementById('2gt_8').style.fontWeight='normal';
+                          MM_swapImage('2auto_8','','./bmvc_2013_data/Proposed/2x/cam16_frame00020.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>		
+	<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/2x/cam16_frame000135.png" height="600" width="800" alt="High Resolution Image"
+                            id="2auto_9" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/2x/cam16_frame000135.png" border="none" height="300" width="400"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x2
+                        <br />
+                        <button type="button" class="gt" id="2gt_9" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_9').style.fontWeight='normal';
+                          document.getElementById('2chang_9').style.fontWeight='normal';                          
+                          document.getElementById('2yang_9').style.fontWeight='normal';
+                          document.getElementById('2ours_9').style.fontWeight='normal';
+                          MM_swapImage('2auto_9','','./bmvc_2013_data/Ground_truth/2x/cam16_frame000135.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_9" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_9').style.fontWeight='normal';
+                          document.getElementById('2chang_9').style.fontWeight='normal';
+                          document.getElementById('2yang_9').style.fontWeight='normal';
+                          document.getElementById('2ours_9').style.fontWeight='normal';
+                          MM_swapImage('2auto_9','','./bmvc_2013_data/bicubic/2x/cam16_frame000135.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="2chang_9" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_9').style.fontWeight='normal';
+                          document.getElementById('2gt_9').style.fontWeight='normal';                          
+                          document.getElementById('2yang_9').style.fontWeight='normal';
+                          document.getElementById('2ours_9').style.fontWeight='normal';
+                          MM_swapImage('2auto_9','','./bmvc_2013_data/Chang_et_al/2x/cam16_frame000135.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="2yang_9" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_9').style.fontWeight='normal';
+                          document.getElementById('2chang_9').style.fontWeight='normal';                          
+                          document.getElementById('2gt_9').style.fontWeight='normal';
+                          document.getElementById('2ours_9').style.fontWeight='normal';
+                          MM_swapImage('2auto_9','','./bmvc_2013_data/Yang_et_al/2x/cam16_frame000135.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_9" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_9').style.fontWeight='normal';
+                          document.getElementById('2chang_9').style.fontWeight='normal';                          
+                          document.getElementById('2yang_9').style.fontWeight='normal';
+                          document.getElementById('2gt_9').style.fontWeight='normal';
+                          MM_swapImage('2auto_9','','./bmvc_2013_data/Proposed/2x/cam16_frame000135.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>	
+	<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/2x/cam16_frame000260.png" height="600" width="800" alt="High Resolution Image"
+                            id="2auto_10" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/2x/cam16_frame000260.png" border="none" height="300" width="400"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x2
+                        <br />
+                        <button type="button" class="gt" id="2gt_10" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_10').style.fontWeight='normal';
+                          document.getElementById('2chang_10').style.fontWeight='normal';                          
+                          document.getElementById('2yang_10').style.fontWeight='normal';
+                          document.getElementById('2ours_10').style.fontWeight='normal';
+                          MM_swapImage('2auto_10','','./bmvc_2013_data/Ground_truth/2x/cam16_frame000260.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_10" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_10').style.fontWeight='normal';
+                          document.getElementById('2chang_10').style.fontWeight='normal';
+                          document.getElementById('2yang_10').style.fontWeight='normal';
+                          document.getElementById('2ours_10').style.fontWeight='normal';
+                          MM_swapImage('2auto_10','','./bmvc_2013_data/bicubic/2x/cam16_frame000260.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="2chang_10" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_10').style.fontWeight='normal';
+                          document.getElementById('2gt_10').style.fontWeight='normal';                          
+                          document.getElementById('2yang_10').style.fontWeight='normal';
+                          document.getElementById('2ours_10').style.fontWeight='normal';
+                          MM_swapImage('2auto_10','','./bmvc_2013_data/Chang_et_al/2x/cam16_frame000260.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="2yang_10" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_10').style.fontWeight='normal';
+                          document.getElementById('2chang_10').style.fontWeight='normal';                          
+                          document.getElementById('2gt_10').style.fontWeight='normal';
+                          document.getElementById('2ours_10').style.fontWeight='normal';
+                          MM_swapImage('2auto_10','','./bmvc_2013_data/Yang_et_al/2x/cam16_frame000260.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_10" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_10').style.fontWeight='normal';
+                          document.getElementById('2chang_10').style.fontWeight='normal';                          
+                          document.getElementById('2yang_10').style.fontWeight='normal';
+                          document.getElementById('2gt_10').style.fontWeight='normal';
+                          MM_swapImage('2auto_10','','./bmvc_2013_data/Proposed/2x/cam16_frame000260.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+    <blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/2x/cam16_frame000264.png" height="600" width="800" alt="High Resolution Image"
+                            id="2auto_11" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/2x/cam16_frame000264.png" border="none" height="300" width="400"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x2
+                        <br />
+                        <button type="button" class="gt" id="2gt_11" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_11').style.fontWeight='normal';
+                          document.getElementById('2chang_11').style.fontWeight='normal';                          
+                          document.getElementById('2yang_11').style.fontWeight='normal';
+                          document.getElementById('2ours_11').style.fontWeight='normal';
+                          MM_swapImage('2auto_11','','./bmvc_2013_data/Ground_truth/2x/cam16_frame000264.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_11" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_11').style.fontWeight='normal';
+                          document.getElementById('2chang_11').style.fontWeight='normal';
+                          document.getElementById('2yang_11').style.fontWeight='normal';
+                          document.getElementById('2ours_11').style.fontWeight='normal';
+                          MM_swapImage('2auto_11','','./bmvc_2013_data/bicubic/2x/cam16_frame000264.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="2chang_11" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_11').style.fontWeight='normal';
+                          document.getElementById('2gt_11').style.fontWeight='normal';                          
+                          document.getElementById('2yang_11').style.fontWeight='normal';
+                          document.getElementById('2ours_11').style.fontWeight='normal';
+                          MM_swapImage('2auto_11','','./bmvc_2013_data/Chang_et_al/2x/cam16_frame000264.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="2yang_11" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_11').style.fontWeight='normal';
+                          document.getElementById('2chang_11').style.fontWeight='normal';                          
+                          document.getElementById('2gt_11').style.fontWeight='normal';
+                          document.getElementById('2ours_11').style.fontWeight='normal';
+                          MM_swapImage('2auto_11','','./bmvc_2013_data/Yang_et_al/2x/cam16_frame000264.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_11" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_11').style.fontWeight='normal';
+                          document.getElementById('2chang_11').style.fontWeight='normal';                          
+                          document.getElementById('2yang_11').style.fontWeight='normal';
+                          document.getElementById('2gt_11').style.fontWeight='normal';
+                          MM_swapImage('2auto_11','','./bmvc_2013_data/Proposed/2x/cam16_frame000264.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+	<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/2x/cam16_frame000275.png" height="600" width="800" alt="High Resolution Image"
+                            id="2auto_12" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/2x/cam16_frame000275.png" border="none" height="300" width="400"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x2
+                        <br />
+                        <button type="button" class="gt" id="2gt_12" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_12').style.fontWeight='normal';
+                          document.getElementById('2chang_12').style.fontWeight='normal';                          
+                          document.getElementById('2yang_12').style.fontWeight='normal';
+                          document.getElementById('2ours_12').style.fontWeight='normal';
+                          MM_swapImage('2auto_12','','./bmvc_2013_data/Ground_truth/2x/cam16_frame000275.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_12" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_12').style.fontWeight='normal';
+                          document.getElementById('2chang_12').style.fontWeight='normal';
+                          document.getElementById('2yang_12').style.fontWeight='normal';
+                          document.getElementById('2ours_12').style.fontWeight='normal';
+                          MM_swapImage('2auto_12','','./bmvc_2013_data/bicubic/2x/cam16_frame000275.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="2chang_12" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_12').style.fontWeight='normal';
+                          document.getElementById('2gt_12').style.fontWeight='normal';                          
+                          document.getElementById('2yang_12').style.fontWeight='normal';
+                          document.getElementById('2ours_12').style.fontWeight='normal';
+                          MM_swapImage('2auto_12','','./bmvc_2013_data/Chang_et_al/2x/cam16_frame000275.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="2yang_12" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_12').style.fontWeight='normal';
+                          document.getElementById('2chang_12').style.fontWeight='normal';                          
+                          document.getElementById('2gt_12').style.fontWeight='normal';
+                          document.getElementById('2ours_12').style.fontWeight='normal';
+                          MM_swapImage('2auto_12','','./bmvc_2013_data/Yang_et_al/2x/cam16_frame000275.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_12" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_12').style.fontWeight='normal';
+                          document.getElementById('2chang_12').style.fontWeight='normal';                          
+                          document.getElementById('2yang_12').style.fontWeight='normal';
+                          document.getElementById('2gt_12').style.fontWeight='normal';
+                          MM_swapImage('2auto_12','','./bmvc_2013_data/Proposed/2x/cam16_frame000275.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+	
+	<!-- 3x MAGNIFICATED RESULTS -->
+    <blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/3x/1.png" height="318" width="480" alt="High Resolution Image"
+                            id="3auto_1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/3x/1.png" border="none" height="106" width="160"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x3
+                        <br />
+                        <button type="button" class="gt" id="3gt_1" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_1').style.fontWeight='normal';
+                          document.getElementById('3chang_1').style.fontWeight='normal';                          
+                          document.getElementById('3yang_1').style.fontWeight='normal';
+                          document.getElementById('3ours_1').style.fontWeight='normal';
+                          MM_swapImage('3auto_1','','./bmvc_2013_data/Ground_truth/3x/1.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="3bic_1" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3gt_1').style.fontWeight='normal';
+                          document.getElementById('3chang_1').style.fontWeight='normal';
+                          document.getElementById('3yang_1').style.fontWeight='normal';
+                          document.getElementById('3ours_1').style.fontWeight='normal';
+                          MM_swapImage('3auto_1','','./bmvc_2013_data/bicubic/3x/1.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="3chang_1" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_1').style.fontWeight='normal';
+                          document.getElementById('3gt_1').style.fontWeight='normal';                          
+                          document.getElementById('3yang_1').style.fontWeight='normal';
+                          document.getElementById('3ours_1').style.fontWeight='normal';
+                          MM_swapImage('3auto_1','','./bmvc_2013_data/Chang_et_al/3x/1.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="3yang_1" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_1').style.fontWeight='normal';
+                          document.getElementById('3chang_1').style.fontWeight='normal';                          
+                          document.getElementById('3gt_1').style.fontWeight='normal';
+                          document.getElementById('3ours_1').style.fontWeight='normal';
+                          MM_swapImage('3auto_1','','./bmvc_2013_data/Yang_et_al/3x/1.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="3ours_1" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_1').style.fontWeight='normal';
+                          document.getElementById('3chang_1').style.fontWeight='normal';                          
+                          document.getElementById('3yang_1').style.fontWeight='normal';
+                          document.getElementById('3gt_1').style.fontWeight='normal';
+                          MM_swapImage('3auto_1','','./bmvc_2013_data/Proposed/3x/1.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>	
+	<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/3x/2.png" height="318" width="480" alt="High Resolution Image"
+                            id="3auto_2" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/3x/2.png" border="none" height="106" width="160"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x3
+                        <br />
+                        <button type="button" class="gt" id="3gt_2" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_2').style.fontWeight='normal';
+                          document.getElementById('3chang_2').style.fontWeight='normal';                          
+                          document.getElementById('3yang_2').style.fontWeight='normal';
+                          document.getElementById('3ours_2').style.fontWeight='normal';
+                          MM_swapImage('3auto_2','','./bmvc_2013_data/Ground_truth/3x/2.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="3bic_2" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3gt_2').style.fontWeight='normal';
+                          document.getElementById('3chang_2').style.fontWeight='normal';
+                          document.getElementById('3yang_2').style.fontWeight='normal';
+                          document.getElementById('3ours_2').style.fontWeight='normal';
+                          MM_swapImage('3auto_2','','./bmvc_2013_data/bicubic/3x/2.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="3chang_2" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_2').style.fontWeight='normal';
+                          document.getElementById('3gt_2').style.fontWeight='normal';                          
+                          document.getElementById('3yang_2').style.fontWeight='normal';
+                          document.getElementById('3ours_2').style.fontWeight='normal';
+                          MM_swapImage('3auto_2','','./bmvc_2013_data/Chang_et_al/3x/2.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="3yang_2" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_2').style.fontWeight='normal';
+                          document.getElementById('3chang_2').style.fontWeight='normal';                          
+                          document.getElementById('3gt_2').style.fontWeight='normal';
+                          document.getElementById('3ours_2').style.fontWeight='normal';
+                          MM_swapImage('3auto_2','','./bmvc_2013_data/Yang_et_al/3x/2.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="3ours_2" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_2').style.fontWeight='normal';
+                          document.getElementById('3chang_2').style.fontWeight='normal';                          
+                          document.getElementById('3yang_2').style.fontWeight='normal';
+                          document.getElementById('3gt_2').style.fontWeight='normal';
+                          MM_swapImage('3auto_2','','./bmvc_2013_data/Proposed/3x/2.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+    <blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/3x/3.png" height="318" width="480" alt="High Resolution Image"
+                            id="3auto_3" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/3x/3.png" border="none" height="106" width="160"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x3
+                        <br />
+                        <button type="button" class="gt" id="3gt_3" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_3').style.fontWeight='normal';
+                          document.getElementById('3chang_3').style.fontWeight='normal';                          
+                          document.getElementById('3yang_3').style.fontWeight='normal';
+                          document.getElementById('3ours_3').style.fontWeight='normal';
+                          MM_swapImage('3auto_3','','./bmvc_2013_data/Ground_truth/3x/3.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="3bic_3" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3gt_3').style.fontWeight='normal';
+                          document.getElementById('3chang_3').style.fontWeight='normal';
+                          document.getElementById('3yang_3').style.fontWeight='normal';
+                          document.getElementById('3ours_3').style.fontWeight='normal';
+                          MM_swapImage('3auto_3','','./bmvc_2013_data/bicubic/3x/3.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="3chang_3" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_3').style.fontWeight='normal';
+                          document.getElementById('3gt_3').style.fontWeight='normal';                          
+                          document.getElementById('3yang_3').style.fontWeight='normal';
+                          document.getElementById('3ours_3').style.fontWeight='normal';
+                          MM_swapImage('3auto_3','','./bmvc_2013_data/Chang_et_al/3x/3.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="3yang_3" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_3').style.fontWeight='normal';
+                          document.getElementById('3chang_3').style.fontWeight='normal';                          
+                          document.getElementById('3gt_3').style.fontWeight='normal';
+                          document.getElementById('3ours_3').style.fontWeight='normal';
+                          MM_swapImage('3auto_3','','./bmvc_2013_data/Yang_et_al/3x/3.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="3ours_3" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_3').style.fontWeight='normal';
+                          document.getElementById('3chang_3').style.fontWeight='normal';                          
+                          document.getElementById('3yang_3').style.fontWeight='normal';
+                          document.getElementById('3gt_3').style.fontWeight='normal';
+                          MM_swapImage('3auto_3','','./bmvc_2013_data/Proposed/3x/3.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>	
+    <blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/3x/4.png" height="318" width="480" alt="High Resolution Image"
+                            id="3auto_4" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/3x/4.png" border="none" height="106" width="160"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x3
+                        <br />
+                        <button type="button" class="gt" id="3gt_4" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_4').style.fontWeight='normal';
+                          document.getElementById('3chang_4').style.fontWeight='normal';                          
+                          document.getElementById('3yang_4').style.fontWeight='normal';
+                          document.getElementById('3ours_4').style.fontWeight='normal';
+                          MM_swapImage('3auto_4','','./bmvc_2013_data/Ground_truth/3x/4.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="3bic_4" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3gt_4').style.fontWeight='normal';
+                          document.getElementById('3chang_4').style.fontWeight='normal';
+                          document.getElementById('3yang_4').style.fontWeight='normal';
+                          document.getElementById('3ours_4').style.fontWeight='normal';
+                          MM_swapImage('3auto_4','','./bmvc_2013_data/bicubic/3x/4.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="3chang_4" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_4').style.fontWeight='normal';
+                          document.getElementById('3gt_4').style.fontWeight='normal';                          
+                          document.getElementById('3yang_4').style.fontWeight='normal';
+                          document.getElementById('3ours_4').style.fontWeight='normal';
+                          MM_swapImage('3auto_4','','./bmvc_2013_data/Chang_et_al/3x/4.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="3yang_4" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_4').style.fontWeight='normal';
+                          document.getElementById('3chang_4').style.fontWeight='normal';                          
+                          document.getElementById('3gt_4').style.fontWeight='normal';
+                          document.getElementById('3ours_4').style.fontWeight='normal';
+                          MM_swapImage('3auto_4','','./bmvc_2013_data/Yang_et_al/3x/4.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="3ours_4" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_4').style.fontWeight='normal';
+                          document.getElementById('3chang_4').style.fontWeight='normal';                          
+                          document.getElementById('3yang_4').style.fontWeight='normal';
+                          document.getElementById('3gt_4').style.fontWeight='normal';
+                          MM_swapImage('3auto_4','','./bmvc_2013_data/Proposed/3x/4.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+    <blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/3x/5.png" height="318" width="480" alt="High Resolution Image"
+                            id="3auto_5" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/3x/5.png" border="none" height="106" width="160"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x3
+                        <br />
+                        <button type="button" class="gt" id="3gt_5" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_5').style.fontWeight='normal';
+                          document.getElementById('3chang_5').style.fontWeight='normal';                          
+                          document.getElementById('3yang_5').style.fontWeight='normal';
+                          document.getElementById('3ours_5').style.fontWeight='normal';
+                          MM_swapImage('3auto_5','','./bmvc_2013_data/Ground_truth/3x/5.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="3bic_5" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3gt_5').style.fontWeight='normal';
+                          document.getElementById('3chang_5').style.fontWeight='normal';
+                          document.getElementById('3yang_5').style.fontWeight='normal';
+                          document.getElementById('3ours_5').style.fontWeight='normal';
+                          MM_swapImage('3auto_5','','./bmvc_2013_data/bicubic/3x/5.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="3chang_5" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_5').style.fontWeight='normal';
+                          document.getElementById('3gt_5').style.fontWeight='normal';                          
+                          document.getElementById('3yang_5').style.fontWeight='normal';
+                          document.getElementById('3ours_5').style.fontWeight='normal';
+                          MM_swapImage('3auto_5','','./bmvc_2013_data/Chang_et_al/3x/5.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="3yang_5" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_5').style.fontWeight='normal';
+                          document.getElementById('3chang_5').style.fontWeight='normal';                          
+                          document.getElementById('3gt_5').style.fontWeight='normal';
+                          document.getElementById('3ours_5').style.fontWeight='normal';
+                          MM_swapImage('3auto_5','','./bmvc_2013_data/Yang_et_al/3x/5.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="3ours_5" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_5').style.fontWeight='normal';
+                          document.getElementById('3chang_5').style.fontWeight='normal';                          
+                          document.getElementById('3yang_5').style.fontWeight='normal';
+                          document.getElementById('3gt_5').style.fontWeight='normal';
+                          MM_swapImage('3auto_5','','./bmvc_2013_data/Proposed/3x/5.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+    <blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/3x/6.png" height="480" width="318" alt="High Resolution Image"
+                            id="3auto_6" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/3x/6.png" border="none" height="160" width="106"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x3
+                        <br />
+                        <button type="button" class="gt" id="3gt_6" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_6').style.fontWeight='normal';
+                          document.getElementById('3chang_6').style.fontWeight='normal';                          
+                          document.getElementById('3yang_6').style.fontWeight='normal';
+                          document.getElementById('3ours_6').style.fontWeight='normal';
+                          MM_swapImage('3auto_6','','./bmvc_2013_data/Ground_truth/3x/6.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="3bic_6" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3gt_6').style.fontWeight='normal';
+                          document.getElementById('3chang_6').style.fontWeight='normal';
+                          document.getElementById('3yang_6').style.fontWeight='normal';
+                          document.getElementById('3ours_6').style.fontWeight='normal';
+                          MM_swapImage('3auto_6','','./bmvc_2013_data/bicubic/3x/6.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="3chang_6" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_6').style.fontWeight='normal';
+                          document.getElementById('3gt_6').style.fontWeight='normal';                          
+                          document.getElementById('3yang_6').style.fontWeight='normal';
+                          document.getElementById('3ours_6').style.fontWeight='normal';
+                          MM_swapImage('3auto_6','','./bmvc_2013_data/Chang_et_al/3x/6.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="3yang_6" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_6').style.fontWeight='normal';
+                          document.getElementById('3chang_6').style.fontWeight='normal';                          
+                          document.getElementById('3gt_6').style.fontWeight='normal';
+                          document.getElementById('3ours_6').style.fontWeight='normal';
+                          MM_swapImage('3auto_6','','./bmvc_2013_data/Yang_et_al/3x/6.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="3ours_6" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_6').style.fontWeight='normal';
+                          document.getElementById('3chang_6').style.fontWeight='normal';                          
+                          document.getElementById('3yang_6').style.fontWeight='normal';
+                          document.getElementById('3gt_6').style.fontWeight='normal';
+                          MM_swapImage('3auto_6','','./bmvc_2013_data/Proposed/3x/6.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+	
+	<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/3x/cam12_frame000270.png" height="600" width="798" alt="High Resolution Image"
+                            id="3auto_7" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/3x/cam12_frame000270.png" border="none" height="200" width="266"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x3
+                        <br />
+                        <button type="button" class="gt" id="3gt_7" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_7').style.fontWeight='normal';
+                          document.getElementById('3chang_7').style.fontWeight='normal';                          
+                          document.getElementById('3yang_7').style.fontWeight='normal';
+                          document.getElementById('3ours_7').style.fontWeight='normal';
+                          MM_swapImage('3auto_7','','./bmvc_2013_data/Ground_truth/3x/cam12_frame000270.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="3bic_7" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3gt_7').style.fontWeight='normal';
+                          document.getElementById('3chang_7').style.fontWeight='normal';
+                          document.getElementById('3yang_7').style.fontWeight='normal';
+                          document.getElementById('3ours_7').style.fontWeight='normal';
+                          MM_swapImage('3auto_7','','./bmvc_2013_data/bicubic/3x/cam12_frame000270.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="3chang_7" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_7').style.fontWeight='normal';
+                          document.getElementById('3gt_7').style.fontWeight='normal';                          
+                          document.getElementById('3yang_7').style.fontWeight='normal';
+                          document.getElementById('3ours_7').style.fontWeight='normal';
+                          MM_swapImage('3auto_7','','./bmvc_2013_data/Chang_et_al/3x/cam12_frame000270.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="3yang_7" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_7').style.fontWeight='normal';
+                          document.getElementById('3chang_7').style.fontWeight='normal';                          
+                          document.getElementById('3gt_7').style.fontWeight='normal';
+                          document.getElementById('3ours_7').style.fontWeight='normal';
+                          MM_swapImage('3auto_7','','./bmvc_2013_data/Yang_et_al/3x/cam12_frame000270.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="3ours_7" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_7').style.fontWeight='normal';
+                          document.getElementById('3chang_7').style.fontWeight='normal';                          
+                          document.getElementById('3yang_7').style.fontWeight='normal';
+                          document.getElementById('3gt_7').style.fontWeight='normal';
+                          MM_swapImage('3auto_7','','./bmvc_2013_data/Proposed/3x/cam12_frame000270.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>	
+	<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/3x/cam16_frame00020.png" height="600" width="798" alt="High Resolution Image"
+                            id="3auto_8" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/3x/cam16_frame00020.png" border="none" height="200" width="266"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x3
+                        <br />
+                        <button type="button" class="gt" id="3gt_8" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_8').style.fontWeight='normal';
+                          document.getElementById('3chang_8').style.fontWeight='normal';                          
+                          document.getElementById('3yang_8').style.fontWeight='normal';
+                          document.getElementById('3ours_8').style.fontWeight='normal';
+                          MM_swapImage('3auto_8','','./bmvc_2013_data/Ground_truth/3x/cam16_frame00020.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="3bic_8" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3gt_8').style.fontWeight='normal';
+                          document.getElementById('3chang_8').style.fontWeight='normal';
+                          document.getElementById('3yang_8').style.fontWeight='normal';
+                          document.getElementById('3ours_8').style.fontWeight='normal';
+                          MM_swapImage('3auto_8','','./bmvc_2013_data/bicubic/3x/cam16_frame00020.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="3chang_8" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_8').style.fontWeight='normal';
+                          document.getElementById('3gt_8').style.fontWeight='normal';                          
+                          document.getElementById('3yang_8').style.fontWeight='normal';
+                          document.getElementById('3ours_8').style.fontWeight='normal';
+                          MM_swapImage('3auto_8','','./bmvc_2013_data/Chang_et_al/3x/cam16_frame00020.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="3yang_8" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_8').style.fontWeight='normal';
+                          document.getElementById('3chang_8').style.fontWeight='normal';                          
+                          document.getElementById('3gt_8').style.fontWeight='normal';
+                          document.getElementById('3ours_8').style.fontWeight='normal';
+                          MM_swapImage('3auto_8','','./bmvc_2013_data/Yang_et_al/3x/cam16_frame00020.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="3ours_8" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_8').style.fontWeight='normal';
+                          document.getElementById('3chang_8').style.fontWeight='normal';                          
+                          document.getElementById('3yang_8').style.fontWeight='normal';
+                          document.getElementById('3gt_8').style.fontWeight='normal';
+                          MM_swapImage('3auto_8','','./bmvc_2013_data/Proposed/3x/cam16_frame00020.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>		
+	<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/3x/cam16_frame000135.png" height="600" width="798" alt="High Resolution Image"
+                            id="3auto_9" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/3x/cam16_frame000135.png" border="none" height="200" width="266"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x3
+                        <br />
+                        <button type="button" class="gt" id="3gt_9" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_9').style.fontWeight='normal';
+                          document.getElementById('3chang_9').style.fontWeight='normal';                          
+                          document.getElementById('3yang_9').style.fontWeight='normal';
+                          document.getElementById('3ours_9').style.fontWeight='normal';
+                          MM_swapImage('3auto_9','','./bmvc_2013_data/Ground_truth/3x/cam16_frame000135.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="3bic_9" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3gt_9').style.fontWeight='normal';
+                          document.getElementById('3chang_9').style.fontWeight='normal';
+                          document.getElementById('3yang_9').style.fontWeight='normal';
+                          document.getElementById('3ours_9').style.fontWeight='normal';
+                          MM_swapImage('3auto_9','','./bmvc_2013_data/bicubic/3x/cam16_frame000135.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="3chang_9" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_9').style.fontWeight='normal';
+                          document.getElementById('3gt_9').style.fontWeight='normal';                          
+                          document.getElementById('3yang_9').style.fontWeight='normal';
+                          document.getElementById('3ours_9').style.fontWeight='normal';
+                          MM_swapImage('3auto_9','','./bmvc_2013_data/Chang_et_al/3x/cam16_frame000135.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="3yang_9" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_9').style.fontWeight='normal';
+                          document.getElementById('3chang_9').style.fontWeight='normal';                          
+                          document.getElementById('3gt_9').style.fontWeight='normal';
+                          document.getElementById('3ours_9').style.fontWeight='normal';
+                          MM_swapImage('3auto_9','','./bmvc_2013_data/Yang_et_al/3x/cam16_frame000135.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="3ours_9" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_9').style.fontWeight='normal';
+                          document.getElementById('3chang_9').style.fontWeight='normal';                          
+                          document.getElementById('3yang_9').style.fontWeight='normal';
+                          document.getElementById('3gt_9').style.fontWeight='normal';
+                          MM_swapImage('3auto_9','','./bmvc_2013_data/Proposed/3x/cam16_frame000135.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>	
+	<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/3x/cam16_frame000260.png" height="600" width="798" alt="High Resolution Image"
+                            id="3auto_10" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/3x/cam16_frame000260.png" border="none" height="200" width="266"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x3
+                        <br />
+                        <button type="button" class="gt" id="3gt_10" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_10').style.fontWeight='normal';
+                          document.getElementById('3chang_10').style.fontWeight='normal';                          
+                          document.getElementById('3yang_10').style.fontWeight='normal';
+                          document.getElementById('3ours_10').style.fontWeight='normal';
+                          MM_swapImage('3auto_10','','./bmvc_2013_data/Ground_truth/3x/cam16_frame000260.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="3bic_10" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3gt_10').style.fontWeight='normal';
+                          document.getElementById('3chang_10').style.fontWeight='normal';
+                          document.getElementById('3yang_10').style.fontWeight='normal';
+                          document.getElementById('3ours_10').style.fontWeight='normal';
+                          MM_swapImage('3auto_10','','./bmvc_2013_data/bicubic/3x/cam16_frame000260.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="3chang_10" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_10').style.fontWeight='normal';
+                          document.getElementById('3gt_10').style.fontWeight='normal';                          
+                          document.getElementById('3yang_10').style.fontWeight='normal';
+                          document.getElementById('3ours_10').style.fontWeight='normal';
+                          MM_swapImage('3auto_10','','./bmvc_2013_data/Chang_et_al/3x/cam16_frame000260.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="3yang_10" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_10').style.fontWeight='normal';
+                          document.getElementById('3chang_10').style.fontWeight='normal';                          
+                          document.getElementById('3gt_10').style.fontWeight='normal';
+                          document.getElementById('3ours_10').style.fontWeight='normal';
+                          MM_swapImage('3auto_10','','./bmvc_2013_data/Yang_et_al/3x/cam16_frame000260.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="3ours_10" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_10').style.fontWeight='normal';
+                          document.getElementById('3chang_10').style.fontWeight='normal';                          
+                          document.getElementById('3yang_10').style.fontWeight='normal';
+                          document.getElementById('3gt_10').style.fontWeight='normal';
+                          MM_swapImage('3auto_10','','./bmvc_2013_data/Proposed/3x/cam16_frame000260.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+    <blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./bmvc_2013_data/Ground_truth/3x/cam16_frame000264.png" height="600" width="798" alt="High Resolution Image"
+                            id="3auto_11" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Input Image
+                        <br />
+                        <img src="./bmvc_2013_data/input_images/3x/cam16_frame000264.png" border="none" height="200" width="266"
+                            alt="Input image" />
+                        <br />
+                        <p>
+                            &nbsp;
+                        </p>
+                        Magnification x3
+                        <br />
+                        <button type="button" class="gt" id="3gt_11" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_11').style.fontWeight='normal';
+                          document.getElementById('3chang_11').style.fontWeight='normal';                          
+                          document.getElementById('3yang_11').style.fontWeight='normal';
+                          document.getElementById('3ours_11').style.fontWeight='normal';
+                          MM_swapImage('3auto_11','','./bmvc_2013_data/Ground_truth/3x/cam16_frame000264.png',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="3bic_11" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3gt_11').style.fontWeight='normal';
+                          document.getElementById('3chang_11').style.fontWeight='normal';
+                          document.getElementById('3yang_11').style.fontWeight='normal';
+                          document.getElementById('3ours_11').style.fontWeight='normal';
+                          MM_swapImage('3auto_11','','./bmvc_2013_data/bicubic/3x/cam16_frame000264.png',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="chang" id="3chang_11" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_11').style.fontWeight='normal';
+                          document.getElementById('3gt_11').style.fontWeight='normal';                          
+                          document.getElementById('3yang_11').style.fontWeight='normal';
+                          document.getElementById('3ours_11').style.fontWeight='normal';
+                          MM_swapImage('3auto_11','','./bmvc_2013_data/Chang_et_al/3x/cam16_frame000264.png',1)">
+                            Chang et al.
+                        </button>
+                        <br />           
+                        <button type="button" class="yang" id="3yang_11" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_11').style.fontWeight='normal';
+                          document.getElementById('3chang_11').style.fontWeight='normal';                          
+                          document.getElementById('3gt_11').style.fontWeight='normal';
+                          document.getElementById('3ours_11').style.fontWeight='normal';
+                          MM_swapImage('3auto_11','','./bmvc_2013_data/Yang_et_al/3x/cam16_frame000264.png',1)">
+                            Yang et al.
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="3ours_11" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('3bic_11').style.fontWeight='normal';
+                          document.getElementById('3chang_11').style.fontWeight='normal';                          
+                          document.getElementById('3yang_11').style.fontWeight='normal';
+                          document.getElementById('3gt_11').style.fontWeight='normal';
+                          MM_swapImage('3auto_11','','./bmvc_2013_data/Proposed/3x/cam16_frame000264.png',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+
+<hr />
+<div class="footer">
+<br />
+This file was last modified on
+<script type="text/javascript" language="javascript">
+document.write(document.lastModified);
+</script>
+<br />
+</div> <!-- footer -->
+<div class="trackers">
+
+<a href="http://validator.w3.org/check?uri=referer">
+<img src="http://www.w3.org/Icons/valid-html401" class="trking"
+alt="Valid HTML 4.01 Transitional" width="88" /></a>
+
+<a href="http://jigsaw.w3.org/css-validator/check/referer">
+<img src="http://www.w3.org/Icons/valid-css.png" class="trking"
+alt="Valid CSS" /></a>
+
+
+</body>
+</html>
+
+
+
+
