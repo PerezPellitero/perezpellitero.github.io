@@ -1,0 +1,1437 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Half Hypersphere Confinement for Piecewise Linear Regression</title>
+    <link rel="stylesheet" type="text/css" href="wacv_2016_data/css/main.css" />
+    <link rel="shortcut icon" href="../favicon.ico" type="image/ico" />
+
+    <script type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+ var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+  var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+  if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+ var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+ var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+  d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+ if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+ for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+ if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+ var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+ if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+    </script>
+
+</head>
+
+
+<body id="top-of-page" onload="MM_preloadImages(
+
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/baby_GT[1-Original].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/baby_GT[3-ASRF].png'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/baby_GT[3-Deep Learning].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/baby_GT[3-Bicubic].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/baby_GT[11-Our A+].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/baby_GT[4-Antipodal OCL].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/butterfly_GT[1-Original].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/butterfly_GT[3-ASRF].png'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/butterfly_GT[3-Deep Learning].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/butterfly_GT[3-Bicubic].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/butterfly_GT[11-Our A+].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/butterfly_GT[4-Antipodal OCL].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/head_GT[1-Original].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/head_GT[3-ASRF].png'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/head_GT[3-Deep Learning].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/head_GT[3-Bicubic].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/head_GT[11-Our A+].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/head_GT[4-Antipodal OCL].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/woman_GT[1-Original].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/woman_GT[3-ASRF].png'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/woman_GT[3-Deep Learning].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/woman_GT[3-Bicubic].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/woman_GT[11-Our A+].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/woman_GT[4-Antipodal OCL].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/bird_GT[1-Original].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/bird_GT[3-ASRF].png'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/bird_GT[3-Deep Learning].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/bird_GT[3-Bicubic].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/bird_GT[11-Our A+].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x4/bird_GT[4-Antipodal OCL].bmp'
+
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/baby_GT[1-Original].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/baby_GT[3-ASRF].png'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/baby_GT[3-Deep Learning].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/baby_GT[3-Bicubic].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/baby_GT[11-Our A+].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/baby_GT[4-Antipodal OCL].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/butterfly_GT[1-Original].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/butterfly_GT[3-ASRF].png'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/butterfly_GT[3-Deep Learning].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/butterfly_GT[3-Bicubic].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/butterfly_GT[11-Our A+].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/butterfly_GT[4-Antipodal OCL].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/head_GT[1-Original].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/head_GT[3-ASRF].png'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/head_GT[3-Deep Learning].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/head_GT[3-Bicubic].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/head_GT[11-Our A+].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/head_GT[4-Antipodal OCL].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/woman_GT[1-Original].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/woman_GT[3-ASRF].png'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/woman_GT[3-Deep Learning].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/woman_GT[3-Bicubic].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/woman_GT[11-Our A+].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/woman_GT[4-Antipodal OCL].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/bird_GT[1-Original].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/bird_GT[3-ASRF].png'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/bird_GT[3-Deep Learning].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/bird_GT[3-Bicubic].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/bird_GT[11-Our A+].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x3/bird_GT[4-Antipodal OCL].bmp'
+
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/baby_GT[1-Original].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/baby_GT[3-ASRF].png'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/baby_GT[3-Deep Learning].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/baby_GT[3-Bicubic].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/baby_GT[11-Our A+].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/baby_GT[4-Antipodal OCL].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/butterfly_GT[1-Original].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/butterfly_GT[3-ASRF].png'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/butterfly_GT[3-Deep Learning].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/butterfly_GT[3-Bicubic].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/butterfly_GT[11-Our A+].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/butterfly_GT[4-Antipodal OCL].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/head_GT[1-Original].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/head_GT[3-ASRF].png'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/head_GT[3-Deep Learning].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/head_GT[3-Bicubic].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/head_GT[11-Our A+].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/head_GT[4-Antipodal OCL].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/woman_GT[1-Original].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/woman_GT[3-ASRF].png'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/woman_GT[3-Deep Learning].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/woman_GT[3-Bicubic].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/woman_GT[11-Our A+].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/woman_GT[4-Antipodal OCL].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/bird_GT[1-Original].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/bird_GT[3-ASRF].png'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/bird_GT[3-Deep Learning].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/bird_GT[3-Bicubic].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/bird_GT[11-Our A+].bmp'
+'./wacv_2016_data/SR/ResultsRGB-Set5_x2/bird_GT[4-Antipodal OCL].bmp')">
+
+
+    <h1>
+        Half Hypersphere Confinement for Piecewise Linear Regression
+    </h1>
+    
+    <center>
+    <a href="http://perezpellitero.github.io/">Eduardo Perez-Pellitero</a>,
+    <a href="http://jordisalvador-image.blogspot.de/">Jordi Salvador</a>,
+    <a href="http://imatge.upc.edu/web/people/javier-ruiz-hidalgo">Javier Ruiz-Hidalgo</a>, 
+    <a href="http://www.tnt.uni-hannover.de/~rosenhahn/">Bodo Rosenhahn</a>
+    </center>
+<br />
+
+    <center>
+    This is the project website of the paper "Half Hypersphere Confinement for Piecewise Linear Regression" (WACV 2016).<br />
+    [<a href="../documents/PerezPellitero2016Wacv.pdf">pdf</a>] [poster]<br />
+    </center>
+
+    <br />
+    <br />
+
+    <blockquote>
+    <h2>Abstract</h2>
+	Recent research in piecewise linear regression for Super-Resolution has shown the positive impact of training regressors with densely populated clusters whose datapoints are tight in the Euclidean space. In this paper we further research how to improve the locality condition during the training of regressors and how to better select them during testing time. We study the characteristics of the metrics best suited for the piecewise regression algorithms, in which comparisons are usually made between normalized vectors that lie on the unitary hypersphere. Even though Euclidean distance has been widely used for this purpose, it is suboptimal since it does not handle antipodal points (i.e. diametrically opposite points) properly, as vectors with same module and angle but opposite directions are, for linear regression purposes, identical. Therefore, we propose the usage of antipodally invariant metrics and introduce the Half Hypersphere Confinement (HHC), a fast alternative to Multidimensional Scaling (MDS) that allows to map antipodally invariant distances in the Euclidean space with very little approximation error. By doing so, we enable the usage of fast search structures based on Euclidean distances without undermining their speed gains with complex distance transformations. The performance of our method, which we named HHC Regression (HHCR), applied to Super-Resolution (SR) improves both in quality (PSNR) and it is faster than any other state-of-the-art method. Additionally, under an application-agnostic interpretation of our regression framework, we also test our algorithm for denoising and depth upscaling with promising results.
+   </blockquote>
+    
+    
+    <br />
+        <h4>
+            In this website we show a selection of the results published in the paper so that they can be compared in a computer screen. It is programmed to load all the images first so that there is no delay when clicking the buttons. The whole image set weights ~40 MB so it might take some time until it is fully loaded. 
+<br /> When zooming in through the web browser, there is little control on the related upscaling process (which should be nearest neighbor interpolation in order to be as neutral as possible). We recommend to download the results  <a href="https://dl.dropboxusercontent.com/u/2148991/WACV16_images.zip/">in this zipped file</a>, and inspect them in your system with a proper image viewer.
+            <br />
+	    <br />
+ 	    
+            Please note that the images are initialized with the <span class="nn">Ground truth</span>.<br />
+            
+        </h4>
+    
+    <hr class="sub_sep" />
+    <blockquote>
+        <h2 class="intext">
+            <a id="comp">1. Luminance Super-Resolution</a></h2>
+        <p>
+            In this website we compare our super-resolution (SR) method with a subset of methods from the paper benchmark: <br />
+		</p>
+		<p>
+			<span class="ref">[A+]</span> R. Timofte, V. D. Smet, and L. V. Gool. A+: Adjusted anchored neighborhood regression for fast super-resolution. In ACCV 2014. <br>
+			<span class="ref">[SRCNN]</span>  C. Dong, C. Loy, K. He, and X. Tang. Learning a deep convolutional network for image super-resolution. In ECCV 2014. <br>
+			<span class="ref">[ASRF]</span>  S. Schulter, C. Leistner, and H. Bischof. Fast and accurate image upscaling with super-resolution forests. In CVPR 2015 <br>
+        </p>
+    </blockquote>
+
+
+
+
+
+<!-- 4x MAGNIFICATED RESULTS -->
+    <blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./wacv_2016_data/SR/ResultsRGB-Set5_x4/butterfly_GT[1-Original].bmp" height="248" width="248" alt="High Resolution Image"
+                            id="2auto_11" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        Magnification x4
+                        <br />
+                        <button type="button" class="gt" id="2gt_11" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_11').style.fontWeight='normal';
+                          document.getElementById('2aplus_11').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_11').style.fontWeight='normal';
+                          document.getElementById('2asrf_11').style.fontWeight='normal';
+                          document.getElementById('2ours_11').style.fontWeight='normal';
+                          MM_swapImage('2auto_11','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/butterfly_GT[1-Original].bmp',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_11" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_11').style.fontWeight='normal';
+                          document.getElementById('2aplus_11').style.fontWeight='normal';
+                          document.getElementById('2srcnn_11').style.fontWeight='normal';
+                          document.getElementById('2asrf_11').style.fontWeight='normal';
+                          document.getElementById('2ours_11').style.fontWeight='normal';
+                          MM_swapImage('2auto_11','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/butterfly_GT[3-Bicubic].bmp',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="aplus" id="2aplus_11" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_11').style.fontWeight='normal';
+                          document.getElementById('2gt_11').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_11').style.fontWeight='normal';
+                          document.getElementById('2asrf_11').style.fontWeight='normal';
+                          document.getElementById('2ours_11').style.fontWeight='normal';
+                          MM_swapImage('2auto_11','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/butterfly_GT[11-Our A+].bmp',1)">
+                            A+
+                        </button>
+                        <br />           
+                        <button type="button" class="srcnn" id="2srcnn_11" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_11').style.fontWeight='normal';
+                          document.getElementById('2aplus_11').style.fontWeight='normal';                          
+                          document.getElementById('2gt_11').style.fontWeight='normal';
+                          document.getElementById('2ours_11').style.fontWeight='normal';
+                          document.getElementById('2asrf_11').style.fontWeight='normal';
+                          MM_swapImage('2auto_11','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/butterfly_GT[3-Deep Learning].bmp',1)">
+                            SRCNN
+                        </button>
+                        <br />
+			  <button type="button" class="asrf" id="2asrf_11" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_11').style.fontWeight='normal';
+                          document.getElementById('2aplus_11').style.fontWeight='normal'; 
+                          document.getElementById('2srcnn_11').style.fontWeight='normal';                         
+                          document.getElementById('2gt_11').style.fontWeight='normal';
+                          document.getElementById('2ours_11').style.fontWeight='normal';
+                          MM_swapImage('2auto_11','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/butterfly_GT[3-ASRF].png',1)">
+                            ASRF
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_11" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_11').style.fontWeight='normal';
+                          document.getElementById('2aplus_11').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_11').style.fontWeight='normal';
+                          document.getElementById('2asrf_11').style.fontWeight='normal';
+                          document.getElementById('2gt_11').style.fontWeight='normal';
+                          MM_swapImage('2auto_11','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/butterfly_GT[4-Antipodal OCL].bmp',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+
+<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./wacv_2016_data/SR/ResultsRGB-Set5_x4/bird_GT[1-Original].bmp" height="280" width="280" alt="High Resolution Image"
+                            id="2auto_12" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        Magnification x4
+                        <br />
+                        <button type="button" class="gt" id="2gt_12" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_12').style.fontWeight='normal';
+                          document.getElementById('2aplus_12').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_12').style.fontWeight='normal';
+                          document.getElementById('2asrf_12').style.fontWeight='normal';
+                          document.getElementById('2ours_12').style.fontWeight='normal';
+                          MM_swapImage('2auto_12','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/bird_GT[1-Original].bmp',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_12" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_12').style.fontWeight='normal';
+                          document.getElementById('2aplus_12').style.fontWeight='normal';
+                          document.getElementById('2srcnn_12').style.fontWeight='normal';
+                          document.getElementById('2asrf_12').style.fontWeight='normal';
+                          document.getElementById('2ours_12').style.fontWeight='normal';
+                          MM_swapImage('2auto_12','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/bird_GT[3-Bicubic].bmp',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="aplus" id="2aplus_12" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_12').style.fontWeight='normal';
+                          document.getElementById('2gt_12').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_12').style.fontWeight='normal';
+                          document.getElementById('2asrf_12').style.fontWeight='normal';
+                          document.getElementById('2ours_12').style.fontWeight='normal';
+                          MM_swapImage('2auto_12','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/bird_GT[11-Our A+].bmp',1)">
+                            A+
+                        </button>
+                        <br />           
+                        <button type="button" class="srcnn" id="2srcnn_12" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_12').style.fontWeight='normal';
+                          document.getElementById('2aplus_12').style.fontWeight='normal';                          
+                          document.getElementById('2gt_12').style.fontWeight='normal';
+                          document.getElementById('2ours_12').style.fontWeight='normal';
+                          document.getElementById('2asrf_12').style.fontWeight='normal';
+                          MM_swapImage('2auto_12','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/bird_GT[3-Deep Learning].bmp',1)">
+                            SRCNN
+                        </button>
+                        <br />
+			  <button type="button" class="asrf" id="2asrf_12" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_12').style.fontWeight='normal';
+                          document.getElementById('2aplus_12').style.fontWeight='normal'; 
+                          document.getElementById('2srcnn_12').style.fontWeight='normal';                         
+                          document.getElementById('2gt_12').style.fontWeight='normal';
+                          document.getElementById('2ours_12').style.fontWeight='normal';
+                          MM_swapImage('2auto_12','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/bird_GT[3-ASRF].png',1)">
+                            ASRF
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_12" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_12').style.fontWeight='normal';
+                          document.getElementById('2aplus_12').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_12').style.fontWeight='normal';
+                          document.getElementById('2asrf_12').style.fontWeight='normal';
+                          document.getElementById('2gt_12').style.fontWeight='normal';
+                          MM_swapImage('2auto_12','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/bird_GT[4-Antipodal OCL].bmp',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+
+
+<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./wacv_2016_data/SR/ResultsRGB-Set5_x4/head_GT[1-Original].bmp" height="272" width="272" alt="High Resolution Image"
+                            id="2auto_13" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        Magnification x4
+                        <br />
+                        <button type="button" class="gt" id="2gt_13" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_13').style.fontWeight='normal';
+                          document.getElementById('2aplus_13').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_13').style.fontWeight='normal';
+                          document.getElementById('2asrf_13').style.fontWeight='normal';
+                          document.getElementById('2ours_13').style.fontWeight='normal';
+                          MM_swapImage('2auto_13','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/head_GT[1-Original].bmp',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_13" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_13').style.fontWeight='normal';
+                          document.getElementById('2aplus_13').style.fontWeight='normal';
+                          document.getElementById('2srcnn_13').style.fontWeight='normal';
+                          document.getElementById('2asrf_13').style.fontWeight='normal';
+                          document.getElementById('2ours_13').style.fontWeight='normal';
+                          MM_swapImage('2auto_13','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/head_GT[3-Bicubic].bmp',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="aplus" id="2aplus_13" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_13').style.fontWeight='normal';
+                          document.getElementById('2gt_13').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_13').style.fontWeight='normal';
+                          document.getElementById('2asrf_13').style.fontWeight='normal';
+                          document.getElementById('2ours_13').style.fontWeight='normal';
+                          MM_swapImage('2auto_13','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/head_GT[11-Our A+].bmp',1)">
+                            A+
+                        </button>
+                        <br />           
+                        <button type="button" class="srcnn" id="2srcnn_13" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_13').style.fontWeight='normal';
+                          document.getElementById('2aplus_13').style.fontWeight='normal';                          
+                          document.getElementById('2gt_13').style.fontWeight='normal';
+                          document.getElementById('2ours_13').style.fontWeight='normal';
+                          document.getElementById('2asrf_13').style.fontWeight='normal';
+                          MM_swapImage('2auto_13','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/head_GT[3-Deep Learning].bmp',1)">
+                            SRCNN
+                        </button>
+                        <br />
+			  <button type="button" class="asrf" id="2asrf_13" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_13').style.fontWeight='normal';
+                          document.getElementById('2aplus_13').style.fontWeight='normal'; 
+                          document.getElementById('2srcnn_13').style.fontWeight='normal';                         
+                          document.getElementById('2gt_13').style.fontWeight='normal';
+                          document.getElementById('2ours_13').style.fontWeight='normal';
+                          MM_swapImage('2auto_13','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/head_GT[3-ASRF].png',1)">
+                            ASRF
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_13" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_13').style.fontWeight='normal';
+                          document.getElementById('2aplus_13').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_13').style.fontWeight='normal';
+                          document.getElementById('2asrf_13').style.fontWeight='normal';
+                          document.getElementById('2gt_13').style.fontWeight='normal';
+                          MM_swapImage('2auto_13','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/head_GT[4-Antipodal OCL].bmp',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+
+
+<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./wacv_2016_data/SR/ResultsRGB-Set5_x4/woman_GT[1-Original].bmp" height="336" width="220" alt="High Resolution Image"
+                            id="2auto_14" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        Magnification x4
+                        <br />
+                        <button type="button" class="gt" id="2gt_14" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_14').style.fontWeight='normal';
+                          document.getElementById('2aplus_14').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_14').style.fontWeight='normal';
+                          document.getElementById('2asrf_14').style.fontWeight='normal';
+                          document.getElementById('2ours_14').style.fontWeight='normal';
+                          MM_swapImage('2auto_14','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/woman_GT[1-Original].bmp',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_14" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_14').style.fontWeight='normal';
+                          document.getElementById('2aplus_14').style.fontWeight='normal';
+                          document.getElementById('2srcnn_14').style.fontWeight='normal';
+                          document.getElementById('2asrf_14').style.fontWeight='normal';
+                          document.getElementById('2ours_14').style.fontWeight='normal';
+                          MM_swapImage('2auto_14','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/woman_GT[3-Bicubic].bmp',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="aplus" id="2aplus_14" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_14').style.fontWeight='normal';
+                          document.getElementById('2gt_14').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_14').style.fontWeight='normal';
+                          document.getElementById('2asrf_14').style.fontWeight='normal';
+                          document.getElementById('2ours_14').style.fontWeight='normal';
+                          MM_swapImage('2auto_14','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/woman_GT[11-Our A+].bmp',1)">
+                            A+
+                        </button>
+                        <br />           
+                        <button type="button" class="srcnn" id="2srcnn_14" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_14').style.fontWeight='normal';
+                          document.getElementById('2aplus_14').style.fontWeight='normal';                          
+                          document.getElementById('2gt_14').style.fontWeight='normal';
+                          document.getElementById('2ours_14').style.fontWeight='normal';
+                          document.getElementById('2asrf_14').style.fontWeight='normal';
+                          MM_swapImage('2auto_14','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/woman_GT[3-Deep Learning].bmp',1)">
+                            SRCNN
+                        </button>
+                        <br />
+			  <button type="button" class="asrf" id="2asrf_14" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_14').style.fontWeight='normal';
+                          document.getElementById('2aplus_14').style.fontWeight='normal'; 
+                          document.getElementById('2srcnn_14').style.fontWeight='normal';                         
+                          document.getElementById('2gt_14').style.fontWeight='normal';
+                          document.getElementById('2ours_14').style.fontWeight='normal';
+                          MM_swapImage('2auto_14','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/woman_GT[3-ASRF].png',1)">
+                            ASRF
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_14" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_14').style.fontWeight='normal';
+                          document.getElementById('2aplus_14').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_14').style.fontWeight='normal';
+                          document.getElementById('2asrf_14').style.fontWeight='normal';
+                          document.getElementById('2gt_14').style.fontWeight='normal';
+                          MM_swapImage('2auto_14','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/woman_GT[4-Antipodal OCL].bmp',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+
+<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./wacv_2016_data/SR/ResultsRGB-Set5_x4/baby_GT[1-Original].bmp" height="504" width="504" alt="High Resolution Image"
+                            id="2auto_15" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        Magnification x4
+                        <br />
+                        <button type="button" class="gt" id="2gt_15" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_15').style.fontWeight='normal';
+                          document.getElementById('2aplus_15').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_15').style.fontWeight='normal';
+                          document.getElementById('2asrf_15').style.fontWeight='normal';
+                          document.getElementById('2ours_15').style.fontWeight='normal';
+                          MM_swapImage('2auto_15','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/baby_GT[1-Original].bmp',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_15" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_15').style.fontWeight='normal';
+                          document.getElementById('2aplus_15').style.fontWeight='normal';
+                          document.getElementById('2srcnn_15').style.fontWeight='normal';
+                          document.getElementById('2asrf_15').style.fontWeight='normal';
+                          document.getElementById('2ours_15').style.fontWeight='normal';
+                          MM_swapImage('2auto_15','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/baby_GT[3-Bicubic].bmp',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="aplus" id="2aplus_15" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_15').style.fontWeight='normal';
+                          document.getElementById('2gt_15').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_15').style.fontWeight='normal';
+                          document.getElementById('2asrf_15').style.fontWeight='normal';
+                          document.getElementById('2ours_15').style.fontWeight='normal';
+                          MM_swapImage('2auto_15','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/baby_GT[11-Our A+].bmp',1)">
+                            A+
+                        </button>
+                        <br />           
+                        <button type="button" class="srcnn" id="2srcnn_15" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_15').style.fontWeight='normal';
+                          document.getElementById('2aplus_15').style.fontWeight='normal';                          
+                          document.getElementById('2gt_15').style.fontWeight='normal';
+                          document.getElementById('2ours_15').style.fontWeight='normal';
+                          document.getElementById('2asrf_15').style.fontWeight='normal';
+                          MM_swapImage('2auto_15','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/baby_GT[3-Deep Learning].bmp',1)">
+                            SRCNN
+                        </button>
+                        <br />
+			  <button type="button" class="asrf" id="2asrf_15" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_15').style.fontWeight='normal';
+                          document.getElementById('2aplus_15').style.fontWeight='normal'; 
+                          document.getElementById('2srcnn_15').style.fontWeight='normal';                         
+                          document.getElementById('2gt_15').style.fontWeight='normal';
+                          document.getElementById('2ours_15').style.fontWeight='normal';
+                          MM_swapImage('2auto_15','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/baby_GT[3-ASRF].png',1)">
+                            ASRF
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_15" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_15').style.fontWeight='normal';
+                          document.getElementById('2aplus_15').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_15').style.fontWeight='normal';
+                          document.getElementById('2asrf_15').style.fontWeight='normal';
+                          document.getElementById('2gt_15').style.fontWeight='normal';
+                          MM_swapImage('2auto_15','','./wacv_2016_data/SR/ResultsRGB-Set5_x4/baby_GT[4-Antipodal OCL].bmp',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+
+
+
+
+
+<!-- 3x MAGNIFICATED RESULTS -->
+    <blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./wacv_2016_data/SR/ResultsRGB-Set5_x3/butterfly_GT[1-Original].bmp" height="249" width="249" alt="High Resolution Image"
+                            id="2auto_6" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        Magnification x3
+                        <br />
+                        <button type="button" class="gt" id="2gt_6" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_6').style.fontWeight='normal';
+                          document.getElementById('2aplus_6').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_6').style.fontWeight='normal';
+                          document.getElementById('2asrf_6').style.fontWeight='normal';
+                          document.getElementById('2ours_6').style.fontWeight='normal';
+                          MM_swapImage('2auto_6','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/butterfly_GT[1-Original].bmp',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_6" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_6').style.fontWeight='normal';
+                          document.getElementById('2aplus_6').style.fontWeight='normal';
+                          document.getElementById('2srcnn_6').style.fontWeight='normal';
+                          document.getElementById('2asrf_6').style.fontWeight='normal';
+                          document.getElementById('2ours_6').style.fontWeight='normal';
+                          MM_swapImage('2auto_6','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/butterfly_GT[3-Bicubic].bmp',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="aplus" id="2aplus_6" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_6').style.fontWeight='normal';
+                          document.getElementById('2gt_6').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_6').style.fontWeight='normal';
+                          document.getElementById('2asrf_6').style.fontWeight='normal';
+                          document.getElementById('2ours_6').style.fontWeight='normal';
+                          MM_swapImage('2auto_6','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/butterfly_GT[11-Our A+].bmp',1)">
+                            A+
+                        </button>
+                        <br />           
+                        <button type="button" class="srcnn" id="2srcnn_6" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_6').style.fontWeight='normal';
+                          document.getElementById('2aplus_6').style.fontWeight='normal';                          
+                          document.getElementById('2gt_6').style.fontWeight='normal';
+                          document.getElementById('2ours_6').style.fontWeight='normal';
+                          document.getElementById('2asrf_6').style.fontWeight='normal';
+                          MM_swapImage('2auto_6','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/butterfly_GT[3-Deep Learning].bmp',1)">
+                            SRCNN
+                        </button>
+                        <br />
+			  <button type="button" class="asrf" id="2asrf_6" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_6').style.fontWeight='normal';
+                          document.getElementById('2aplus_6').style.fontWeight='normal'; 
+                          document.getElementById('2srcnn_6').style.fontWeight='normal';                         
+                          document.getElementById('2gt_6').style.fontWeight='normal';
+                          document.getElementById('2ours_6').style.fontWeight='normal';
+                          MM_swapImage('2auto_6','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/butterfly_GT[3-ASRF].png',1)">
+                            ASRF
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_6" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_6').style.fontWeight='normal';
+                          document.getElementById('2aplus_6').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_6').style.fontWeight='normal';
+                          document.getElementById('2asrf_6').style.fontWeight='normal';
+                          document.getElementById('2gt_6').style.fontWeight='normal';
+                          MM_swapImage('2auto_6','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/butterfly_GT[4-Antipodal OCL].bmp',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+
+<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./wacv_2016_data/SR/ResultsRGB-Set5_x3/bird_GT[1-Original].bmp" height="282" width="282" alt="High Resolution Image"
+                            id="2auto_7" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        Magnification x3
+                        <br />
+                        <button type="button" class="gt" id="2gt_7" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_7').style.fontWeight='normal';
+                          document.getElementById('2aplus_7').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_7').style.fontWeight='normal';
+                          document.getElementById('2asrf_7').style.fontWeight='normal';
+                          document.getElementById('2ours_7').style.fontWeight='normal';
+                          MM_swapImage('2auto_7','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/bird_GT[1-Original].bmp',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_7" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_7').style.fontWeight='normal';
+                          document.getElementById('2aplus_7').style.fontWeight='normal';
+                          document.getElementById('2srcnn_7').style.fontWeight='normal';
+                          document.getElementById('2asrf_7').style.fontWeight='normal';
+                          document.getElementById('2ours_7').style.fontWeight='normal';
+                          MM_swapImage('2auto_7','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/bird_GT[3-Bicubic].bmp',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="aplus" id="2aplus_7" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_7').style.fontWeight='normal';
+                          document.getElementById('2gt_7').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_7').style.fontWeight='normal';
+                          document.getElementById('2asrf_7').style.fontWeight='normal';
+                          document.getElementById('2ours_7').style.fontWeight='normal';
+                          MM_swapImage('2auto_7','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/bird_GT[11-Our A+].bmp',1)">
+                            A+
+                        </button>
+                        <br />           
+                        <button type="button" class="srcnn" id="2srcnn_7" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_7').style.fontWeight='normal';
+                          document.getElementById('2aplus_7').style.fontWeight='normal';                          
+                          document.getElementById('2gt_7').style.fontWeight='normal';
+                          document.getElementById('2ours_7').style.fontWeight='normal';
+                          document.getElementById('2asrf_7').style.fontWeight='normal';
+                          MM_swapImage('2auto_7','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/bird_GT[3-Deep Learning].bmp',1)">
+                            SRCNN
+                        </button>
+                        <br />
+			  <button type="button" class="asrf" id="2asrf_7" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_7').style.fontWeight='normal';
+                          document.getElementById('2aplus_7').style.fontWeight='normal'; 
+                          document.getElementById('2srcnn_7').style.fontWeight='normal';                         
+                          document.getElementById('2gt_7').style.fontWeight='normal';
+                          document.getElementById('2ours_7').style.fontWeight='normal';
+                          MM_swapImage('2auto_7','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/bird_GT[3-ASRF].png',1)">
+                            ASRF
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_7" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_7').style.fontWeight='normal';
+                          document.getElementById('2aplus_7').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_7').style.fontWeight='normal';
+                          document.getElementById('2asrf_7').style.fontWeight='normal';
+                          document.getElementById('2gt_7').style.fontWeight='normal';
+                          MM_swapImage('2auto_7','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/bird_GT[4-Antipodal OCL].bmp',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+
+
+<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./wacv_2016_data/SR/ResultsRGB-Set5_x3/head_GT[1-Original].bmp" height="273" width="273" alt="High Resolution Image"
+                            id="2auto_8" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        Magnification x3
+                        <br />
+                        <button type="button" class="gt" id="2gt_8" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_8').style.fontWeight='normal';
+                          document.getElementById('2aplus_8').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_8').style.fontWeight='normal';
+                          document.getElementById('2asrf_8').style.fontWeight='normal';
+                          document.getElementById('2ours_8').style.fontWeight='normal';
+                          MM_swapImage('2auto_8','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/head_GT[1-Original].bmp',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_8" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_8').style.fontWeight='normal';
+                          document.getElementById('2aplus_8').style.fontWeight='normal';
+                          document.getElementById('2srcnn_8').style.fontWeight='normal';
+                          document.getElementById('2asrf_8').style.fontWeight='normal';
+                          document.getElementById('2ours_8').style.fontWeight='normal';
+                          MM_swapImage('2auto_8','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/head_GT[3-Bicubic].bmp',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="aplus" id="2aplus_8" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_8').style.fontWeight='normal';
+                          document.getElementById('2gt_8').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_8').style.fontWeight='normal';
+                          document.getElementById('2asrf_8').style.fontWeight='normal';
+                          document.getElementById('2ours_8').style.fontWeight='normal';
+                          MM_swapImage('2auto_8','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/head_GT[11-Our A+].bmp',1)">
+                            A+
+                        </button>
+                        <br />           
+                        <button type="button" class="srcnn" id="2srcnn_8" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_8').style.fontWeight='normal';
+                          document.getElementById('2aplus_8').style.fontWeight='normal';                          
+                          document.getElementById('2gt_8').style.fontWeight='normal';
+                          document.getElementById('2ours_8').style.fontWeight='normal';
+                          document.getElementById('2asrf_8').style.fontWeight='normal';
+                          MM_swapImage('2auto_8','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/head_GT[3-Deep Learning].bmp',1)">
+                            SRCNN
+                        </button>
+                        <br />
+			  <button type="button" class="asrf" id="2asrf_8" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_8').style.fontWeight='normal';
+                          document.getElementById('2aplus_8').style.fontWeight='normal'; 
+                          document.getElementById('2srcnn_8').style.fontWeight='normal';                         
+                          document.getElementById('2gt_8').style.fontWeight='normal';
+                          document.getElementById('2ours_8').style.fontWeight='normal';
+                          MM_swapImage('2auto_8','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/head_GT[3-ASRF].png',1)">
+                            ASRF
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_8" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_8').style.fontWeight='normal';
+                          document.getElementById('2aplus_8').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_8').style.fontWeight='normal';
+                          document.getElementById('2asrf_8').style.fontWeight='normal';
+                          document.getElementById('2gt_8').style.fontWeight='normal';
+                          MM_swapImage('2auto_8','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/head_GT[4-Antipodal OCL].bmp',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+
+
+<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./wacv_2016_data/SR/ResultsRGB-Set5_x3/woman_GT[1-Original].bmp" height="336" width="222" alt="High Resolution Image"
+                            id="2auto_9" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        Magnification x3
+                        <br />
+                        <button type="button" class="gt" id="2gt_9" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_9').style.fontWeight='normal';
+                          document.getElementById('2aplus_9').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_9').style.fontWeight='normal';
+                          document.getElementById('2asrf_9').style.fontWeight='normal';
+                          document.getElementById('2ours_9').style.fontWeight='normal';
+                          MM_swapImage('2auto_9','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/woman_GT[1-Original].bmp',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_9" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_9').style.fontWeight='normal';
+                          document.getElementById('2aplus_9').style.fontWeight='normal';
+                          document.getElementById('2srcnn_9').style.fontWeight='normal';
+                          document.getElementById('2asrf_9').style.fontWeight='normal';
+                          document.getElementById('2ours_9').style.fontWeight='normal';
+                          MM_swapImage('2auto_9','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/woman_GT[3-Bicubic].bmp',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="aplus" id="2aplus_9" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_9').style.fontWeight='normal';
+                          document.getElementById('2gt_9').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_9').style.fontWeight='normal';
+                          document.getElementById('2asrf_9').style.fontWeight='normal';
+                          document.getElementById('2ours_9').style.fontWeight='normal';
+                          MM_swapImage('2auto_9','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/woman_GT[11-Our A+].bmp',1)">
+                            A+
+                        </button>
+                        <br />           
+                        <button type="button" class="srcnn" id="2srcnn_9" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_9').style.fontWeight='normal';
+                          document.getElementById('2aplus_9').style.fontWeight='normal';                          
+                          document.getElementById('2gt_9').style.fontWeight='normal';
+                          document.getElementById('2ours_9').style.fontWeight='normal';
+                          document.getElementById('2asrf_9').style.fontWeight='normal';
+                          MM_swapImage('2auto_9','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/woman_GT[3-Deep Learning].bmp',1)">
+                            SRCNN
+                        </button>
+                        <br />
+			  <button type="button" class="asrf" id="2asrf_9" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_9').style.fontWeight='normal';
+                          document.getElementById('2aplus_9').style.fontWeight='normal'; 
+                          document.getElementById('2srcnn_9').style.fontWeight='normal';                         
+                          document.getElementById('2gt_9').style.fontWeight='normal';
+                          document.getElementById('2ours_9').style.fontWeight='normal';
+                          MM_swapImage('2auto_9','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/woman_GT[3-ASRF].png',1)">
+                            ASRF
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_9" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_9').style.fontWeight='normal';
+                          document.getElementById('2aplus_9').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_9').style.fontWeight='normal';
+                          document.getElementById('2asrf_9').style.fontWeight='normal';
+                          document.getElementById('2gt_9').style.fontWeight='normal';
+                          MM_swapImage('2auto_9','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/woman_GT[4-Antipodal OCL].bmp',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+
+<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./wacv_2016_data/SR/ResultsRGB-Set5_x3/baby_GT[1-Original].bmp" height="504" width="504" alt="High Resolution Image"
+                            id="2auto_10" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        Magnification x3
+                        <br />
+                        <button type="button" class="gt" id="2gt_10" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_10').style.fontWeight='normal';
+                          document.getElementById('2aplus_10').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_10').style.fontWeight='normal';
+                          document.getElementById('2asrf_10').style.fontWeight='normal';
+                          document.getElementById('2ours_10').style.fontWeight='normal';
+                          MM_swapImage('2auto_10','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/baby_GT[1-Original].bmp',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_10" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_10').style.fontWeight='normal';
+                          document.getElementById('2aplus_10').style.fontWeight='normal';
+                          document.getElementById('2srcnn_10').style.fontWeight='normal';
+                          document.getElementById('2asrf_10').style.fontWeight='normal';
+                          document.getElementById('2ours_10').style.fontWeight='normal';
+                          MM_swapImage('2auto_10','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/baby_GT[3-Bicubic].bmp',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="aplus" id="2aplus_10" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_10').style.fontWeight='normal';
+                          document.getElementById('2gt_10').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_10').style.fontWeight='normal';
+                          document.getElementById('2asrf_10').style.fontWeight='normal';
+                          document.getElementById('2ours_10').style.fontWeight='normal';
+                          MM_swapImage('2auto_10','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/baby_GT[11-Our A+].bmp',1)">
+                            A+
+                        </button>
+                        <br />           
+                        <button type="button" class="srcnn" id="2srcnn_10" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_10').style.fontWeight='normal';
+                          document.getElementById('2aplus_10').style.fontWeight='normal';                          
+                          document.getElementById('2gt_10').style.fontWeight='normal';
+                          document.getElementById('2ours_10').style.fontWeight='normal';
+                          document.getElementById('2asrf_10').style.fontWeight='normal';
+                          MM_swapImage('2auto_10','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/baby_GT[3-Deep Learning].bmp',1)">
+                            SRCNN
+                        </button>
+                        <br />
+			  <button type="button" class="asrf" id="2asrf_10" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_10').style.fontWeight='normal';
+                          document.getElementById('2aplus_10').style.fontWeight='normal'; 
+                          document.getElementById('2srcnn_10').style.fontWeight='normal';                         
+                          document.getElementById('2gt_10').style.fontWeight='normal';
+                          document.getElementById('2ours_10').style.fontWeight='normal';
+                          MM_swapImage('2auto_10','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/baby_GT[3-ASRF].png',1)">
+                            ASRF
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_10" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_10').style.fontWeight='normal';
+                          document.getElementById('2aplus_10').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_10').style.fontWeight='normal';
+                          document.getElementById('2asrf_10').style.fontWeight='normal';
+                          document.getElementById('2gt_10').style.fontWeight='normal';
+                          MM_swapImage('2auto_10','','./wacv_2016_data/SR/ResultsRGB-Set5_x3/baby_GT[4-Antipodal OCL].bmp',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+
+
+
+
+
+
+
+
+	<!-- 2x MAGNIFICATED RESULTS -->
+    <blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./wacv_2016_data/SR/ResultsRGB-Set5_x2/butterfly_GT[1-Original].bmp" height="252" width="252" alt="High Resolution Image"
+                            id="2auto_1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        Magnification x2
+                        <br />
+                        <button type="button" class="gt" id="2gt_1" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_1').style.fontWeight='normal';
+                          document.getElementById('2aplus_1').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_1').style.fontWeight='normal';
+                          document.getElementById('2asrf_1').style.fontWeight='normal';
+                          document.getElementById('2ours_1').style.fontWeight='normal';
+                          MM_swapImage('2auto_1','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/butterfly_GT[1-Original].bmp',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_1" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_1').style.fontWeight='normal';
+                          document.getElementById('2aplus_1').style.fontWeight='normal';
+                          document.getElementById('2srcnn_1').style.fontWeight='normal';
+                          document.getElementById('2asrf_1').style.fontWeight='normal';
+                          document.getElementById('2ours_1').style.fontWeight='normal';
+                          MM_swapImage('2auto_1','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/butterfly_GT[3-Bicubic].bmp',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="aplus" id="2aplus_1" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_1').style.fontWeight='normal';
+                          document.getElementById('2gt_1').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_1').style.fontWeight='normal';
+                          document.getElementById('2asrf_1').style.fontWeight='normal';
+                          document.getElementById('2ours_1').style.fontWeight='normal';
+                          MM_swapImage('2auto_1','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/butterfly_GT[11-Our A+].bmp',1)">
+                            A+
+                        </button>
+                        <br />           
+                        <button type="button" class="srcnn" id="2srcnn_1" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_1').style.fontWeight='normal';
+                          document.getElementById('2aplus_1').style.fontWeight='normal';                          
+                          document.getElementById('2gt_1').style.fontWeight='normal';
+                          document.getElementById('2ours_1').style.fontWeight='normal';
+                          document.getElementById('2asrf_1').style.fontWeight='normal';
+                          MM_swapImage('2auto_1','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/butterfly_GT[3-Deep Learning].bmp',1)">
+                            SRCNN
+                        </button>
+                        <br />
+			  <button type="button" class="asrf" id="2asrf_1" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_1').style.fontWeight='normal';
+                          document.getElementById('2aplus_1').style.fontWeight='normal'; 
+                          document.getElementById('2srcnn_1').style.fontWeight='normal';                         
+                          document.getElementById('2gt_1').style.fontWeight='normal';
+                          document.getElementById('2ours_1').style.fontWeight='normal';
+                          MM_swapImage('2auto_1','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/butterfly_GT[3-ASRF].png',1)">
+                            ASRF
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_1" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_1').style.fontWeight='normal';
+                          document.getElementById('2aplus_1').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_1').style.fontWeight='normal';
+                          document.getElementById('2asrf_1').style.fontWeight='normal';
+                          document.getElementById('2gt_1').style.fontWeight='normal';
+                          MM_swapImage('2auto_1','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/butterfly_GT[4-Antipodal OCL].bmp',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+
+<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./wacv_2016_data/SR/ResultsRGB-Set5_x2/bird_GT[1-Original].bmp" height="284" width="284" alt="High Resolution Image"
+                            id="2auto_2" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        Magnification x2
+                        <br />
+                        <button type="button" class="gt" id="2gt_2" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_2').style.fontWeight='normal';
+                          document.getElementById('2aplus_2').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_2').style.fontWeight='normal';
+                          document.getElementById('2asrf_2').style.fontWeight='normal';
+                          document.getElementById('2ours_2').style.fontWeight='normal';
+                          MM_swapImage('2auto_2','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/bird_GT[1-Original].bmp',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_2" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_2').style.fontWeight='normal';
+                          document.getElementById('2aplus_2').style.fontWeight='normal';
+                          document.getElementById('2srcnn_2').style.fontWeight='normal';
+                          document.getElementById('2asrf_2').style.fontWeight='normal';
+                          document.getElementById('2ours_2').style.fontWeight='normal';
+                          MM_swapImage('2auto_2','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/bird_GT[3-Bicubic].bmp',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="aplus" id="2aplus_2" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_2').style.fontWeight='normal';
+                          document.getElementById('2gt_2').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_2').style.fontWeight='normal';
+                          document.getElementById('2asrf_2').style.fontWeight='normal';
+                          document.getElementById('2ours_2').style.fontWeight='normal';
+                          MM_swapImage('2auto_2','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/bird_GT[11-Our A+].bmp',1)">
+                            A+
+                        </button>
+                        <br />           
+                        <button type="button" class="srcnn" id="2srcnn_2" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_2').style.fontWeight='normal';
+                          document.getElementById('2aplus_2').style.fontWeight='normal';                          
+                          document.getElementById('2gt_2').style.fontWeight='normal';
+                          document.getElementById('2ours_2').style.fontWeight='normal';
+                          document.getElementById('2asrf_2').style.fontWeight='normal';
+                          MM_swapImage('2auto_2','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/bird_GT[3-Deep Learning].bmp',1)">
+                            SRCNN
+                        </button>
+                        <br />
+			  <button type="button" class="asrf" id="2asrf_2" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_2').style.fontWeight='normal';
+                          document.getElementById('2aplus_2').style.fontWeight='normal'; 
+                          document.getElementById('2srcnn_2').style.fontWeight='normal';                         
+                          document.getElementById('2gt_2').style.fontWeight='normal';
+                          document.getElementById('2ours_2').style.fontWeight='normal';
+                          MM_swapImage('2auto_2','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/bird_GT[3-ASRF].png',1)">
+                            ASRF
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_2" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_2').style.fontWeight='normal';
+                          document.getElementById('2aplus_2').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_2').style.fontWeight='normal';
+                          document.getElementById('2asrf_2').style.fontWeight='normal';
+                          document.getElementById('2gt_2').style.fontWeight='normal';
+                          MM_swapImage('2auto_2','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/bird_GT[4-Antipodal OCL].bmp',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+
+
+<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./wacv_2016_data/SR/ResultsRGB-Set5_x2/head_GT[1-Original].bmp" height="276" width="276" alt="High Resolution Image"
+                            id="2auto_3" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        Magnification x2
+                        <br />
+                        <button type="button" class="gt" id="2gt_3" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_3').style.fontWeight='normal';
+                          document.getElementById('2aplus_3').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_3').style.fontWeight='normal';
+                          document.getElementById('2asrf_3').style.fontWeight='normal';
+                          document.getElementById('2ours_3').style.fontWeight='normal';
+                          MM_swapImage('2auto_3','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/head_GT[1-Original].bmp',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_3" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_3').style.fontWeight='normal';
+                          document.getElementById('2aplus_3').style.fontWeight='normal';
+                          document.getElementById('2srcnn_3').style.fontWeight='normal';
+                          document.getElementById('2asrf_3').style.fontWeight='normal';
+                          document.getElementById('2ours_3').style.fontWeight='normal';
+                          MM_swapImage('2auto_3','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/head_GT[3-Bicubic].bmp',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="aplus" id="2aplus_3" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_3').style.fontWeight='normal';
+                          document.getElementById('2gt_3').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_3').style.fontWeight='normal';
+                          document.getElementById('2asrf_3').style.fontWeight='normal';
+                          document.getElementById('2ours_3').style.fontWeight='normal';
+                          MM_swapImage('2auto_3','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/head_GT[11-Our A+].bmp',1)">
+                            A+
+                        </button>
+                        <br />           
+                        <button type="button" class="srcnn" id="2srcnn_3" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_3').style.fontWeight='normal';
+                          document.getElementById('2aplus_3').style.fontWeight='normal';                          
+                          document.getElementById('2gt_3').style.fontWeight='normal';
+                          document.getElementById('2ours_3').style.fontWeight='normal';
+                          document.getElementById('2asrf_3').style.fontWeight='normal';
+                          MM_swapImage('2auto_3','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/head_GT[3-Deep Learning].bmp',1)">
+                            SRCNN
+                        </button>
+                        <br />
+			  <button type="button" class="asrf" id="2asrf_3" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_3').style.fontWeight='normal';
+                          document.getElementById('2aplus_3').style.fontWeight='normal'; 
+                          document.getElementById('2srcnn_3').style.fontWeight='normal';                         
+                          document.getElementById('2gt_3').style.fontWeight='normal';
+                          document.getElementById('2ours_3').style.fontWeight='normal';
+                          MM_swapImage('2auto_3','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/head_GT[3-ASRF].png',1)">
+                            ASRF
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_3" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_3').style.fontWeight='normal';
+                          document.getElementById('2aplus_3').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_3').style.fontWeight='normal';
+                          document.getElementById('2asrf_3').style.fontWeight='normal';
+                          document.getElementById('2gt_3').style.fontWeight='normal';
+                          MM_swapImage('2auto_3','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/head_GT[4-Antipodal OCL].bmp',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+
+
+<blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./wacv_2016_data/SR/ResultsRGB-Set5_x2/woman_GT[1-Original].bmp" height="340" width="224" alt="High Resolution Image"
+                            id="2auto_4" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        Magnification x2
+                        <br />
+                        <button type="button" class="gt" id="2gt_4" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_4').style.fontWeight='normal';
+                          document.getElementById('2aplus_4').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_4').style.fontWeight='normal';
+                          document.getElementById('2asrf_4').style.fontWeight='normal';
+                          document.getElementById('2ours_4').style.fontWeight='normal';
+                          MM_swapImage('2auto_4','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/woman_GT[1-Original].bmp',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_4" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_4').style.fontWeight='normal';
+                          document.getElementById('2aplus_4').style.fontWeight='normal';
+                          document.getElementById('2srcnn_4').style.fontWeight='normal';
+                          document.getElementById('2asrf_4').style.fontWeight='normal';
+                          document.getElementById('2ours_4').style.fontWeight='normal';
+                          MM_swapImage('2auto_4','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/woman_GT[3-Bicubic].bmp',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="aplus" id="2aplus_4" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_4').style.fontWeight='normal';
+                          document.getElementById('2gt_4').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_4').style.fontWeight='normal';
+                          document.getElementById('2asrf_4').style.fontWeight='normal';
+                          document.getElementById('2ours_4').style.fontWeight='normal';
+                          MM_swapImage('2auto_4','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/woman_GT[11-Our A+].bmp',1)">
+                            A+
+                        </button>
+                        <br />           
+                        <button type="button" class="srcnn" id="2srcnn_4" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_4').style.fontWeight='normal';
+                          document.getElementById('2aplus_4').style.fontWeight='normal';                          
+                          document.getElementById('2gt_4').style.fontWeight='normal';
+                          document.getElementById('2ours_4').style.fontWeight='normal';
+                          document.getElementById('2asrf_4').style.fontWeight='normal';
+                          MM_swapImage('2auto_4','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/woman_GT[3-Deep Learning].bmp',1)">
+                            SRCNN
+                        </button>
+                        <br />
+			  <button type="button" class="asrf" id="2asrf_4" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_4').style.fontWeight='normal';
+                          document.getElementById('2aplus_4').style.fontWeight='normal'; 
+                          document.getElementById('2srcnn_4').style.fontWeight='normal';                         
+                          document.getElementById('2gt_4').style.fontWeight='normal';
+                          document.getElementById('2ours_4').style.fontWeight='normal';
+                          MM_swapImage('2auto_4','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/woman_GT[3-ASRF].png',1)">
+                            ASRF
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_4" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_4').style.fontWeight='normal';
+                          document.getElementById('2aplus_4').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_4').style.fontWeight='normal';
+                          document.getElementById('2asrf_4').style.fontWeight='normal';
+                          document.getElementById('2gt_4').style.fontWeight='normal';
+                          MM_swapImage('2auto_4','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/woman_GT[4-Antipodal OCL].bmp',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+
+  <blockquote>
+        <hr />
+        <center>
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <img src="./wacv_2016_data/SR/ResultsRGB-Set5_x2/baby_GT[1-Original].bmp" height="508" width="508" alt="High Resolution Image"
+                            id="2auto_5" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        Magnification x2
+                        <br />
+                        <button type="button" class="gt" id="2gt_5" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_5').style.fontWeight='normal';
+                          document.getElementById('2aplus_5').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_5').style.fontWeight='normal';
+                          document.getElementById('2asrf_5').style.fontWeight='normal';
+                          document.getElementById('2ours_5').style.fontWeight='normal';
+                          MM_swapImage('2auto_5','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/baby_GT[1-Original].bmp',1)">
+                          Ground Truth
+                        </button>
+                        <br />
+                        <button type="button" class="bic" id="2bic_5" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2gt_5').style.fontWeight='normal';
+                          document.getElementById('2aplus_5').style.fontWeight='normal';
+                          document.getElementById('2srcnn_5').style.fontWeight='normal';
+                          document.getElementById('2asrf_5').style.fontWeight='normal';
+                          document.getElementById('2ours_5').style.fontWeight='normal';
+                          MM_swapImage('2auto_5','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/baby_GT[3-Bicubic].bmp',1)">
+                            Bi-Cubic Interpolation
+                        </button>
+                        <br />
+                        <button type="button" class="aplus" id="2aplus_5" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_5').style.fontWeight='normal';
+                          document.getElementById('2gt_5').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_5').style.fontWeight='normal';
+                          document.getElementById('2asrf_5').style.fontWeight='normal';
+                          document.getElementById('2ours_5').style.fontWeight='normal';
+                          MM_swapImage('2auto_5','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/baby_GT[11-Our A+].bmp',1)">
+                            A+
+                        </button>
+                        <br />           
+                        <button type="button" class="srcnn" id="2srcnn_5" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_5').style.fontWeight='normal';
+                          document.getElementById('2aplus_5').style.fontWeight='normal';                          
+                          document.getElementById('2gt_5').style.fontWeight='normal';
+                          document.getElementById('2ours_5').style.fontWeight='normal';
+                          document.getElementById('2asrf_5').style.fontWeight='normal';
+                          MM_swapImage('2auto_5','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/baby_GT[3-Deep Learning].bmp',1)">
+                            SRCNN
+                        </button>
+                        <br />
+			  <button type="button" class="asrf" id="2asrf_5" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_5').style.fontWeight='normal';
+                          document.getElementById('2aplus_5').style.fontWeight='normal'; 
+                          document.getElementById('2srcnn_5').style.fontWeight='normal';                         
+                          document.getElementById('2gt_5').style.fontWeight='normal';
+                          document.getElementById('2ours_5').style.fontWeight='normal';
+                          MM_swapImage('2auto_5','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/baby_GT[3-ASRF].png',1)">
+                            ASRF
+                        </button>
+                        <br />
+                        <button type="button" class="osrc" id="2ours_5" onmousedown="this.style.fontWeight='bold';
+                          document.getElementById('2bic_5').style.fontWeight='normal';
+                          document.getElementById('2aplus_5').style.fontWeight='normal';                          
+                          document.getElementById('2srcnn_5').style.fontWeight='normal';
+                          document.getElementById('2asrf_5').style.fontWeight='normal';
+                          document.getElementById('2gt_5').style.fontWeight='normal';
+                          MM_swapImage('2auto_5','','./wacv_2016_data/SR/ResultsRGB-Set5_x2/baby_GT[4-Antipodal OCL].bmp',1)">
+                            Our SR Result
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </blockquote>
+
+
+<hr />
+<div class="footer">
+<br />
+This file was last modified on
+<script type="text/javascript" language="javascript">
+document.write(document.lastModified);
+</script>
+<br />
+</div> <!-- footer -->
+<div class="trackers">
+
+<a href="http://validator.w3.org/check?uri=referer">
+<img src="http://www.w3.org/Icons/valid-html401" class="trking"
+alt="Valid HTML 4.01 Transitional" width="88" /></a>
+
+<a href="http://jigsaw.w3.org/css-validator/check/referer">
+<img src="http://www.w3.org/Icons/valid-css.png" class="trking"
+alt="Valid CSS" /></a>
+
+
+</body>
+</html>
+
+
+
+
