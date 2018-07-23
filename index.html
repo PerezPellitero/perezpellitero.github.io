@@ -108,23 +108,6 @@
 
 </head>
 <body>
-<!--
-
---- layout: default 
---- title: Eduardo Pérez Pellitero website.
-
-
-!--
-<div id="posts_links">
-{% for post in site.posts limit:5 %}
-  <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-  {{ post.content }}
-  <em>Posted on {{ post.date | date_to_long_string }}.</em>
-{% endfor %}
-</div>
---
-
--->
 
 <div class="topbar" data-scrollspy="scrollspy">
 <div class="topbar-inner">
@@ -176,14 +159,14 @@
 <div class="row" itemscope itemtype="https://data-vocabulary.org/Person">
 	<div class="span4">
 		<ul class="media-grid">
-		<li> <a class="brand" href="#">
-			<img style="width: 210px;" class="thumbnail" itemprop="photo" src="images/edu.jpg" alt="Eduardo Perez" /></a></li>
+		<li> <a class="brand" href="images/edu2.jpg">
+			<img style="width: 210px;" class="thumbnail" itemprop="photo" src="images/edu2.jpg" alt="Eduardo Perez" /></a></li>
 		</ul>
 	</div>
 	<div class="span12">
 		<p>My name is Eduardo Pérez Pellitero. I am a postdoctoral researcher at the <a href="https://ei.is.tuebingen.mpg.de">Empirical Inference</a> department of the <a href="https://is.tuebingen.mpg.de">Max Planck Institute for Intelligent Systems</a>, directed by <a href="https://is.tuebingen.mpg.de/person/bs">Bernhard Schölkopf</a>, more specifically working within the <a href="https://ei.is.tuebingen.mpg.de/research_groups/computational-imaging">Computational Imaging Group</a> lead by <a href="https://ei.is.tuebingen.mpg.de/person/mhirsch">Michael Hirsch</a>. <br>
 <p>Before this, I spent some time having fun and doing my PhD somewhere in between the TNT Lab of Leibnitz Universität Hannover and Technicolor R&I, where I did research on manifold learning for Super Resolution applications.<br>
-<p>My research interests include super-resolution, machine learning and manifold learning. In a broader sense, I am interested in any model that allows us to dissect, analyze and play around with the digital image formation process.<br>
+<p>My research interests include super-resolution, machine learning, deep learning and manifold learning. In a broader sense, I am interested in any model that allows us to dissect, analyze and play around with the digital image formation process.<br>
 		<p>Apart from research, some of the things I enjoy most in my life are: playing the electric bass and practising <a href="https://en.wikipedia.org/wiki/Destreza">historical fencing</a>.<br>
 				
 	</div>
@@ -209,6 +192,54 @@
 			</div>
 </div> <!-- /row -->
 <!--<hr>-->
+
+
+
+
+<h4 id="year2017">2017</h4>
+
+<div class="row">
+	<div class="span4">
+		<ul class="media-grid">
+		<li><a href="documents/PhD_diss_PerezPellitero.pdf">
+			<img class="thumbnail" src="images/dissertation.png" alt="" /></a></li>
+		</ul>
+	</div>
+	<div class="span12">
+		<h3 id="Man"><a class="paper_link" href="documents/PerezPellitero_PhDdiss.pdf">Manifold Learning for Super Resolution</a></h3> 
+		<p>Eduardo Pérez-Pellitero
+		<br> <button onclick="javascript:toggle(Diss17)">PhD Dissertation</button>
+<img class="bibtex_link" src="figures/bibtex.png" onclick="javascript:toggle(Perezpellitero2017);" />
+		<pre id="Diss17" class="invisible_bibtex">
+PhD Dissertation, defended the 21st of February, 2017.
+</pre>
+		
+		<pre id="Perezpellitero2017" class="invisible_bibtex">
+@phdthesis{PerezPellitero2017,
+    title    = {Manifold Learning for Super Resolution},
+    school   = {Leibniz Universit\"at Hannover},
+    author   = {Eduardo P\'erez-Pellitero},
+    year     = {2017}, 
+}</pre>
+		</p> 
+		<blockquote>
+			<p>
+			The development pace of high-resolution displays has been so fast in the recent
+years that many images acquired with low-end capture devices are already outdated
+or will be shortly in time. Super Resolution is central to match the resolution of
+the already existing image content to that of current and future high resolution
+displays and applications. This dissertation is focused on learning how to upscale
+images from the statistics of natural images.
+			</p>
+		</blockquote>
+		
+	</div>
+</div> <!-- /row -->
+
+
+
+
+
 
 <h4 id="year2016">2016</h4>
 
