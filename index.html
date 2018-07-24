@@ -164,9 +164,10 @@
 		</ul>
 	</div>
 	<div class="span12">
-		<p>My name is Eduardo Pérez Pellitero. I am a postdoctoral researcher at the <a href="https://ei.is.tuebingen.mpg.de">Empirical Inference</a> department of the <a href="https://is.tuebingen.mpg.de">Max Planck Institute for Intelligent Systems</a>, directed by <a href="https://is.tuebingen.mpg.de/person/bs">Bernhard Schölkopf</a>, more specifically working within the <a href="https://ei.is.tuebingen.mpg.de/research_groups/computational-imaging">Computational Imaging Group</a> lead by <a href="https://ei.is.tuebingen.mpg.de/person/mhirsch">Michael Hirsch</a>. <br>
+		<p>My name is Eduardo Pérez Pellitero. I am a postdoctoral researcher at the <a href="https://ei.is.tuebingen.mpg.de">Empirical Inference</a> department of the <a href="https://is.tuebingen.mpg.de">Max Planck Institute for Intelligent Systems</a>, 
+		directed by <a href="https://is.tuebingen.mpg.de/person/bs">Bernhard Schölkopf</a>, more specifically working within the <a href="https://ei.is.tuebingen.mpg.de/research_groups/computational-imaging">Computational Imaging Group</a>. <br>
 <p>Before this, I spent some time having fun and doing my PhD somewhere in between the TNT Lab of Leibnitz Universität Hannover and Technicolor R&I, where I did research on manifold learning for Super Resolution applications.<br>
-<p>My research interests include super-resolution, machine learning, deep learning and manifold learning. In a broader sense, I am interested in any model that allows us to dissect, analyze and play around with the digital image formation process.<br>
+<p>My research interests include super-resolution, machine learning and more specifically deep learning. In a broader sense, I am interested in any model that allows us to dissect, analyze and play around with the digital image formation process.<br>
 		<p>Apart from research, some of the things I enjoy most in my life are: playing the electric bass and practising <a href="https://en.wikipedia.org/wiki/Destreza">historical fencing</a>.<br>
 				
 	</div>
@@ -194,9 +195,60 @@
 <!--<hr>-->
 
 
+<h4 id="year2018">2018 <small>    First year as a postdoc at the Max Planck Institute</small></h4>
+
+<div class="row">
+	<div class="span4">
+		<ul class="media-grid">
+		<li><a href="f">
+			<img class="thumbnail" src="images/pirm_2018.png" alt="" /></a></li>
+		</ul>
+	</div>
+	<div class="span12">
+		<h3 id="Man"><a class="paper_link" href="https://arxiv.org/abs/1807.07930">Photorealistic Video Super Resolution</a></h3> 
+		<p>Eduardo Pérez-Pellitero, Mehdi S. M. Sajjadi, Michael Hirsch and Bernhard Schölkopf
+		<br> <button onclick="javascript:toggle(pirm18)">ECCV Workshop 2018 (PIRM)</button>
+<img class="bibtex_link" src="figures/bibtex.png" onclick="javascript:toggle(Perezpellitero2018);" />
+		<pre id="pirm18" class="invisible_bibtex">Workshop and Challenge on Perceptual Image Restoration and Manipulation (PIRM), ECCV 2018 in Munich </pre>
+		
+		<pre id="Perezpellitero2018" class="invisible_bibtex">
+@conference {Perezpellitero2016_2,
+  author = {Eduardo Pérez-Pellitero and Mehdi S. M. Sajjadi and Michael Hirsch and Bernhard Schölkopf},
+  title = {Photorealistic Video Super Resolution},
+  booktitle = {ECCV Workshop (PIRM)},
+  year = {2018},
+}</pre>
+		</p> 
+		<blockquote>
+			<p>
+			With the advent of perceptual loss functions, new possibilities in 
+			super-resolution have emerged, and we currently have models that 
+			successfully generate near-photorealistic high-resolution images
+from their low-resolution observations. Up to now, however, such approaches 
+have been exclusively limited to single image super-resolution.
+The application of perceptual loss functions on video processing still entails
+ several challenges, mostly related to the lack of temporal consistency 
+ of the generated images, i.e., flickering artifacts. In this work, we present
+a novel adversarial recurrent network for video upscaling that is able to
+produce realistic textures in a temporally consistent way. The proposed
+architecture naturally leverages information from previous frames due
+to its recurrent architecture, i.e. the input to the generator is composed
+of the low-resolution image and, additionally, the warped output of the
+network at the previous step. We also propose an additional loss function 
+to further reinforce temporal consistency in the generated sequences.
+The experimental validation of our algorithm shows the effectiveness of
+our approach which obtains competitive samples in terms of perceptual
+quality with improved temporal consistency.
+			</p>
+		</blockquote>
+		
+	</div>
+</div> <!-- /row -->
 
 
-<h4 id="year2017">2017</h4>
+
+<hr>
+<h4 id="year2017">2017 <small>Finished my PhD!</small></h4>
 
 <div class="row">
 	<div class="span4">
@@ -240,7 +292,7 @@ images from the statistics of natural images.
 
 
 
-
+<hr>
 <h4 id="year2016">2016</h4>
 
 <div class="row">
@@ -272,7 +324,7 @@ IEEE Conference on Computer Vision and Pattern Recognition, Las Vegas.
 			 In this paper we present a novel regression-based SR algorithm that benefits from an extended knowledge of the structure of both manifolds. We propose a transform that collapses the 16 variations induced from the dihedral group of transforms (i.e. rotations, vertical and horizontal reflections) and antipodality (i.e. diametrically opposed points in the unitary sphere) into a single primitive. The key idea of our transform is to study the different dihedral elements as a group of symmetries within the high-dimensional manifold. The experimental validation of our algorithm shows the effectiveness of our approach, which obtains competitive quality with a dictionary of as little as 32 atoms (reducing other methods' dictionaries by at least a factor of 32) and further pushing the state-of-the-art with a 1024 atoms dictionary.
 			</p>
 		</blockquote>
-<a href="https://bitbucket.org/EduPerez/psycosuperres" target="_blank"><span class="label important">Source Code Available!</span></a> - <i>New!</i>		
+<a href="https://bitbucket.org/EduPerez/psycosuperres" target="_blank"><span class="label important">Source Code Available!</span></a>	
 		
 	</div>
 </div> <!-- /row -->
@@ -312,7 +364,7 @@ month={June},
 			 In this paper we present a very fast regression-based algorithm which builds on densely populated anchored neighborhoods and sublinear search structures. Even though we validate the benefits of using antipodally invariant metrics, most of the binary splits use Euclidean distance, which does not handle antipodes optimally. In order to benefit from both worlds, we propose a simple yet effective Antipodally Invariant Transform (AIT) that can be easily included in the Euclidean distance calculation. We modify the original Spherical Hashing algorithm with this metric in our Antipodally Invariant Spherical Hashing scheme, obtaining the same performance as a pure antipodally invariant metric. We round up our contributions with a novel feature transform that obtains a better coarse approximation of the input image thanks to Iterative Back Projection.
 			</p>
 		</blockquote>
-		<a href="project_websites/ais_sr.html" target="_blank"><span class="label important">Project website</span></a> (code available) - <i>New!</i>
+		<a href="project_websites/ais_sr.html" target="_blank"><span class="label important">Project website</span></a> (code available)
 		
 	</div>
 </div> <!-- /row -->
@@ -348,7 +400,7 @@ IEEE Winter Conference on Applications of Computer Vision, Lake Placid, NY.
 			In this paper we study the characteristics of the metrics best suited for the piecewise regression algorithms, in which comparisons are usually made between normalized vectors that lie on the unitary hypersphere. Even though Euclidean distance has been widely used for this purpose, it is suboptimal since it does not handle antipodal points (i.e. diametrically opposite points) properly. Therefore, we propose the usage of antipodally invariant metrics and introduce the Half Hypersphere Confinement (HHC), a fast alternative to Multidimensional Scaling (MDS) that allows to map antipodally invariant distances in the Euclidean space with very little approximation error. The performance of our method, which we named HHC Regression (HHCR), applied to Super-Resolution (SR) improves both in quality (PSNR) and it is faster than any other state-of-the-art method. Additionally, under an application-agnostic interpretation of our regression framework, we also test our algorithm for denoising and depth upscaling with promising results.
 			</p>
 		</blockquote>
-		<a href="project_websites/ais_sr.html" target="_blank"><span class="label important">Project website</span></a> (code available) - <i>New!</i>
+		<a href="project_websites/ais_sr.html" target="_blank"><span class="label important">Project website</span></a> (code available)
 	</div>
 </div> <!-- /row -->
 <hr>
@@ -713,24 +765,6 @@ only the appearance of the object itself.
 </div> <!-- /container -->
 </section>   
 
-<section id="data">
-
-<div class="container span16">
-
-<div class="page-header">
-<h1>Data </h1>
-</div>
-
-<p> Choosing a super-resolution testing dataset can be somehow challenging. In the literature there are not standard or de facto datasets, and sometimes is difficult to find the original version of some commonly used images. In this section I will provide the datasets I have came across and used during my research, and I hope to be able to spend more time on this in the near future.
-</p>
-
-<ul>
-	<li><a href="https://r0k.us/graphics/kodak/">Kodak dataset</a>, 24 images of 768x512 px.</li>
-	<li><a href="https://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/resources.html#bsds500">Berkeley Segmentation Data Set(BSDS500)</a>, 500 images of 320x480 px containing some of the most used images in literature.</li>
-	<li><a href="data/training_Yang_2010.zip">J. Yang training set</a>, a training dataset with a growing use in sparse super-resolution algorithms. Composed by 69 images which have been cropped selecting high frequency content.</li>
-</ul>
-</div> <!-- /container -->
-
 
 <section id="contact">
 <div class="container span16">
@@ -740,10 +774,9 @@ only the appearance of the object itself.
 
 <div class="row">
 	<div class="span12">
-		<p>Office N4.001<br>
-		+49 7071 601 1836 <br>
+		<p>Office N1.012<br>
 		Empirical Inference Department, Max Planck Institute for Intelligent Systems <br>
-		Spemannstr. 34 <br>
+		Max-Planck-Ring 4 <br>
 		72076 Tübingen <br>
 		Germany <br>	
 		<!--ROT13 encrypted email address-->
