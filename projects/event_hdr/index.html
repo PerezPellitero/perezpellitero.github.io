@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Eduardo  Pérez Pellitero | Ntire_report</title>
+<title>Eduardo  Pérez Pellitero | Event-based HDR</title>
 <meta name="description" content="Eduardo's personal website.
 ">
 
@@ -32,7 +32,7 @@
 
 <link rel="stylesheet" href="/assets/css/main.css">
 
-<link rel="canonical" href="/news/21-06-19-ntire_report/">
+<link rel="canonical" href="/projects/event_hdr/">
 
 <!-- JQuery -->
 <!-- jQuery -->
@@ -126,32 +126,93 @@
     <!-- Content -->
 
     <div class="container mt-5">
+      <div class="post">
+  <article>
+    <center>
+
+<h2>
+<b>HDR Reconstruction from Bracketed Exposures and Events</b><br>
+</h2>
+<h5>BMVC 2022</h5>
+               
+<br> 
+
+<a href="https://scholar.google.com/citations?user=9qqtzK4AAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Richard Shaw</a>
+  
+<a href="https://sib1.github.io/" target="_blank" rel="noopener noreferrer">Sibi Catley-Chandar</a>
+  
+<a href="https://scholar.google.com/citations?user=BEFl4j0AAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Aleš Leonardis</a>
+  
+<a href="https://perezpellitero.github.io/">Eduardo Pérez-Pellitero</a>
+
+<br>
+Huawei Noah’s Ark Lab
+<br><br>
+
+
+<div class="row links-list justify-content-center">
+    
+    <div class="col-auto mt-3 mt-md-0">
+    	<a href="https://arxiv.org/abs/2203.14825" target="_blank" rel="noopener noreferrer">
+        <img src="/assets/img/eventhdr22/paper-thumb.png" height="150px" alt="paper" title="arXiv">
+        <br><p>ArXiv</p>
+        </a>
+    </div>
+    
+
+    <div class="col-auto mt-3 mt-md-0">
+    	<a href="#">
+        <img src="/assets/img/eventhdr22/poster-thumb.png" height="150px" alt="paper poster" title="Poster (coming soon)">
+        <br><p>Poster</p>
+        </a>
+    </div>
+    
+</div>
       
+<br>
+</center>
 
+<hr>
+<h4 id="tldr">TLDR</h4>
+<p>Multimodal camera system that uses neuromorphic (event-based) sensor together with bracketed RGB images to obtain state-of-the-art quality, surpassing methods using single sensors or bi-sensors without frame bracketing.</p>
 
+<div class="row mt-3">
+    <div class="col-sm mt-6 mt-md-0">
+        <picture>
+    
+    <source media="(max-width: 480px)" srcset="/assets/resized/figure1-480x146.png"></source>
+    
+    <source media="(max-width: 800px)" srcset="/assets/resized/figure1-800x243.png"></source>
+    
+    <source media="(max-width: 1400px)" srcset="/assets/resized/figure1-1400x426.png"></source>
+    
+    <img class="img-fluid rounded z-depth-1" src="/assets/img/eventhdr22/figure1.png" data-zoomable="">
+</picture>
 
+    </div>
+</div>
+<div class="caption">
+    Our learning-based method produces high-quality HDR images, leveraging bracketed LDRs and events.
+</div>
 
+<h4 id="abstract">Abstract</h4>
+<p align="justify">
+Reconstruction of high-quality HDR images is at the core of modern computational photography. Significant progress has been made with multi-frame HDR reconstruction methods, producing high-resolution, rich and accurate colour reconstructions with high-frequency details. However, they are still prone to fail in dynamic or largely over-exposed scenes, where frame misalignment often results in visible ghosting artifacts. Recent approaches attempt to alleviate this by utilizing an event-based camera (EBC), which measures only binary changes of illuminations. Despite their desirable high temporal resolution and dynamic range characteristics, such approaches have not outperformed traditional multi-frame reconstruction methods, mainly due to the lack of colour information and low-resolution sensors. In this paper, we propose to leverage both bracketed LDR images and simultaneously captured events to obtain the best of both worlds: high-quality RGB information from bracketed LDRs and complementary high frequency and dynamic range information from events. We present a multi-modal end-to-end learning-based HDR imaging system that fuses bracketed images and event modalities in the feature domain using attention and multi-scale spatial alignment modules. We propose a novel event-to-image feature distillation module that learns to translate event features into the image-feature space with self-supervision. Our framework exploits the higher temporal resolution of events by sub-sampling the event streams using a sliding window, enriching our combined feature representation. Our proposed approach surpasses state-of-the-art (SoTA) multi-frame HDR reconstruction methods using synthetic and real events, with a 2dB and 1dB improvement in PSNR-L and PSNR-$\mu$ on the HdM HDR dataset, respectively.
+</p>
 
-<div class="post">
+<p><br></p>
 
-  <header class="post-header">
-    <h1 class="post-title">Ntire_report</h1>
-    <p class="post-meta">June 19, 2021</p>
-    <p class="post-tags">
-      <a href="/blog/2021"> <i class="fas fa-calendar fa-sm"></i> 2021 </a>
-      
+<h4 id="bibtex-citation">BibTeX Citation</h4>
 
-      
-
-    </p>
-  </header>
-
-  <article class="post-content">
-    <p>The <a href="https://data.vision.ee.ethz.ch/cvl/ntire21/" target="_blank" rel="noopener noreferrer">NTIRE workshop</a> has finished with plenty of community engagement for the first <a href="https://competitions.codalab.org/competitions/28162" target="_blank" rel="noopener noreferrer">HDR Challenge</a>. Please check our <a href="http://arxiv.org/abs/2106.01439" target="_blank" rel="noopener noreferrer">report paper</a>.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@article{shaw2022eventhdr, 
+	title={HDR Reconstruction from Bracketed Exposures and Events},
+	author={Richard Shaw, Sibi Catley-Chandar, Ales Leonardis and Eduardo P\'erez-Pellitero},
+	journal={BMVC 2022}, 
+	year={2022}, 
+}
+</code></pre></div></div>
 
   </article>
-
-  
 
 </div>
 
