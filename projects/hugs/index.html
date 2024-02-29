@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Human Gaussian Splatting: Real-time Rendering of Animatable Avatars">
+  <meta name="keywords" content="Gaussian Splatting, Human Avatar, Dynamic">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Human Gaussian Splatting: Real-time Rendering of Animatable Avatars</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Human Gaussian Splatting: Real-time Rendering of Animatable Avatars</h1>
+		  <h3 style="color:#5a6268;" class="title is-3">CVPR 2024 </h3>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=fMmoHX0AAAAJ&hl=en">Arthur Moreau</a>*,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=9a1PjCIAAAAJ&hl=en">Jifei Song</a>*,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.de/citations?user=oggfqsYAAAAJ&hl=en">Helisa Dhamo</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=9qqtzK4AAAAJ&hl=en">Richard Shaw</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=sZU8ZsQAAAAJ&hl=en">Yiren Zhou</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://perezpellitero.github.io/">Eduardo Pérez-Pellitero</a>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Huawei Noah's Ark Lab (London)</span>
+          </div>
+
+          <div class="is-size-10 publication-authors">
+            * equal contribution
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2311.17113.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2311.17113"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=R3CHg46SIfo"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <b>27/02/2024 : We are very happy to announce that HuGS has been accepted for publication at CVPR 2024 !</b>
+</div>
+</section>
+
+
+<section class="hero is-small">
+  <div class="container">
+    <img src="./static/images/teaser.png"
+              class="teaser-image"
+              alt="HuGS teaser"/>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            This work addresses the problem of real-time rendering of photorealistic human body avatars 
+            learned from multi-view videos. 
+          </p>
+          <p>
+            While the classical approaches to model and render virtual humans generally use a textured mesh, recent research has developed neural body representations that achieve impressive visual quality. 
+            However, these models are difficult to render in real-time and their quality degrades when the character is animated with body poses different than the training observations.
+            We propose an animatable human model based on 3D Gaussian Splatting, that has recently emerged as a very efficient alternative to neural radiance fields. 
+          </p>
+          <p>
+            Our body is represented by a set of gaussian primitives in a canonical space which are deformed in a coarse to fine approach that combines forward skinning and local non-rigid refinement.
+            We describe how to learn our Human Gaussian Splatting model in an end-to-end fashion from multi-view observations, and evaluate it against the state-of-the-art approaches for novel pose synthesis of clothed body.
+            Our method presents a PSNR 1.5dbB better than the state-of-the-art on THuman4 dataset while being able to render at 20fps or more.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </section>
+
+  <section class="hero is-small">
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        <div class="method-figure">
+          <img src="./static/images/main_figure.png"
+            class="teaser-image"
+            alt="HuGS teaser"/>
+        </div>
+      </div>
+    </div>
+    <!--/ Method. -->
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/R3CHg46SIfo?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+<!-- Concurrent Work. -->
+<div class="columns is-centered has-text-centered">
+  <div class="column is-four-fifths">
+    <h2 class="title is-3">Related Links</h2>
+
+    <div class="content has-text-justified has-text-centered">
+      <p>
+        Check out the related works on Gaussian Splatting from our group : <a href="https://arxiv.org/pdf/2312.02902.pdf">HeadGas</a> is an animatable face avatar
+        and <a href="https://arxiv.org/pdf/2312.13308.pdf">SWAGS</a> addresses dynamic view synthesis with adaptive windows.
+      </p>
+      <p>
+        There have been a wide-spread interest in gaussian-based body models and many related great works have been released around the same time than ours.
+        We have listed <a href="https://zielon.github.io/d3ga/">D3GA</a>, <a href="https://jenaroh.it/splatarmor/">SplatArmor</a>, <a href="https://animatable-gaussians.github.io/">Animatable Gaussians</a>,
+        <a href="https://www.cis.upenn.edu/~leijh/projects/gart/">GART</a>, <a href="https://jimmyyliu.github.io/Animatable-3D-Gaussian/">Animatable 3D Gaussian</a>, 
+        <a href="https://machinelearning.apple.com/research/hugs/">Human Gaussian Splats</a>, <a href="https://vcai.mpi-inf.mpg.de/projects/ash/">ASH</a>, 
+        <a href="https://neuralbodies.github.io/3DGS-Avatar/">3DGS-Avatar</a>, <a href="https://longxiang-ai.github.io/Human101/">Human101</a>, <a href="https://arxiv.org/pdf/2312.15059.pdf">ParDy-Human</a>, 
+        <a href="https://arxiv.org/pdf/2401.09720.pdf">GaussianBody</a>, <a href="https://huliangxiao.github.io/GaussianAvatar">Gaussian Avatar</a> and <a href="https://nowheretrix.github.io/HiFi4G/">HiFi4G</a>.
+      </p>
+      <p>
+        Check out <a href="https://github.com/MrNeRF/awesome-3D-gaussian-splatting">Awesome 3D Gaussian Splatting</a> for a complete summary.
+      </p>
+      
+    </div>
+  </div>
+</div>
+<!--/ Concurrent Work. -->
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{moreau2023human,
+  title={Human gaussian splatting: Real-time rendering of animatable avatars},
+  author={Moreau, Arthur and Song, Jifei and Dhamo, Helisa and Shaw, Richard and Zhou, Yiren and P{\'e}rez-Pellitero, Eduardo},
+  journal={arXiv:2311.17113 [cs.CV]},
+  year={2023}
+}
+	
+@inproceedings{moreau2023human,
+  title={Human gaussian splatting: Real-time rendering of animatable avatars},
+  author={Moreau, Arthur and Song, Jifei and Dhamo, Helisa and Shaw, Richard and Zhou, Yiren and P{\'e}rez-Pellitero, Eduardo},
+  booktitle={CVPR},
+  year={2024}
+}</code></pre>
+  </div>
+</section>
+
+<section class="section" id="License">
+  <div class="container">
+      <p> This website is adapted from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>, licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+        Commons Attribution-ShareAlike 4.0 International License</a>.
+      </p>
+  </div>
+</section>
+
+</body>
+</html>
