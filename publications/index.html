@@ -241,7 +241,7 @@ img{
             
               
                 
-                  <a href="https://zhongqunzhang.github.io/" target="_blank" rel="noopener noreferrer">Z Zhang</a>,
+                  <a href="https://zhangzhensong.github.io/" target="_blank" rel="noopener noreferrer">Z Zhang</a>,
                 
               
             
@@ -531,7 +531,7 @@ img{
             
               
                 
-                  <a href="https://zhongqunzhang.github.io/" target="_blank" rel="noopener noreferrer">Z Zhang</a>,
+                  <a href="https://zhangzhensong.github.io/" target="_blank" rel="noopener noreferrer">Z Zhang</a>,
                 
               
             
@@ -589,6 +589,215 @@ img{
     
     <div class="abstract hidden">
       <p>We present GASPACHO: a method for generating photorealistic controllable renderings of human-object interactions. Given a set of multi-view RGB images of human-object interactions, our method reconstructs animatable templates of the human and object as separate sets of Gaussians simultaneously. Different from existing work, which focuses on human reconstruction and ignores objects as background, our method explicitly reconstructs both humans and objects, thereby allowing for controllable renderings of novel human object interactions in different poses from novel-camera viewpoints. During reconstruction, we constrain the Gaussians that generate rendered images to be a linear function of a set of canonical Gaussians. By simply changing the parameters of the linear deformation functions after training, our method can generate renderings of novel human-object interaction in novel poses from novel camera viewpoints. We learn the 3D Gaussian properties of the canonical Gaussians on the underlying 2D manifold of the canonical human and object templates. This in turns requires a canonical object template with a fixed UV unwrapping. To define such an object template, we use a feature based representation to track the object across the multi-view sequence. We further propose an occlusion aware photometric loss that allows for reconstructions under significant occlusions. Several experiments on two human-object datasets - BEHAVE and DNA-Rendering - demonstrate that our method allows for high-quality reconstruction of human and object templates under significant occlusion and the synthesis of controllable renderings of novel human-object interactions in novel human poses from novel camera views.</p>
+    </div>
+    
+  </div>
+</div>
+<br>
+
+</li>
+<li>
+<style>
+img{
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	width:100%;
+}
+</style>
+<div class="row">
+  <div class="col-sm-3">
+  
+  
+  
+  <td style="padding:0.0%;vertical-align:top;min-width:auto">
+              <img src="/assets/img/3dv2025.gif" alt="project image">
+  </td>
+  
+  </div>
+
+  <div id="Zhang2025" class="col-sm-9">
+    
+      <div class="title">FORCE: Physics-aware Human-object Interaction</div>
+      <div class="author">
+        
+          
+          
+          
+          
+            
+              
+            
+              
+            
+              
+                
+                
+          
+          
+          
+            
+              
+                
+                  <a href="https://virtualhumans.mpi-inf.mpg.de/people/Zhang.html" target="_blank" rel="noopener noreferrer">X Zhang</a>,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+          
+          
+            
+              
+                
+                  BL Bhatnagar,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+          
+          
+            
+              
+                
+                  S Starke,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+          
+          
+            
+              
+                
+                  IA Petrov,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+          
+          
+            
+              
+                
+                  V Guzov,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+            
+              
+                
+                
+          
+          
+          
+            
+              
+                
+                  <a href="https://scholar.google.de/citations?user=oggfqsYAAAAJ" target="_blank" rel="noopener noreferrer">H Dhamo</a>,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+          
+          
+            
+              
+                <em>E Pérez-Pellitero</em>,
+              
+            
+          
+        
+          
+          
+          
+          
+            
+              
+                
+                
+          
+          
+          
+            
+              
+                
+                  and <a href="https://virtualhumans.mpi-inf.mpg.de/people/pons-moll.html" target="_blank" rel="noopener noreferrer">G Pons-Moll</a>
+                
+              
+            
+          
+        
+      </div>
+
+      <div class="periodical">
+      
+        <em>3DV,</em>
+      
+	  
+      
+        2025
+      
+      </div>
+    
+
+    <div class="links">
+    
+      <a class="abstract btn btn-sm z-depth-1" role="button">Abs</a>
+    
+    
+      <a href="http://arxiv.org/abs/2403.11237" class="btn btn-sm z-depth-1" role="button" target="_blank" rel="noopener noreferrer">arXiv</a>
+    
+    
+	
+    
+      
+      <a href="https://openreview.net/attachment?id=Y2SblTyTxd&amp;name=pdf" class="btn btn-sm z-depth-1" role="button" target="_blank" rel="noopener noreferrer">PDF</a>
+      
+    
+    
+    
+    
+    
+    
+    
+      <a href="https://virtualhumans.mpi-inf.mpg.de/force/" class="btn btn-sm z-depth-1" role="button" target="_blank" rel="noopener noreferrer">Website</a>
+    
+    </div>
+
+    <!-- Hidden abstract block -->
+    
+    <div class="abstract hidden">
+      <p>Interactions between human and objects are influenced not only by the object’s pose and shape, but also by physical attributes such as object mass and surface friction. They introduce important motion nuances that are essential for diversity and realism. Despite advancements in recent human-object interaction methods, this aspect has been overlooked.Generating nuanced human motion presents two challenges. First, it is non-trivial to learn from multi-modal human and object information derived from both the physical and non-physical attributes. Second, there exists no dataset capturing nuanced human interactions with objects of varying physical properties, hampering model development.This work addresses the gap by introducing the FORCE model, an approach for synthesizing diverse, nuanced human-object interactions by modeling physical attributes. Our key insight is that human motion is dictated by the interrelation between the force exerted by the human and the perceived resistance. Guided by a novel intuitive physics encoding, the model captures the interplay between human force and resistance. Experiments also demonstrate incorporating human force facilitates learning multi-class motion.Accompanying our model, we contribute the a dataset, which features diverse, different-styled motion through interactions with varying resistances. Our code, dataset, and models will be released to foster future research.</p>
     </div>
     
   </div>
@@ -724,7 +933,7 @@ img{
             
               
                 
-                  <a href="https://zhongqunzhang.github.io/" target="_blank" rel="noopener noreferrer">Z Zhang</a>,
+                  <a href="https://zhangzhensong.github.io/" target="_blank" rel="noopener noreferrer">Z Zhang</a>,
                 
               
             
@@ -939,7 +1148,7 @@ img{
             
               
                 
-                  <a href="https://zhongqunzhang.github.io/" target="_blank" rel="noopener noreferrer">Z Zhang</a>,
+                  <a href="https://zhangzhensong.github.io/" target="_blank" rel="noopener noreferrer">Z Zhang</a>,
                 
               
             
@@ -2192,6 +2401,8 @@ img{
           
             
               
+            
+              
                 
                 
           
@@ -2200,7 +2411,7 @@ img{
             
               
                 
-                  <a href="https://zhongqunzhang.github.io/" target="_blank" rel="noopener noreferrer">Z Zhang</a>,
+                  <a href="https://zhongqunzhang.github.io/" target="_blank" rel="noopener noreferrer">Z. Zhang</a>,
                 
               
             
@@ -2373,14 +2584,15 @@ img{
           
             
               
-            
+                
+                
           
           
           
             
               
                 
-                  YK Jang,
+                  <a href="https://youngkyoonjang.bitbucket.io/" target="_blank" rel="noopener noreferrer">Y Jang</a>,
                 
               
             
