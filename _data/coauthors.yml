@@ -1,34 +1,113 @@
-"adams":
-  - firstname: ["Edwin", "E.", "E. P.", "Edwin Plimpton"]
-    url: https://en.wikipedia.org/wiki/Edwin_Plimpton_Adams
+"catley-chandar":
+  - firstname: ["Sibi", "S.", "S"]
+    url: https://sib1.github.io/
 
-"podolsky":
-  - firstname: ["Boris", "B.", "B. Y.", "Boris Yakovlevich"]
-    url: https://en.wikipedia.org/wiki/Boris_Podolsky
+"conde":
+  - firstname: ["Marcos V.", "M V", "M. V."]
+    url: https://mv-lab.github.io/
+    
+"dhamo":
+  - firstname: ["Helisa", "H.", "H"]
+    url: https://scholar.google.de/citations?user=oggfqsYAAAAJ
+    
+"hirsch":
+  - firstname: ["Michael","M", "M."]
+    url: https://ei.is.tuebingen.mpg.de/person/mhirsch
+    
+"leonardis":
+  - firstname: ["Ales","A", "A."]
+    url: https://www.cs.bham.ac.uk/~leonarda/
 
-"rosen":
-  - firstname: ["Nathan", "N."]
-    url: https://en.wikipedia.org/wiki/Nathan_Rosen
+"maggioni":
+  - firstname: ["Matteo","M", "M."]
+    url: https://www.linkedin.com/in/matteo-maggioni-026b4918
+    
+"mcdonagh":
+  - firstname: ["Steven","S", "S."]
+    url: https://smcdonagh.github.io/
 
-"bach":
-  - firstname: ["Johann Sebastian", "J. S."]
-    url: https://en.wikipedia.org/wiki/Johann_Sebastian_Bach
+"mir":
+  - firstname: ["Aymen", "A", "A."]
+    url: https://miraymen.github.io/  
+    
+"moreau":
+  - firstname: ["Arthur", "A", "A."]
+    url: https://scholar.google.com/citations?user=fMmoHX0AAAAJ
+    
+"nazarczuk":
+  - firstname: ["Michal", "M", "M."]
+    url: https://github.com/michaal94/
 
-  - firstname: ["Carl Philipp Emanuel", "C. P. E."]
-    url: https://en.wikipedia.org/wiki/Carl_Philipp_Emanuel_Bach
+"nie":
+  - firstname: ["Yinyu", "Y.", "Y"]
+    url: https://yinyunie.github.io/
 
-"przibram":
-  - firstname: ["Karl"]
-    url: https://link.springer.com/article/10.1007/s00016-019-00242-z
+"papaioannou":
+  - firstname: ["Athanasios", "A.", "A"]
+    url: https://apapaion.github.io/
 
-"schrodinger":
-  - firstname: ["Erwin"]
-    url: https://en.wikipedia.org/wiki/Erwin_Schr%C3%B6dinger
+"pons-moll":
+  - firstname: ["Gerard", "G.", "G"]
+    url: https://virtualhumans.mpi-inf.mpg.de/people/pons-moll.html
+    
+"shaw":
+  - firstname: ["Richard", "R", "R."]
+    url: https://scholar.google.com/citations?user=9qqtzK4AAAAJ&hl=en
 
-"lorentz":
-  - firstname: ["Hendrik Antoon"]
-    url: https://en.wikipedia.org/wiki/Hendrik_Lorentz
+"ruiz-hidalgo":
+  - firstname: ["Javier", "J", "J."]
+    url: https://imatge.upc.edu/web/people/javier-ruiz-hidalgo
+ 
+"rosenhahn":
+  - firstname: ["Bodo", "B", "B."]
+    url: https://www.tnt.uni-hannover.de/staff/rosenhahn/
+    
+"sajjadi":
+  - firstname: ["M S M"]
+    url: https://msajjadi.com/
 
-"planck":
-  - firstname: ["Max"]
-    url: https://en.wikipedia.org/wiki/Max_Planck
+"salvador":
+  - firstname: ["Jordi", "J", "J."]
+    url: https://jordisalvador-image.blogspot.com/
+    
+"scholkopf":
+  - firstname: ["Bernhard", "B", "B."]
+    url: https://is.mpg.de/~bs
+
+"shin":
+  - firstname: ["Jisu", "J", "J."]
+    url: https://jsshin.com/
+
+"slabaugh":
+  - firstname: ["Gregory", "G"]
+    url: https://www.eecs.qmul.ac.uk/~gslabaugh/
+
+"song":
+  - firstname: ["Jifei", "J", "J."]
+    url: https://scholar.google.com/citations?user=9a1PjCIAAAAJ
+    
+"tanay":
+  - firstname: ["Thomas", "T"]
+    url: https://thomas-tanay.github.io/
+
+"timofte":
+  - firstname: ["Radu", "R", "R."]
+    url: https://people.ee.ethz.ch/~timofter/
+ 
+"jang":
+  - firstname: ["Youngkyoon", "Y.", "Y"]
+    url: https://youngkyoonjang.bitbucket.io/
+ 
+"zhang":
+  - firstname: ["Zhensong", "Z"]
+    url: https://zhangzhensong.github.io/
+    
+  - firstname: ["Zhongqun", "Z.", "Z"]
+    url: https://zhongqunzhang.github.io/
+  
+  - firstname: ["Xiaohan", "X"]
+    url: https://virtualhumans.mpi-inf.mpg.de/people/Zhang.html
+    
+"zhou":
+  - firstname: ["Yiren", "Y.", "Y"]
+    url: https://scholar.google.com.sg/citations?hl=en&user=sZU8ZsQAAAAJ

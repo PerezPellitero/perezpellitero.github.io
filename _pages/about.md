@@ -2,33 +2,34 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: Principal Research Scientist • Huawei (UK)
 
 profile:
   align: right
-  image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+  image: profile_0422.png
+  image_circular: false 
+  address:
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+selected_papers: false # includes a list of papers marked as "selected={true}"
+social: false # includes social icons at the bottom of the page
 
 announcements:
   enabled: true # includes a list of news items
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
+  limit: 10 # leave blank to include all the news in the `_news` folder
 
 latest_posts:
-  enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
+  enabled: false
+  scrollable: false # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
-
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](https://www.reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
-
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
-
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+<p align="justify">
+I am a Principal Research Scientist at London's Noah's Ark Lab (<a href="https://www.huawei.com/en/corporate-information" class="page-description" target="_blank">Huawei</a>), where I lead the Enhanced 3D Imaging Group.</p>
+<p align="justify">
+Previously I was a postdoctoral researcher at the Empirical Inference department of the Max Planck Institute for Intelligent Systems, directed by Bernhard Schölkopf, more specifically working within the Computational Imaging Group.
+Before that, I spent some time having fun and doing my PhD somewhere in between the TNT Lab of Leibniz Universität Hannover and Technicolor R&I, where I did research on manifold learning for Super Resolution applications.</p>
+<p align="justify">
+My research interests include computational photography, 3D representations, high-dynamic-range imaging, differentiable rendering, and machine learning. In a broader sense, I am interested in any model that allows us to dissect, analyse and play around with the digital image formation process.</p>
+<p align="justify">
+Apart from research, you can find me regularly training and teaching historical fencing at the <a href="https://londonhistoricalfencing.club/instructors">London Historical Fencing Club</a>, playing electric bass with the <a href="https://www.eastlondoncommunityband.co.uk/who-we-are">East London Comunity Big Band</a>, or paddling a sea kayak in the tidal Thames with the <a href="https://www.towerhamletscanoeclub.co.uk/wiki/THCC">Tower Hamlets Canoe Club</a>.
+</p>

@@ -1,0 +1,7 @@
+---
+layout: post
+date: 2024-09-29 15:59:00-0400
+inline: true
+---
+
+The <a href="https://www.cvlai.net/aim/2024/">AIM 2024</a> <a href="https://codalab.lisn.upsaclay.fr/competitions/19222">Challenge on Neural Rendering</a> has finished (check our <a href="https://arxiv.org/abs/2409.15041">paper</a>). The evaluation platform is now reachable at <a href="https://sparebenchmark.github.io/">SpaRe (Sparse Rendering) dataset and benchmark</a>, please consider using it in your next submission (<a href="https://arxiv.org/abs/2409.15045">more details</a>)!

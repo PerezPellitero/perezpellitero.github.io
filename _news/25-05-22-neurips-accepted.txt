@@ -1,0 +1,7 @@
+---
+layout: post
+date: 2025-09-22 07:59:00-0400
+inline: true
+---
+
+Our work on Mono 4DGS via diffusion <a href="https://arxiv.org/abs/2506.18792">ViDAR</a> is accepted to <a href="https://neurips.cc/Conferences/2025/">NeurIPS 2025</a>! Check our <a href="https://vidar-4d.github.io/">project page</a>.

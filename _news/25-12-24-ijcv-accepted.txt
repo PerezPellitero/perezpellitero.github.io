@@ -1,0 +1,7 @@
+---
+layout: post
+date: 2025-12-24 07:59:00-0400
+inline: true
+---
+
+Our real-time interactive conversational avatar <a href="/assets/pdf/Shaw2026ijcv_accepted_manuscript.pdf">ICo3D</a> has been accepted to <a href="https://link.springer.com/journal/11263">IJCV</a>. Check our <a href="https://ico3d.github.io">project page</a>.

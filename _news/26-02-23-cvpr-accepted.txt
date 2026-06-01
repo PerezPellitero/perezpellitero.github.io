@@ -1,0 +1,7 @@
+---
+layout: post
+date: 2026-02-23 13:00:00-0000
+inline: true
+---
+
+Two papers accepted to <a href="https://cvpr.thecvf.com/Conferences/2026">CVPR</a>: (1) <a href="https://arthurmoreau.github.io/OffTheGrid/">OffTheGrid</a>, a new approach to allocate primitives freely outside pixel/voxel grids, and (2) <a href="https://charge-benchmark.github.io/">Charge</a>, a comprehensive dynamic dataset and benchmark for 3D & 4D.

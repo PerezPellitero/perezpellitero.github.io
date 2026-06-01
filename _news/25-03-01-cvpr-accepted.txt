@@ -1,0 +1,7 @@
+---
+layout: post
+date: 2025-03-01 07:59:00-0400
+inline: true
+---
+
+My team had 2 papers accepted at <a href="https://cvpr.thecvf.com/Conferences/2025">CVPR</a>: (1) <a href="https://youngkyoonjang.github.io/projects/comapgs/">CoMapGS</a> for co-visibility driven sparse reconstruction, and (2) <a href="https://dashgaussian.github.io/">DashGS</a> for fast reconstruction.

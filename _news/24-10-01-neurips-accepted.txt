@@ -1,0 +1,7 @@
+---
+layout: post
+date: 2024-10-01 07:59:00-0400
+inline: true
+---
+
+<a href="https://github.com/Junggy/SCRREAM">SCRREAM (SCan, Register, REnder And MAp)</a> is accepted to the <a href="https://neurips.cc/Conferences/2024">NeurIPS</a> <a href="https://neurips.cc/Conferences/2024/CallForDatasetsBenchmarks">Dataset and Benchmarks Track</a>.

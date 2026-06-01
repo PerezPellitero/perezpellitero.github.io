@@ -1,0 +1,7 @@
+---
+layout: post
+date: 2024-11-06 07:59:00-0400
+inline: true
+---
+
+Our work on physics-guided human-object interaction <a href="https://virtualhumans.mpi-inf.mpg.de/force/">FORCE</a> is accepted to <a href="https://3dvconf.github.io/2025/">3DV</a> !

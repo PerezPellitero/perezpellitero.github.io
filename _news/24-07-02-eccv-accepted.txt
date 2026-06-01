@@ -1,0 +1,7 @@
+---
+layout: post
+date: 2024-07-02 07:59:00-0400
+inline: true
+---
+
+Three papers accepted to <a href="https://eccv2024.ecva.net/">ECCV 2024</a>: <a href="https://sib1.github.io/projects/roguenerf/">RoGUENeRF</a>, <a href="https://arxiv.org/abs/2312.13308">SWinGS</a> and <a href="https://arxiv.org/abs/2312.02902">HeadGaS</a>! Stay tuned for updated project page and pre-prints!

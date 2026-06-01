@@ -1,0 +1,7 @@
+---
+layout: post
+date: 2026-04-17 13:00:00-0000
+inline: true
+---
+
+Two papers accepted to <a href="https://cvpr.thecvf.com/Conferences/2026">CVPR</a> Findings: (1) <a href="https://thomas-tanay.github.io/grvs">GRVS</a>, a recurrent architecture towards dynamic NVS, and (2) <a href="https://arxiv.org/abs/2601.11442">Map2Thought</a>, where we explore explicit spatial reasoning in VLMs.

@@ -68,22 +68,33 @@
       }
 
       .title {
-        font-weight: bolder;
+        font-weight: 500;
       }
 
       .author {
+        font-size: 0.9rem;
         a {
-          border-bottom: 1px dashed var(--global-theme-color);
+          color: var(--global-text-color);
+          border-bottom: none;
+          text-decoration: none;
 
           &:hover {
-            border-bottom-style: solid;
+            color:var(--global-theme-color);
+            border-bottom: none;
             text-decoration: none;
           }
         }
 
         > em {
+          font-weight: bolder;
+          color: var(--global-text-color);
           border-bottom: 1px solid;
           font-style: normal;
+
+          &:hover {
+            color: var(--global-text-color);
+            border-bottom: 1px solid;
+          }
         }
 
         > span.more-authors {

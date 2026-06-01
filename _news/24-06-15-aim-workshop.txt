@@ -1,0 +1,7 @@
+---
+layout: post
+date: 2024-06-15 07:59:00-0400
+inline: true
+---
+
+We are co-organizing the <a href="https://cvlai.net/aim/2024/">AIM Workshop</a> for <a href="https://eccv2024.ecva.net/">ECCV 2024</a>, with a <a href="https://www.youtube.com/watch?v=NvPIV71VIDk">Generalizable Sparse Neural Rendering</a> challenge (<a href="https://codalab.lisn.upsaclay.fr/competitions/19222">3 view</a> and <a href="https://codalab.lisn.upsaclay.fr/competitions/19223">9 view</a>). Download our newly released DTU++ dataset and participate!

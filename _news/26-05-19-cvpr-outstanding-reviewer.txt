@@ -1,0 +1,7 @@
+---
+layout: post
+date: 2026-5-19 07:59:00+0100
+inline: true
+---
+
+I have been selected as an <a href="https://cvpr.thecvf.com/Conferences/2026/ProgramCommittee">Outstanding Reviewer</a> for <a href="https://iccv.thecvf.com/Conferences/2025">CVPR 2026</a>.
