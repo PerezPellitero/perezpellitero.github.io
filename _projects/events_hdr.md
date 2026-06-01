@@ -35,7 +35,6 @@ Huawei Noah’s Ark Lab
         </a>
     </div>
 
-
     <div class="col-auto mt-3 mt-md-0">
     	<a href="https://bmvc2022.mpi-inf.mpg.de/0603_poster.pdf">
         <img src="/assets/img/eventhdr22/poster-thumb.png" height="150px" alt="paper poster" title="Poster"/>
