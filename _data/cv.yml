@@ -6,7 +6,7 @@ cv:
         location: London, UK
         url: "https://www.noahlab.com.hk/"
         start_date: "2019"
-        end_date: "now"
+        end_date: "present"
         summary: Team lead of the 3D Imaging Group, working on new and exciting 3D & 4D challenges.
         highlights:
           - Publications @ NeurIPS, CVPR, ECCV, ICLR, IJCV, TIP
