@@ -7,7 +7,7 @@ subtitle: Principal Research Scientist • Huawei (UK)
 profile:
   align: right
   image: profile_0422.png
-  image_circular: false 
+  image_circular: false
   address:
 
 selected_papers: false # includes a list of papers marked as "selected={true}"
@@ -23,6 +23,7 @@ latest_posts:
   scrollable: false # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
+
 <p align="justify">
 I am a Principal Research Scientist at London's Noah's Ark Lab (<a href="https://www.huawei.com/en/corporate-information" class="page-description" target="_blank">Huawei</a>), where I lead the Enhanced 3D Imaging Group.</p>
 <p align="justify">

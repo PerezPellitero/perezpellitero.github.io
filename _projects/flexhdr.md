@@ -12,7 +12,7 @@ category: paper
 <h2><b>FlexHDR: Modelling Alignment and<br>Exposure Uncertainties for Flexible HDR Imaging</b></h2>
 <h5>IEEE Transactions On Image Processing 2022</h5>
 
-<br> 
+<br>
 
 <a href="https://scholar.google.com/citations?user=RvAaCDEAAAAJ&hl=en">Sibi Catley-Chandar</a>
 &nbsp;&nbsp;
@@ -29,7 +29,6 @@ Huawei Noah’s Ark Lab <br>
 Queen Mary, University of London
 <br><br>
 
-
 <div class="row links-list justify-content-center">
 
     <div class="col-auto mt-3 mt-md-0">
@@ -38,7 +37,7 @@ Queen Mary, University of London
         <br><p>Journal</p>
         </a>
     </div>
-    
+
     <div class="col-auto mt-3 mt-md-0">
     	<a href="https://arxiv.org/abs/2201.02625">
         <img  src="/assets/img/flexhdr/paper.png" height="120px" title="ArXiv"/>
@@ -52,7 +51,7 @@ Queen Mary, University of London
         <br><p>Image Results</p>
         </a>
     </div>
-    
+
 </div>
       
 </center>
@@ -71,7 +70,6 @@ High dynamic range (HDR) imaging is of fundamental importance in modern digital 
 <div class="caption">Our model architecture consists of a HDR flow network, uncertinaty aware attention and multi-stage fusion. Our model accepts any number of LDR images as input.
 </div>
 <br>
-
 
 #### Results
 
@@ -110,8 +108,8 @@ High dynamic range (HDR) imaging is of fundamental importance in modern digital 
 ```
 @article{catleychandar2022,
   author={Catley-Chandar, Sibi and Tanay, Thomas and Vandroux, Lucas and Leonardis, Ales and Slabaugh, Gregory and P\'erez-Pellitero, Eduardo},
-  journal={IEEE Transactions on Image Processing}, 
-  title={Flex{HDR}: Modeling Alignment and Exposure Uncertainties for Flexible {HDR} Imaging}, 
+  journal={IEEE Transactions on Image Processing},
+  title={Flex{HDR}: Modeling Alignment and Exposure Uncertainties for Flexible {HDR} Imaging},
   year={2022},
   volume={31},
   }

@@ -5,35 +5,35 @@
 "conde":
   - firstname: ["Marcos V.", "M V", "M. V."]
     url: https://mv-lab.github.io/
-    
+
 "dhamo":
   - firstname: ["Helisa", "H.", "H"]
     url: https://scholar.google.de/citations?user=oggfqsYAAAAJ
-    
+
 "hirsch":
-  - firstname: ["Michael","M", "M."]
+  - firstname: ["Michael", "M", "M."]
     url: https://ei.is.tuebingen.mpg.de/person/mhirsch
-    
+
 "leonardis":
-  - firstname: ["Ales","A", "A."]
+  - firstname: ["Ales", "A", "A."]
     url: https://www.cs.bham.ac.uk/~leonarda/
 
 "maggioni":
-  - firstname: ["Matteo","M", "M."]
+  - firstname: ["Matteo", "M", "M."]
     url: https://www.linkedin.com/in/matteo-maggioni-026b4918
-    
+
 "mcdonagh":
-  - firstname: ["Steven","S", "S."]
+  - firstname: ["Steven", "S", "S."]
     url: https://smcdonagh.github.io/
 
 "mir":
   - firstname: ["Aymen", "A", "A."]
-    url: https://miraymen.github.io/  
-    
+    url: https://miraymen.github.io/
+
 "moreau":
   - firstname: ["Arthur", "A", "A."]
     url: https://scholar.google.com/citations?user=fMmoHX0AAAAJ
-    
+
 "nazarczuk":
   - firstname: ["Michal", "M", "M."]
     url: https://github.com/michaal94/
@@ -49,7 +49,7 @@
 "pons-moll":
   - firstname: ["Gerard", "G.", "G"]
     url: https://virtualhumans.mpi-inf.mpg.de/people/pons-moll.html
-    
+
 "shaw":
   - firstname: ["Richard", "R", "R."]
     url: https://scholar.google.com/citations?user=9qqtzK4AAAAJ&hl=en
@@ -57,11 +57,11 @@
 "ruiz-hidalgo":
   - firstname: ["Javier", "J", "J."]
     url: https://imatge.upc.edu/web/people/javier-ruiz-hidalgo
- 
+
 "rosenhahn":
   - firstname: ["Bodo", "B", "B."]
     url: https://www.tnt.uni-hannover.de/staff/rosenhahn/
-    
+
 "sajjadi":
   - firstname: ["M S M"]
     url: https://msajjadi.com/
@@ -69,7 +69,7 @@
 "salvador":
   - firstname: ["Jordi", "J", "J."]
     url: https://jordisalvador-image.blogspot.com/
-    
+
 "scholkopf":
   - firstname: ["Bernhard", "B", "B."]
     url: https://is.mpg.de/~bs
@@ -85,7 +85,7 @@
 "song":
   - firstname: ["Jifei", "J", "J."]
     url: https://scholar.google.com/citations?user=9a1PjCIAAAAJ
-    
+
 "tanay":
   - firstname: ["Thomas", "T"]
     url: https://thomas-tanay.github.io/
@@ -93,21 +93,21 @@
 "timofte":
   - firstname: ["Radu", "R", "R."]
     url: https://people.ee.ethz.ch/~timofter/
- 
+
 "jang":
   - firstname: ["Youngkyoon", "Y.", "Y"]
     url: https://youngkyoonjang.bitbucket.io/
- 
+
 "zhang":
   - firstname: ["Zhensong", "Z"]
     url: https://zhangzhensong.github.io/
-    
+
   - firstname: ["Zhongqun", "Z.", "Z"]
     url: https://zhongqunzhang.github.io/
-  
+
   - firstname: ["Xiaohan", "X"]
     url: https://virtualhumans.mpi-inf.mpg.de/people/Zhang.html
-    
+
 "zhou":
   - firstname: ["Yiren", "Y.", "Y"]
     url: https://scholar.google.com.sg/citations?hl=en&user=sZU8ZsQAAAAJ
