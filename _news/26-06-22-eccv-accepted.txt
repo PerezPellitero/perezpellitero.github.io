@@ -1,0 +1,7 @@
+---
+layout: post
+date: 2026-6-22 07:59:00+0100
+inline: true
+---
+
+Our work on spatial uncertainty quantification <a href="https://arxiv.org/abs/2601.03024">SA-ResGS</a> has been accepted to <a href="https://eccv.ecva.net/Conferences/2026">ECCV 2026</a>. 

@@ -1,17 +1,17 @@
 cv:
   sections:
     Experience:
-      - company: Huawei, Noah's Ark Lab"
+      - company: "<i class='fa-solid fa-building-columns' style='color: var(--global-theme-color)'></i> Huawei, Noah's Ark Lab"
         position: Principal Research Scientist
         location: London, UK
         url: "https://www.noahlab.com.hk/"
         start_date: "2019"
         end_date: "present"
-        summary: Team lead of the 3D Imaging Group, working on new and exciting 3D & 4D challenges.
+        summary: Team lead of the 3D Imaging Group, working on new and exciting 4D challenges, spatial AI and World Modelling.
         highlights:
           - Publications @ NeurIPS, CVPR, ECCV, ICLR, IJCV, TIP
-          - Tech transfers & landings (3dGS fast recons., ADAS ISP simulation, smartphone demoireing, interactive virtual human)
-          - Outstanding review x4 (CVPR, ECCV, ICCV)
+          - Tech transfers & landings (3dGS on device, ADAS ISP simulation, interactive virtual human, gallery demoireing)
+          - Outstanding reviewer x4 (CVPR, ECCV, ICCV)
           - Regular Patent filings (> 25 across the years)
 
       - company: "<i class='fa-solid fa-building-columns' style='color: var(--global-theme-color)'></i> Max Planck Institute for Intelligent Systems"
@@ -22,7 +22,7 @@ cv:
         end_date: "2019"
         summary: Doing research on generative models for low-level vision problems within the Scientific Imaging Group in the Empirical Inference department led by Bernhard Schölkopf.
 
-      - company: Technicolor R&D
+      - company: "<i class='fa-solid fa-building-columns' style='color: var(--global-theme-color)'></i> Technicolor R&D"
         position: Research Engineer
         location: Hannover, Germany
         url: "https://www.technicolor.com/"

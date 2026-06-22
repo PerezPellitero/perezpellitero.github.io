@@ -3,6 +3,16 @@
 
 @string{aps = {American Physical Society,}}
 
+@article{Kim2026,
+    author = {J-S Kim and T-H Oh and E Pérez-Pellitero and Y Jang},
+    title = {SA-ResGS: Self-Augmented Residual 3D Gaussian Splatting for Next Best View Selection},
+    journal = {ECCV},
+    year = {2026},
+    abstract = {We propose Self-Augmented Residual 3D Gaussian Splatting, a novel framework for stabilizing uncertainty quantification and enhancing uncertainty-aware supervision in Next-Best-View selection for active scene reconstruction. To efficiently estimate scene coverage, SA-ResGS generates geometry-consistent Self-Augmented point clouds (SA-Points) via triangulation between observed training views and rasterized extrapolated views. To address the lack of learning signals in underrepresented regions within sparse, wide-baseline settings, we introduce the first skip-connection-inspired residual learning strategy tailored for 3DGS. This mechanism amplifies gradient flow to weakly contributing, high-uncertainty Gaussians. Our contributions are threefold: (1) a physically grounded, diversified view selection strategy; (2) an uncertainty-aware residual supervision scheme that improves gradient flow and learning stability; and (3) implicitly debiased uncertainty quantification resulting from constrained view selection and residual supervision. Experiments on NeRF Synthetic, Mip-NeRF 360, and challenging extended benchmark from Deep Blending and Tanks and Temples demonstrate that SA-ResGS consistently outperforms state-of-the-art competing methods in both reconstruction quality and view selection robustness.},
+    preview = {eccv2026.jpg},
+    arxiv = {2601.03024},
+    pdf = {https://arxiv.org/pdf/2601.03024},
+}
 @article{Moreau2026,
 	author = {A Moreau and R Shaw and M Nazarczuk and J Shin and T Tanay and Z Zhang and S Xu and E Pérez-Pellitero},
 	title={Off The Grid: Detection of Primitives for Feed-Forward 3D Gaussian Splatting},
@@ -109,17 +119,6 @@
 	website = {https://youngkyoonjang.github.io/projects/comapgs/},
 	arxiv = {2503.20998},
 	pdf = {https://arxiv.org/pdf/2503.20998},
-}
-
-@article{Aymen2025,
-	author = {A Mir and A Moreau and H Dhamo and Z Zhang and E Pérez-Pellitero},
-	title = {GASPACHO: Gaussian Splatting for Controllable Humans and Objects},
-	journal = {arXiv:2503.09342 [cs.CV]},
-	year = {2025},
-	abstract = {We present GASPACHO: a method for generating photorealistic controllable renderings of human-object interactions. Given a set of multi-view RGB images of human-object interactions, our method reconstructs animatable templates of the human and object as separate sets of Gaussians simultaneously. Different from existing work, which focuses on human reconstruction and ignores objects as background, our method explicitly reconstructs both humans and objects, thereby allowing for controllable renderings of novel human object interactions in different poses from novel-camera viewpoints. During reconstruction, we constrain the Gaussians that generate rendered images to be a linear function of a set of canonical Gaussians. By simply changing the parameters of the linear deformation functions after training, our method can generate renderings of novel human-object interaction in novel poses from novel camera viewpoints. We learn the 3D Gaussian properties of the canonical Gaussians on the underlying 2D manifold of the canonical human and object templates. This in turns requires a canonical object template with a fixed UV unwrapping. To define such an object template, we use a feature based representation to track the object across the multi-view sequence. We further propose an occlusion aware photometric loss that allows for reconstructions under significant occlusions. Several experiments on two human-object datasets - BEHAVE and DNA-Rendering - demonstrate that our method allows for high-quality reconstruction of human and object templates under significant occlusion and the synthesis of controllable renderings of novel human-object interactions in novel human poses from novel camera views.},
-	preview = {gaspacho.gif},
-	arxiv = {2503.09342},
-	pdf = {https://arxiv.org/pdf/2503.09342},
 }
 
 @article{Zhang2025,

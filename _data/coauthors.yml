@@ -13,6 +13,9 @@
 "hirsch":
   - firstname: ["Michael", "M", "M."]
     url: https://ei.is.tuebingen.mpg.de/person/mhirsch
+"kim":
+  - firstname: ["Jun-seong", "J-S", "J."]
+    url: https://kim-junseong.github.io/
 
 "leonardis":
   - firstname: ["Ales", "A", "A."]
@@ -41,6 +44,10 @@
 "nie":
   - firstname: ["Yinyu", "Y.", "Y"]
     url: https://yinyunie.github.io/
+
+"oh":
+  - firstname: ["T-H"]
+    url: https://ami.kaist.ac.kr/members/tae-hyun-oh
 
 "papaioannou":
   - firstname: ["Athanasios", "A.", "A"]
