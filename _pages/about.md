@@ -30,7 +30,7 @@ I am a Principal Research Scientist at London's Noah's Ark Lab (<a href="https:/
 Previously I was a postdoctoral researcher at the Empirical Inference department of the Max Planck Institute for Intelligent Systems, directed by Bernhard Schölkopf, more specifically working within the Computational Imaging Group.
 Before that, I spent some time having fun and doing my PhD somewhere in between the TNT Lab of Leibniz Universität Hannover and Technicolor R&I, where I did research on manifold learning for Super Resolution applications.</p>
 <p align="justify">
-My research interests include computational photography, 3D representations, high-dynamic-range imaging, differentiable rendering, and machine learning. In a broader sense, I am interested in any model that allows us to dissect, analyse and play around with the digital image formation process.</p>
+My research interests revolve around Spatial AI and the next frontier of 4D World Models: towards capturing, modeling and generating the world from the lenses of general purpose cameras. In the past I also worked on computational photography, 3D representations, high-dynamic-range imaging, and differentiable rendering.</p>
 <p align="justify">
 Apart from research, you can find me regularly training and teaching historical fencing at the <a href="https://londonhistoricalfencing.club/instructors">London Historical Fencing Club</a>, playing electric bass with the <a href="https://www.eastlondoncommunityband.co.uk/who-we-are">East London Comunity Big Band</a>, or paddling a sea kayak in the tidal Thames with the <a href="https://www.towerhamletscanoeclub.co.uk/wiki/THCC">Tower Hamlets Canoe Club</a>.
 </p>
