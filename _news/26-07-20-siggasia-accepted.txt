@@ -1,0 +1,7 @@
+---
+layout: post
+date: 2026-7-20 07:59:00+0100
+inline: true
+---
+
+WildAnySplat has been accepted to <a href="https://asia.siggraph.org/2026/">SIGGRAPH Asia 2026</a> ! Pre-print and website coming soon.

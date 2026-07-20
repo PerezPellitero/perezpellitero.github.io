@@ -3,6 +3,15 @@
 
 @string{aps = {American Physical Society,}}
 
+@article{Shaw2026,
+    author = {R Shaw and A Moreau and A Papaioannou and T Tanay and Z Zhensong and E Pérez-Pellitero },
+    title = {WildAnySplat: Feed-Forward 3D Gaussian Splatting in the Wild},
+    journal = {SIGGRAPH Asia},
+    year = {2026},
+    abstract = {We present WildAnySplat, a feed-forward approach for 3D Gaussian Splatting that enables robust novel-view synthesis from in-the-wild multi-view image collections. Unlike controlled captures, such data often exhibits significant multi-view inconsistencies caused by transient occluders, illumination variation, and camera-dependent color processing, which severely degrade reconstruction quality for existing feed-forward methods. We introduce a transformer-based architecture augmented with two dedicated prediction heads. First, a DPT-based transient mask head estimates per-frame soft visibility masks, which are used both to reweight photometric supervision and to suppress unreliable Gaussians during feature aggregation. Second, a DPT-based bilateral grid head models per-image color transformations, enabling the network to recover a canonical radiance representation despite cross-view appearance variation. To address the lack of paired training data, we propose a student–teacher training framework. The teacher network operates on clean images obtained via synthetic augmentation and optimization-based reconstruction, while the student network processes the corresponding in-the-wild inputs. The teacher provides supervisory signals that guide the student toward a consistent, transient-free representation, enabling robust learning under real-world inconsistencies. We further combine this framework with synthetic transient and color augmentation, generating diverse training signals for both mask prediction and appearance modeling. This hybrid strategy effectively bridges the domain gap between synthetic and real-world data. Our method significantly outperforms state-of-the-art feed-forward approaches on challenging in-the-wild benchmarks, including Phototourism, NeRF On-the-Go, and RobustNeRF, demonstrating improved robustness to occlusions and appearance variation while maintaining fast inference.},
+    preview = {siggasia_2026.jpg}
+}
+
 @article{Kim2026,
     author = {J-S Kim and T-H Oh and E Pérez-Pellitero and Y Jang},
     title = {SA-ResGS: Self-Augmented Residual 3D Gaussian Splatting for Next Best View Selection},
@@ -37,29 +46,6 @@
 	preview = {cvpr_2026b.jpg},
 }
 
-@article{Tanay2026,
-	author = {T Tanay and M Brahimi and M Nazarczuk and Q Zhang and S Catley-Chandar and A Moreau and Z Zhang and E Pérez-Pellitero},
-	title = {GRVS: a Generalizable and Recurrent Approach to Monocular Dynamic View Synthesis},
-	journal = {CVPR Findings},
-	abstract = {Synthesizing novel views from monocular videos of dynamic scenes remains a challenging problem. Scene-specific methods that optimize 4D representations with explicit motion priors often break down in highly dynamic regions where multi-view information is hard to exploit. Diffusion-based approaches that integrate camera control into large pre-trained models can produce visually plausible videos but frequently suffer from geometric inconsistencies across both static and dynamic areas. Both families of methods also require substantial computational resources. Building on the success of generalizable models for static novel view synthesis, we adapt the framework to dynamic inputs and propose a new model with two key components: (1) a recurrent loop that enables unbounded and asynchronous mapping between input and target videos and (2) an efficient use of plane sweeps over dynamic inputs to disentangle camera and scene motion, and achieve fine-grained, six-degrees-of-freedom camera controls. We train and evaluate our model on the UCSD dataset and on Kubric-4D-dyn, a new monocular dynamic dataset featuring longer, higher resolution sequences with more complex scene dynamics than existing alternatives. Our model outperforms four Gaussian Splatting-based scene-specific approaches, as well as two diffusion-based approaches in reconstructing fine-grained geometric details across both static and dynamic regions.},
-	year = {2026},
-	pdf = {https://arxiv.org/pdf/2603.29734},
-	arxiv = {2603.29734},
-	website = {https://thomas-tanay.github.io/grvs},
-	preview = {cvprf_2026a.jpg},
-}
-
-@article{Gao2026,
-	author = {X Gao and Z Zhang and Z Chen and S Xu and L Quan and E Pérez-Pellitero and Y Jang},
-	title = {Map2Thought: Explicit 3D Spatial Reasoning via Metric Cognitive Maps},
-	journal = {CVPR Findings},
-	year = {2026},
-	abstract = {We propose Map2Thought, a framework that enables explicit and interpretable spatial reasoning for 3D VLMs. The framework is grounded in two key components: Metric Cognitive Map (Metric-CogMap) and Cognitive Chain-of-Thought (Cog-CoT). Metric-CogMap provides a unified spatial representation by integrating a discrete grid for relational reasoning with a continuous, metric-scale representation for precise geometric understanding. Building upon the Metric-CogMap, Cog-CoT performs explicit geometric reasoning through deterministic operations, including vector operations, bounding-box distances, and occlusion-aware appearance order cues, producing interpretable inference traces grounded in 3D structure. Experimental results show that Map2Thought enables explainable 3D understanding, achieving 59.9% accuracy using only half the supervision, closely matching the 60.9% baseline trained with the full dataset. It consistently outperforms state-of-the-art methods by 5.3%, 4.8%, and 4.0% under 10%, 25%, and 50% training subsets, respectively, on the VSI-Bench.},
-	preview = {cvprf_2026b.jpg},
-	arxiv = {https://arxiv.org/abs/2601.11442},
-	pdf = {https://arxiv.org/pdf/2601.11442}
-}
-
 @article{Shin2025,
 	author = {J Shin and R Shaw  and S Shin and Z Zhang and H-G Jeon and E Pérez-Pellitero},
 	title={CHROMA: Consistent Harmonization of Multi-View Appearance via Bilateral Grid Prediction},
@@ -82,6 +68,29 @@
 	pdf = {Shaw2026ijcv_accepted_manuscript.pdf},
 	website = {https://ico3d.github.io/},
 	arxiv = {2601.13148},
+}
+
+@article{Tanay2026,
+	author = {T Tanay and M Brahimi and M Nazarczuk and Q Zhang and S Catley-Chandar and A Moreau and Z Zhang and E Pérez-Pellitero},
+	title = {GRVS: a Generalizable and Recurrent Approach to Monocular Dynamic View Synthesis},
+	journal = {CVPR Findings},
+	abstract = {Synthesizing novel views from monocular videos of dynamic scenes remains a challenging problem. Scene-specific methods that optimize 4D representations with explicit motion priors often break down in highly dynamic regions where multi-view information is hard to exploit. Diffusion-based approaches that integrate camera control into large pre-trained models can produce visually plausible videos but frequently suffer from geometric inconsistencies across both static and dynamic areas. Both families of methods also require substantial computational resources. Building on the success of generalizable models for static novel view synthesis, we adapt the framework to dynamic inputs and propose a new model with two key components: (1) a recurrent loop that enables unbounded and asynchronous mapping between input and target videos and (2) an efficient use of plane sweeps over dynamic inputs to disentangle camera and scene motion, and achieve fine-grained, six-degrees-of-freedom camera controls. We train and evaluate our model on the UCSD dataset and on Kubric-4D-dyn, a new monocular dynamic dataset featuring longer, higher resolution sequences with more complex scene dynamics than existing alternatives. Our model outperforms four Gaussian Splatting-based scene-specific approaches, as well as two diffusion-based approaches in reconstructing fine-grained geometric details across both static and dynamic regions.},
+	year = {2026},
+	pdf = {https://arxiv.org/pdf/2603.29734},
+	arxiv = {2603.29734},
+	website = {https://thomas-tanay.github.io/grvs},
+	preview = {cvprf_2026a.jpg},
+}
+
+@article{Gao2026,
+	author = {X Gao and Z Zhang and Z Chen and S Xu and L Quan and E Pérez-Pellitero and Y Jang},
+	title = {Map2Thought: Explicit 3D Spatial Reasoning via Metric Cognitive Maps},
+	journal = {CVPR Findings},
+	year = {2026},
+	abstract = {We propose Map2Thought, a framework that enables explicit and interpretable spatial reasoning for 3D VLMs. The framework is grounded in two key components: Metric Cognitive Map (Metric-CogMap) and Cognitive Chain-of-Thought (Cog-CoT). Metric-CogMap provides a unified spatial representation by integrating a discrete grid for relational reasoning with a continuous, metric-scale representation for precise geometric understanding. Building upon the Metric-CogMap, Cog-CoT performs explicit geometric reasoning through deterministic operations, including vector operations, bounding-box distances, and occlusion-aware appearance order cues, producing interpretable inference traces grounded in 3D structure. Experimental results show that Map2Thought enables explainable 3D understanding, achieving 59.9% accuracy using only half the supervision, closely matching the 60.9% baseline trained with the full dataset. It consistently outperforms state-of-the-art methods by 5.3%, 4.8%, and 4.0% under 10%, 25%, and 50% training subsets, respectively, on the VSI-Bench.},
+	preview = {cvprf_2026b.jpg},
+	arxiv = {https://arxiv.org/abs/2601.11442},
+	pdf = {https://arxiv.org/pdf/2601.11442}
 }
 
 @article{Zhang2026,
